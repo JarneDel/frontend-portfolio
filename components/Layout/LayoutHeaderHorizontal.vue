@@ -1,7 +1,7 @@
 <template>
 
-  <div class="flex flex-col justify-between my-4 ">
-    <ul class="mx-6 flex flex-col gap-8 my-4" >
+  <div class="flex flex-row-reverse justify-between ">
+    <ul class="mx-6 flex flex-rows gap-8 my-4" >
       <li>
         <NuxtLink to="/#about" class="flex flex-row gap-3 hocus:ring-2 hocus:rounded-sm hocus:ring-gray-400 hocus:bg-gray-300 hocus:ring-offset-8 :hocus:ring-offset-gray-400
         hocus:dark:ring-gray-600 dark:hocus:bg-gray-700 dark:hocus:ring-offset-gray-700 focus:outline-none">
@@ -31,11 +31,6 @@
         </NuxtLink>
       </li>
     </ul>
-    <button @click="toggle" class="mt-auto mx-6 flex flex-row gap-3 flex-row gap-3 hocus:ring-2 hocus:rounded-sm hocus:ring-gray-400 hocus:bg-gray-300 hocus:ring-offset-8 :hocus:ring-offset-gray-400
-        hocus:dark:ring-gray-600 dark:hocus:bg-gray-700 dark:hocus:ring-offset-gray-700 focus:outline-none">
-      <ChevronLeft class='transition-transform' :class='{rotate: !sideBarExpanded}'/>
-      <span v-if="sideBarExpanded">Collapse</span>
-    </button>
   </div>
 
 </template>
