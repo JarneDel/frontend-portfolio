@@ -1,7 +1,16 @@
 <template>
-  <article class='mt-80 font-sans'>
-    <p class='font-medium text-6xl mb-3'>Hey there, I'm <span class='text-teal-400'>Jarne Delarue</span></p>
-    <p class='text-3xl text-neutral-400'>A full stack web developer and linux enthousiast</p>
-    <button class='mt-6 ml-2 ring-2 ring-offset-8 rounded-sm ring-teal-400 bg-gray-800 ring-offset-gray-800'>Find out more</button>
+  <article class="my-48 mt-80 font-sans">
+    <p class="mb-3 text-6xl font-medium">
+      Hey there, I'm <span class="text-teal-400">Jarne Delarue</span>
+    </p>
+    <p class="pb-6 text-3xl text-neutral-400">
+      A full stack web developer and linux enthousiast
+    </p>
+    <nuxt-link
+      to="/#about"
+      class="mt-8 ml-2 rounded-sm bg-gray-800 ring-2 ring-teal-400 ring-offset-8 ring-offset-gray-800"
+    >
+      Find out more
+    </nuxt-link>
   </article>
 </template>
