@@ -1,7 +1,12 @@
 <template>
   <article class="my-48 mt-80 font-sans">
+    <p
+      class="text-2xl font-medium text-gray-800 dark:text-gray-200 lg:text-3xl"
+    >
+      Hey there,
+    </p>
     <p class="mb-3 text-6xl font-medium">
-      Hey there, I'm <span class="text-teal-400">Jarne Delarue</span>
+      I'm <span class="text-teal-400">Jarne Delarue</span>
     </p>
     <p class="pb-6 text-3xl text-neutral-400">
       A full stack web developer and linux enthousiast

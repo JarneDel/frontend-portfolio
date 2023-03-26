@@ -1,43 +1,12 @@
 <template>
   <div class="backgroundGradient scroll-smooth">
     <div class="background mx-8 min-h-screen dark:text-gray-100 lg:mx-0">
-      <div class="flex flex-row-reverse justify-between">
-        <ul class="flex-rows mx-6 my-4 flex gap-8">
-          <li>
-            <StyledNuxtLink :to="{ hash: '#about' }">
-              <user></user>
-              <p>About</p>
-            </StyledNuxtLink>
-          </li>
-          <li>
-            <StyledNuxtLink :to="'/#projects'">
-              <Code2 />
-              <p>Projects</p>
-            </StyledNuxtLink>
-          </li>
-          <li>
-            <StyledNuxtLink :to="'/#contact'">
-              <Contact></Contact>
-              <p>Contact</p>
-            </StyledNuxtLink>
-          </li>
-          <li>
-            <StyledNuxtLink :to="'/Resume'">
-              <file-text />
-              <p>Resume</p>
-            </StyledNuxtLink>
-          </li>
-        </ul>
-      </div>
+      <DesktopNavigation v-if="viewportWidth > 768" />
+      <MobileSideNav v-else />
       <slot />
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { User, Contact, Code2, FileText } from 'lucide-vue-next'
-import StyledNuxtLink from '~/components/elements/StyledNuxtLink.vue'
-</script>
 
 <style scoped>
 .background {
@@ -45,6 +14,7 @@ import StyledNuxtLink from '~/components/elements/StyledNuxtLink.vue'
   animation: bg-scrolling-reverse 3s linear infinite;
 }
 .backgroundGradient {
+  background: #dee0dd;
   background: linear-gradient(
     to right top,
     #cbc5bf,
@@ -56,6 +26,7 @@ import StyledNuxtLink from '~/components/elements/StyledNuxtLink.vue'
 }
 @media (prefers-color-scheme: dark) {
   .backgroundGradient {
+    background: #211f22;
     background: linear-gradient(
       to right top,
       #343a40,
@@ -84,3 +55,8 @@ html {
   scroll-behavior: smooth;
 }
 </style>
+<script setup lang="ts">
+import DesktopNavigation from '~/components/navigation/DesktopNavigation.vue'
+import MobileSideNav from '~/components/navigation/MobileSideNav.vue'
+const { viewportWidth } = useViewportSize()
+</script>
