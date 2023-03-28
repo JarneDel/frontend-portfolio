@@ -2,7 +2,8 @@
   <div class="backgroundGradient scroll-smooth">
     <div class="background mx-8 min-h-screen dark:text-gray-100 lg:mx-0">
       <DesktopNavigation v-if="viewportWidth > 768" />
-      <MobileSideNav v-else />
+      <MobileSideNav v-else-if="viewportWidth > 0" />
+      <Loader2 class="animate-spin" v-else />
       <slot />
     </div>
   </div>
@@ -58,5 +59,6 @@ html {
 <script setup lang="ts">
 import DesktopNavigation from '~/components/navigation/DesktopNavigation.vue'
 import MobileSideNav from '~/components/navigation/MobileSideNav.vue'
+import { Loader2 } from 'lucide-vue-next'
 const { viewportWidth } = useViewportSize()
 </script>

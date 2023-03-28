@@ -1,6 +1,6 @@
 <template>
   <article
-    class="flex max-w-4xl flex-col flex-col items-center justify-center py-48 lg:flex-row"
+    class="flex max-w-4xl flex-col flex-col items-center justify-center gap-16 py-48 lg:flex-row"
     id="about"
   >
     <div class="lg:basis-3/5">
@@ -22,7 +22,7 @@
     </div>
 
     <div class="lg:basis-2/5">
-      <img src="/placeholder-image.png" alt="placeholder" />
+      <img src="/profile.jpg" alt="Profile  " />
     </div>
   </article>
 </template>
