@@ -2,5 +2,6 @@
 
 export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss'],
+
   // add smooth scroll
 })

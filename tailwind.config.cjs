@@ -11,8 +11,14 @@ module.exports = {
       },
       width: {
         99: "55rem"
-      }
-    },
+      },
+      colors: {
+        primary: {
+          dark: "#2dd4bf",
+          light: "#23a694",
+        }
+      },
+    }
   },
   plugins: [
     plugin(function ({ addVariant }) {

@@ -1,10 +1,12 @@
 <template>
   <div class="backgroundGradient scroll-smooth">
-    <div class="background mx-8 min-h-screen dark:text-gray-100 lg:mx-0">
-      <DesktopNavigation v-if="viewportWidth > 768" />
-      <MobileSideNav v-else-if="viewportWidth > 0" />
-      <Loader2 class="animate-spin" v-else />
-      <slot />
+    <div class="background min-h-screen dark:text-gray-100 lg:mx-0">
+      <div class="mx-6 md:mx-0">
+        <DesktopNavigation v-if="viewportWidth > 768" />
+        <MobileSideNav v-else-if="viewportWidth > 0" />
+        <Loader2 class="animate-spin" v-else />
+        <slot />
+      </div>
     </div>
   </div>
 </template>
@@ -44,18 +46,8 @@
     background-position: 36px 36px;
   }
 }
-@keyframes bg-scrolling {
-  0% {
-    background-position: 36px 36px;
-  }
-}
 </style>
 
-<style>
-html {
-  scroll-behavior: smooth;
-}
-</style>
 <script setup lang="ts">
 import DesktopNavigation from '~/components/navigation/DesktopNavigation.vue'
 import MobileSideNav from '~/components/navigation/MobileSideNav.vue'
