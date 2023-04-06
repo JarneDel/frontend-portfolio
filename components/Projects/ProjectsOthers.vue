@@ -12,12 +12,18 @@
     >
       <div class="flex w-full flex-row items-center justify-between">
         <svg-other-projects
-          size="48"
+          :size="48"
           class="text-primary-light dark:text-primary-dark"
         />
         <div class="flex flex-row">
           <Github :to="project.githubUrl" />
-          <External v-if="project.link" :to="project.link" />
+          <External
+            v-if="project.link"
+            :to="project.link"
+            :title="
+              project.externalTitle ? project.externalTitle : 'Visit project'
+            "
+          />
         </div>
       </div>
       <h4 class="text-xl font-bold text-gray-900 dark:text-gray-100">

@@ -5,4 +5,5 @@ export interface IProject {
   technologies: string
   githubUrl: string
   link?: string
+  externalTitle?: string
 }

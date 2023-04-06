@@ -5,9 +5,10 @@
       :class="project.id % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'"
     >
       <div class="drop-shadow-xl md:basis-1/2">
-        <img
+        <nuxt-img
           :src="project.image"
           :alt="project.imageAlt"
+          quality="100"
           class="block w-full max-w-[32rem] md:max-w-full"
         />
       </div>
@@ -49,7 +50,13 @@
             <SvgDocument title="Design Document" />
           </a>
           <Github :to="project.github" />
-          <External v-if="project.external" :to="project.external" />
+          <External
+            v-if="project.external"
+            :to="project.external"
+            :title="
+              project.externalTitle ? project.externalTitle : 'Visit project'
+            "
+          />
         </div>
       </div>
     </div>
@@ -67,6 +74,7 @@ const projects: IFeaturedProject[] = [
       'League of Statistics is a website that shows you statistics about your League of Legends account, per champion you play. You can also view champion information and abilities. It was build with micro-interactions and accessibility in mind.',
     technologies: 'HTML, CSS, JS, Node, Azure Functions, CosmosDB, Riot API',
     external: 'https://leagueofstatistics.jarnedel.dev',
+    externalTitle: 'Visit League of Statistics',
     github: 'https://github.com/JarneDel/LolApi',
     image: '/lolstats.png',
     imageAlt: 'LeagueOfStatisticsMockup',
@@ -96,6 +104,7 @@ const projects: IFeaturedProject[] = [
     github: 'https://github.com/howest-mct/2021-2022-projectone-JarneDel',
     external:
       'https://www.instructables.com/Air-Insight-Air-Quality-Monitor-With-Raspberry-Pi/',
+    externalTitle: 'Instructables',
     image: '/PROJECT1.png',
     imageAlt: 'AirInsightMockup',
   },

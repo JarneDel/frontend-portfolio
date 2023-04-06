@@ -26,7 +26,7 @@
     </div>
 
     <div class="lg:basis-2/5">
-      <img src="/profile.jpg" alt="Profile" />
+      <nuxt-img src="/profile.jpg" alt="Profile" />
     </div>
   </article>
 </template>

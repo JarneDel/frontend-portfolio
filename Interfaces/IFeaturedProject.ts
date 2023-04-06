@@ -8,6 +8,7 @@ export interface IFeaturedProject {
   image: string
   imageAlt: string
   external?: string
+  externalTitle?: string
   designDocument?: string
   functionalAnalysis?: string
 }
