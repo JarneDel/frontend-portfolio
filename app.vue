@@ -7,7 +7,7 @@
 <style>
 ::-webkit-scrollbar {
   width: 0.3em;
-  background-color: transparent;
+  /*background-color: transparent;*/
 }
 
 ::-webkit-scrollbar:hover {

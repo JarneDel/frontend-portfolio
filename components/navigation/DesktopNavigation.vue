@@ -2,7 +2,7 @@
   <div class="flex flex-row-reverse justify-between">
     <ul class="flex-rows mx-6 my-4 flex gap-8">
       <li>
-        <StyledNuxtLink :to="{ hash: '#about' }">
+        <StyledNuxtLink :to="'/#about'">
           <User></User>
           <p>About</p>
         </StyledNuxtLink>

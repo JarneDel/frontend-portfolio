@@ -5,14 +5,15 @@
     >
       Some projects I've built
     </h2>
-    <div class="mb-24 flex w-full flex-col-reverse gap-4 md:flex-row">
+    <div
+      class="mb-24 flex w-full flex-col-reverse gap-4 md:flex-row md:items-center"
+    >
       <!--project container-->
       <div class="drop-shadow-xl md:basis-1/2">
         <img
-          :src="
-            isDark ? 'lol-dark-transparent.png' : 'lol-light-transparent.png'
-          "
+          src="/lolstats.png"
           alt="LeagueOfStatisticsMockup"
+          class="max-w-[32rem] md:max-w-full"
         />
       </div>
       <div
@@ -84,13 +85,12 @@
         </div>
       </div>
     </div>
-    <div class="mb-24 flex w-full flex-col-reverse gap-4 md:flex-row-reverse">
+    <div
+      class="mb-24 flex w-full flex-col-reverse gap-4 md:flex-row-reverse md:items-center"
+    >
       <!--project container-->
       <div class="drop-shadow-xl md:basis-1/2">
-        <img
-          :src="isDark ? 'jj-dark.png' : 'jj-light.png'"
-          alt="LeagueOfStatisticsMockup"
-        />
+        <img src="/jumpingjawsnoframe.png" alt="LeagueOfStatisticsMockup" />
       </div>
       <div
         class="flex max-w-xl basis-1/2 flex-col md:items-start md:justify-center"
@@ -175,14 +175,15 @@
         </div>
       </div>
     </div>
-    <div class="mb-24 flex w-full flex-col-reverse gap-4 md:flex-row">
+    <div
+      class="mb-24 flex w-full flex-col-reverse gap-4 md:flex-row md:items-center"
+    >
       <!--project container-->
-      <div class="drop-shadow-xl md:basis-1/2">
+      <div class="md:basis-1/2">
         <img
-          :src="
-            isDark ? 'lol-dark-transparent.png' : 'lol-light-transparent.png'
-          "
+          src="/PROJECT1.png"
           alt="LeagueOfStatisticsMockup"
+          class="drop-shadow-3xl rounded-lg filter"
         />
       </div>
       <div
