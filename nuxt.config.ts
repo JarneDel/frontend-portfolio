@@ -1,7 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/devtools', '@nuxt/image-edge'],
+  //@ts-ignore
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/devtools'],
   components: [
     {
       path: '~/components',
