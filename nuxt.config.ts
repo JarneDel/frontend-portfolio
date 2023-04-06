@@ -12,8 +12,8 @@ export default defineNuxtConfig({
     enabled: true,
   },
   image: {
-    provider: 'static',
-    dir: '/public/images',
+    provider: 'ipx',
+    dir: 'public/images',
   },
   // add smooth scroll
 })
