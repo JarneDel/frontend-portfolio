@@ -27,7 +27,13 @@
 
 body {
   overflow: overlay;
+  overflow-x: hidden;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 ::selection {
   background: #2dd4bf;
   color: #fff;

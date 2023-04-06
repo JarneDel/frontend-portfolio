@@ -40,7 +40,6 @@
 </template>
 
 <script setup>
-import StyledNuxtLink from '~/components/elements/StyledNuxtLink.vue'
 import { User, Contact, Code2, FileText } from 'lucide-vue-next'
 const isOpen = ref(false)
 const close = () => (isOpen.value = false)
