@@ -1,56 +1,32 @@
 <template>
-  <div class="backgroundGradient scroll-smooth">
-    <div class="background min-h-screen dark:text-gray-100 lg:mx-0">
+  <div
+    class="scroll-smooth bg-gradient-to-tr from-background-light-500 via-background-light-300 to-background-light-100 bg-fixed bg-no-repeat dark:from-background-dark-500 dark:via-background-dark-300 dark:to-background-dark-100"
+  >
+    <div
+      class="min-h-screen bg-light-repeating-bg motion-safe:animate-moveBg dark:bg-dark-repeating-bg dark:text-gray-100 lg:mx-0"
+    >
       <div class="mx-6 md:mx-0">
-        <DesktopNavigation v-if="viewportWidth > 768" />
-        <MobileSideNav v-else-if="viewportWidth > 0" />
-        <Loader2 class="animate-spin" v-else />
+        <div
+          class="fixed top-0 z-10 w-full transition-all duration-200"
+          ref="header"
+          :class="
+            (isHidden && '-translate-y-[72px]') ||
+            (isSticky &&
+              'bg-[#dee0dd]/80 backdrop-blur-sm backdrop-filter dark:bg-[#211f22]/20')
+          "
+        >
+          <DesktopNavigation v-if="viewportWidth > 768" />
+          <MobileSideNav v-else-if="viewportWidth > 0" />
+          <Loader2 class="animate-spin" v-else />
+        </div>
         <slot />
       </div>
     </div>
   </div>
 </template>
 
-<style scoped>
-.background {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='36' fill='%232DD4BF33' viewBox='0 192 1920 1920' width='36'%3E%3Cpath d='M479.825 856Q467 856 458.5 847.375T450 826V606H230q-12.75 0-21.375-8.675-8.625-8.676-8.625-21.5 0-12.825 8.625-21.325T230 546h220V326q0-12.75 8.675-21.375 8.676-8.625 21.5-8.625 12.825 0 21.325 8.625T510 326v220h220q12.75 0 21.375 8.675 8.625 8.676 8.625 21.5 0 12.825-8.625 21.325T730 606H510v220q0 12.75-8.675 21.375-8.676 8.625-21.5 8.625Z'/%3E%3C/svg%3E");
-  animation: bg-scrolling-reverse 3s linear infinite;
-}
-.backgroundGradient {
-  background: #dee0dd;
-  background: linear-gradient(
-    to right top,
-    #cbc5bf,
-    #d4d3ce,
-    #dee0dd,
-    #eaeceb,
-    #fff
-  );
-}
-@media (prefers-color-scheme: dark) {
-  .backgroundGradient {
-    background: #211f22;
-    background: linear-gradient(
-      to right top,
-      #343a40,
-      #2b2c31,
-      #211f22,
-      #151314,
-      #000000
-    );
-  }
-}
-
-@keyframes bg-scrolling-reverse {
-  100% {
-    background-position: 36px 36px;
-  }
-}
-</style>
-
 <script setup lang="ts">
-import DesktopNavigation from '~/components/navigation/DesktopNavigation.vue'
-import MobileSideNav from '~/components/navigation/MobileSideNav.vue'
 import { Loader2 } from 'lucide-vue-next'
 const { viewportWidth } = useViewportSize()
+const { isHidden, isSticky } = useStickyHeader()
 </script>

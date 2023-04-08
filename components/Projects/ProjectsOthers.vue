@@ -48,24 +48,10 @@ const projects: IProject[] = [
   },
   {
     id: 2,
-    name: 'Roman converter',
-    description: 'A simple app to convert Latin numbers to Roman numbers.',
-    technologies: 'Expo ReactNative TypeScript',
-    githubUrl: 'https://github.com/JarneDel/app-converter',
-  },
-  {
-    id: 3,
-    name: 'Roman converter',
-    description: 'A simple app to convert Latin numbers to Roman numbers.',
-    technologies: 'Expo ReactNative TypeScript',
-    githubUrl: 'https://github.com/JarneDel/app-converter',
-  },
-  {
-    id: 4,
-    name: 'Roman converter',
-    description: 'A simple app to convert Latin numbers to Roman numbers.',
-    technologies: 'Expo ReactNative TypeScript',
-    githubUrl: 'https://github.com/JarneDel/app-converter',
+    name: 'HTML colors',
+    description: 'A simple app that shows you a random html color.',
+    technologies: 'Expo ReactNative TypeScript Animation',
+    githubUrl: 'https://github.com/JarneDel/app-html-kleuren/tree/develop',
   },
 ]
 </script>
