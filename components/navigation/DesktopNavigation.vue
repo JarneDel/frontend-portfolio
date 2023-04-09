@@ -30,5 +30,4 @@
 </template>
 <script setup lang="ts">
 import { User, Contact, Code2, FileText } from 'lucide-vue-next'
-import StyledNuxtLink from '~/components/elements/StyledNuxtLink.vue'
 </script>

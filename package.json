@@ -8,8 +8,9 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxt/image": "^0.7.1",
+    "@nuxt/devtools": "^0.3.1",
     "@nuxtjs/tailwindcss": "^6.6.0",
+    "@nuxt/image-edge": "^1.0.0-28008586.381b906",
     "lucide-vue-next": "^0.127.0",
     "nuxt": "^3.3.1",
     "prettier": "^2.8.5",
@@ -31,8 +32,5 @@
   },
   "volta": {
     "node": "18.15.0"
-  },
-  "dependencies": {
-    "@vueuse/core": "^9.13.0"
   }
 }

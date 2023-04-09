@@ -16,13 +16,42 @@ module.exports = {
         primary: {
           dark: "#2dd4bf",
           light: "#23a694",
+        },
+        background: {
+          light: {
+            100: "#fff",
+            200: '#eaeceb',
+            300: "#dee0dd",
+            400: "#d4d3ce",
+            500: "#cbc5bf",
+          },
+          dark: {
+            100: "#000000",
+            200: "#151314",
+            300: "#211f22",
+            400: "#2b2c31",
+            500: "#343a40",
+          }
         }
       },
+      backgroundImage: {
+        'dark-repeating-bg': "url('/images/dark-repeating-bg.svg')",
+        'light-repeating-bg': "url('/images/light-repeating-bg.svg')",
+      },
+      keyframes: {
+        moveBg: {
+          '0%': { backgroundPosition: '0 0' },
+          '100%': { backgroundPosition: '36px 36px' },
+        }
+      },
+      animation: {
+        moveBg: 'moveBg 3s linear infinite',
+      }
     }
   },
   plugins: [
     plugin(function ({ addVariant }) {
-      addVariant('hocus', ['&:hover', '&:focus'])
+      addVariant('hocus', ['&:hover', '&:focus-visable'])
     }),
   ],
 }
