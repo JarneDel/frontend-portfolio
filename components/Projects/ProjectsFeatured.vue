@@ -19,7 +19,10 @@
         <p class="font-mono text-primary-light dark:text-primary-dark">
           {{ project.category }}
         </p>
-        <h3 class="mb-2 text-2xl font-bold text-gray-900 dark:text-gray-100">
+        <h3
+          class="mb-2 text-2xl font-bold text-gray-900 dark:text-gray-100"
+          :class="project.id % 2 === 0 ? 'md:text-left' : 'md:text-right'"
+        >
           {{ project.title }}
         </h3>
         <p
@@ -29,6 +32,7 @@
           {{ project.description }}
         </p>
         <ProjectsTechnologies
+          class="max-w-[32rem]"
           :technologies="project.technologies"
           :text-alignment="project.id % 2 === 0 ? 'text-left' : 'text-right'"
         />

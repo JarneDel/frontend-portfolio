@@ -4,7 +4,6 @@
       <SectionFold></SectionFold>
       <SectionAbout></SectionAbout>
       <SectionProjects></SectionProjects>
-      <SectionSkills></SectionSkills>
       <SectionContact></SectionContact>
     </div>
   </div>

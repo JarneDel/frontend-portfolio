@@ -13,7 +13,7 @@
     </p>
     <nuxt-link
       to="/#about"
-      class="rounded-lg border-2 border-solid border-teal-400 p-2 outline-none transition-colors duration-100 focus-visible:ring focus-visible:ring-teal-600 hocus:bg-primary-dark hocus:text-white"
+      class="rounded-lg border-2 border-solid border-teal-400 p-2 outline-none transition-colors duration-300 focus-visible:ring focus-visible:ring-teal-600 hocus:bg-primary-dark hocus:text-white"
     >
       Find out more
     </nuxt-link>

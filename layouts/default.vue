@@ -20,6 +20,7 @@
           <Loader2 class="animate-spin" v-else />
         </div>
         <slot />
+        <Foot></Foot>
       </div>
     </div>
   </div>
