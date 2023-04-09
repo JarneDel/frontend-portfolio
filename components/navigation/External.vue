@@ -1,6 +1,7 @@
 <template>
   <NuxtLink
     v-bind:to="to"
+    target="_blank"
     class="hocus:text-primary-light hocus:dark:text-primary-dark"
   >
     <svg

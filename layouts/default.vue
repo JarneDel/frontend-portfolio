@@ -15,20 +15,19 @@
               'bg-[#dee0dd]/80 backdrop-blur-sm backdrop-filter dark:bg-[#211f22]/20')
           "
         >
-          <DesktopNavigation v-if="viewportWidth > 768" />
+          <DesktopNavigation class="hidden md:flex" />
           <MobileNavigationButton
-            v-else
+            class="md:hidden"
             :is-open="isOpen"
             v-on:click="isOpen = !isOpen"
           />
         </div>
 
         <MobileSideNav
-          v-if="viewportWidth > 0"
+          class="md:hidden"
           :is-open="isOpen"
           v-on:close="isOpen = false"
         />
-        <Loader2 class="animate-spin" v-else />
         <slot />
         <Foot></Foot>
       </div>
@@ -37,8 +36,6 @@
 </template>
 
 <script setup lang="ts">
-import { Loader2 } from 'lucide-vue-next'
-const { viewportWidth } = useViewportSize()
 const { isHidden, isSticky } = useStickyHeader()
 const isOpen = ref(false)
 </script>

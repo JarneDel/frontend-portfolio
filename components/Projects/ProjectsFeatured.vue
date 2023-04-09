@@ -5,8 +5,7 @@
       :class="project.id % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'"
     >
       <div class="drop-shadow-xl md:basis-1/2">
-        <nuxt-img
-          format="webp"
+        <img
           :src="project.image"
           :alt="project.imageAlt"
           class="block w-full max-w-[32rem] md:max-w-full"

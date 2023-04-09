@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/devtools', '@nuxt/image-edge'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/devtools'],
   components: [
     {
       path: '~/components',
@@ -11,9 +11,6 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true,
   },
-  image: {
-    // provider: 'ipx',
-    dir: 'public/images',
-  },
+
   // add smooth scroll
 })

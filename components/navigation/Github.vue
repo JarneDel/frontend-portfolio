@@ -1,7 +1,8 @@
 <template>
   <NuxtLink
     v-bind:to="to"
-    external
+    :external="true"
+    target="_blank"
     class="hocus:text-primary-light hocus:dark:text-primary-dark"
   >
     <svg

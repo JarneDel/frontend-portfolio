@@ -26,7 +26,7 @@
     </div>
 
     <div class="lg:basis-2/5">
-      <img src="/images/profile.jpg" alt="Profile" />
+      <img src="/profile.jpg" alt="Profile" />
     </div>
   </article>
 </template>
