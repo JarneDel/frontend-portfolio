@@ -1,37 +1,52 @@
 <template>
-  <button v-on:click="isOpen = !isOpen">open side nav</button>
   <aside
-    class="fixed top-0 bottom-0 right-0 z-50 flex h-full w-4/5 transform flex-col justify-between bg-white p-4 transition-transform duration-300 ease-in-out dark:bg-gray-900"
+    class="fixed top-0 bottom-0 right-0 z-50 flex h-full w-4/5 transform flex-col bg-background-light-300/90 p-4 shadow-lg backdrop-blur transition-transform duration-300 ease-in-out"
     :class="{ 'translate-x-0': isOpen, 'translate-x-full': !isOpen }"
   >
-    <div class="flex h-full flex-col justify-between">
-      <div class="flex h-full flex-col justify-between">
-        <button v-on:click="isOpen = !isOpen">open side nav</button>
-
-        <ul class="flex h-full flex-col justify-between">
+    <div class="flex h-full flex-col">
+      <div class="flex h-full flex-col">
+        <ul
+          class="flex h-full w-full flex-col justify-center gap-y-6 align-middle"
+        >
           <li>
-            <StyledNuxtLink :to="{ hash: '#about' }" @click="close">
-              <User></User>
-              <p>About</p>
-            </StyledNuxtLink>
+            <NuxtLink
+              :to="'/#about'"
+              @click="$emit('close')"
+              class="flex flex-row items-center justify-center gap-4"
+            >
+              <User class="h-6 w-6"></User>
+              <p class="text-lg">About</p>
+            </NuxtLink>
           </li>
           <li>
-            <StyledNuxtLink :to="'/#projects'" @click="close">
-              <Code2 />
-              <p>Projects</p>
-            </StyledNuxtLink>
+            <NuxtLink
+              :to="'/#projects'"
+              @click="$emit('close')"
+              class="flex flex-row items-center justify-center gap-4"
+            >
+              <Code2 class="h-6 w-6" />
+              <p class="text-lg">Projects</p>
+            </NuxtLink>
           </li>
           <li>
-            <StyledNuxtLink :to="'/#contact'" @click="close">
+            <NuxtLink
+              :to="'/#contact'"
+              @click="$emit('close')"
+              class="flex flex-row items-center justify-center gap-4"
+            >
               <Contact></Contact>
               <p>Contact</p>
-            </StyledNuxtLink>
+            </NuxtLink>
           </li>
           <li>
-            <StyledNuxtLink :to="'/#Resume'" @click="close">
+            <NuxtLink
+              :to="'/#Resume'"
+              @click="$emit('close')"
+              class="flex flex-row items-center justify-center gap-4"
+            >
               <file-text />
               <p>Resume</p>
-            </StyledNuxtLink>
+            </NuxtLink>
           </li>
         </ul>
       </div>
@@ -39,8 +54,14 @@
   </aside>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { User, Contact, Code2, FileText } from 'lucide-vue-next'
-const isOpen = ref(false)
-const close = () => (isOpen.value = false)
+defineProps({
+  isOpen: {
+    type: Boolean || undefined,
+    required: false,
+    default: false,
+  },
+})
+defineEmits(['close'])
 </script>

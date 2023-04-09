@@ -16,9 +16,19 @@
           "
         >
           <DesktopNavigation v-if="viewportWidth > 768" />
-          <MobileSideNav v-else-if="viewportWidth > 0" />
-          <Loader2 class="animate-spin" v-else />
+          <MobileNavigationButton
+            v-else
+            :is-open="isOpen"
+            v-on:click="isOpen = !isOpen"
+          />
         </div>
+
+        <MobileSideNav
+          v-if="viewportWidth > 0"
+          :is-open="isOpen"
+          v-on:close="isOpen = false"
+        />
+        <Loader2 class="animate-spin" v-else />
         <slot />
         <Foot></Foot>
       </div>
@@ -30,4 +40,5 @@
 import { Loader2 } from 'lucide-vue-next'
 const { viewportWidth } = useViewportSize()
 const { isHidden, isSticky } = useStickyHeader()
+const isOpen = ref(false)
 </script>
