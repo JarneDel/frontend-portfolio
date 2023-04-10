@@ -7,7 +7,7 @@
       <LinkedIn :to="socials.linkedin" :size="24"></LinkedIn>
       <Mail :to="socials.mail" :size="24"></Mail>
       <SvgLine
-        :width="32"
+        :width="24"
         :height="72"
         :line-width="1"
         class="hidden text-primary-light dark:text-primary-dark lg:block"
@@ -23,6 +23,5 @@
 </template>
 
 <script setup lang="ts">
-const viewportWidth = useViewportSize().viewportWidth
 const socials = useSocials().socials
 </script>

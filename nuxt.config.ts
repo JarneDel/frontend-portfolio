@@ -2,6 +2,7 @@
 
 export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@nuxt/devtools'],
+  // plugins: [{ src: '~/plugins/lottie', mode: 'client' }],
   components: [
     {
       path: '~/components',
@@ -11,6 +12,4 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true,
   },
-
-  // add smooth scroll
 })

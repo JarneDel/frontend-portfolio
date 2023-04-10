@@ -1,14 +1,25 @@
 <template>
-  <article>
+  <article
+    class="flex min-h-screen flex-col items-center justify-center text-center text-gray-600 dark:text-gray-400"
+  >
     <h2>404: Page not found</h2>
     <p>Sorry, but the page you were trying to view does not exist.</p>
+    <div ref="animationElement" class="w-1/2"></div>
   </article>
 </template>
 
-<script>
-export default {
-  name: '[...slug].vue',
-}
+<script setup>
+onMounted(() => {
+  document.title = '404: Page not found'
+
+  // this.$lottie.loadAnimation({
+  //   container: this.$refs.animationElement,
+  //   renderer: 'svg',
+  //   loop: true,
+  //   autoplay: true,
+  //   path: '/assets/404.json',
+  // })
+})
 </script>
 
 <style scoped></style>
