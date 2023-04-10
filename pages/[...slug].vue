@@ -11,14 +11,6 @@
 <script setup>
 onMounted(() => {
   document.title = '404: Page not found'
-
-  // this.$lottie.loadAnimation({
-  //   container: this.$refs.animationElement,
-  //   renderer: 'svg',
-  //   loop: true,
-  //   autoplay: true,
-  //   path: '/assets/404.json',
-  // })
 })
 </script>
 

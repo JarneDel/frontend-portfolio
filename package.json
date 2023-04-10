@@ -8,7 +8,6 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@lottiefiles/vue-lottie-player": "^1.1.0",
     "@nuxt/devtools": "^0.3.1",
     "@nuxt/image-edge": "^1.0.0-28008586.381b906",
     "@nuxtjs/tailwindcss": "^6.6.0",

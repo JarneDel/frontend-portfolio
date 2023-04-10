@@ -2,7 +2,6 @@
 
 export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@nuxt/devtools'],
-  // plugins: [{ src: '~/plugins/lottie', mode: 'client' }],
   components: [
     {
       path: '~/components',
