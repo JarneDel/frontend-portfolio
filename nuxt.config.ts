@@ -7,12 +7,6 @@ export default defineNuxtConfig({
       brotli: true,
       gzip: true,
     },
-    publicAssets: {
-      baseUrl: 'images',
-      dir: 'public/images',
-      extensions: ['png', 'jpg', 'jpeg', 'webp', 'svg'],
-      maxAge: 60 * 60 * 24 * 7, // 7 days
-    },
   },
   components: [
     {
