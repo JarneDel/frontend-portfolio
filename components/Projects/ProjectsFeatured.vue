@@ -1,14 +1,19 @@
 <template>
   <div v-for="project in projects" :key="project.id">
     <div
-      class="mb-24 flex w-full flex-col-reverse gap-4 md:flex-row md:items-center"
+      class="mb-24 flex w-full flex-col-reverse items-center gap-4 md:flex-row"
       :class="project.id % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'"
     >
       <div class="drop-shadow-xl md:basis-1/2">
-        <img
+        <NoiseImage
           :src="project.image"
           :alt="project.imageAlt"
-          class="block w-full max-w-[32rem] md:max-w-full"
+          aspect-ratio="16/9"
+          :width="viewportWidth > 768 ? '27rem' : '32rem'"
+          class="rounded-xl"
+          :noise-scale="
+            viewportWidth > 1080 ? 25 : viewportWidth > 768 ? 20 : 15
+          "
         />
       </div>
       <div
@@ -68,6 +73,8 @@
 <script setup lang="ts">
 import { IFeaturedProject } from '~/Interfaces/IFeaturedProject'
 
+const { viewportWidth } = useViewportSize()
+
 const projects: IFeaturedProject[] = [
   {
     id: 1,
@@ -79,7 +86,7 @@ const projects: IFeaturedProject[] = [
     external: 'https://leagueofstatistics.jarnedel.dev',
     externalTitle: 'Visit League of Statistics',
     github: 'https://github.com/JarneDel/LolApi',
-    image: '/lolstats.png',
+    image: '/images/lolstats.webp',
     imageAlt: 'LeagueOfStatisticsMockup',
   },
   {
@@ -93,7 +100,7 @@ const projects: IFeaturedProject[] = [
     github: 'https://github.com/DauweQuinten/Trampoline_Groep2_FrontEnd',
     designDocument: '/documents/DesignDocument.pdf',
     functionalAnalysis: '/documents/FunctionalAnalysis.pdf',
-    image: '/jumpingjawsnoframe.png',
+    image: '/images/jumpingjawsnoframe.webp',
     imageAlt: 'JumpingJawsMockup',
   },
   {
@@ -108,7 +115,7 @@ const projects: IFeaturedProject[] = [
     external:
       'https://www.instructables.com/Air-Insight-Air-Quality-Monitor-With-Raspberry-Pi/',
     externalTitle: 'Instructables',
-    image: '/PROJECT1.png',
+    image: '/images/PROJECT1.webp',
     imageAlt: 'AirInsightMockup',
   },
 ]

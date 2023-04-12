@@ -2,6 +2,12 @@
 
 export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@nuxt/devtools'],
+  nitro: {
+    compressPublicAssets: {
+      brotli: true,
+      gzip: true,
+    },
+  },
   components: [
     {
       path: '~/components',
@@ -11,6 +17,7 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true,
   },
-
-  // add smooth scroll
+  head: {
+    title: 'Jarne Delarue',
+  },
 })

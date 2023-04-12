@@ -1,6 +1,6 @@
 <template>
   <article
-    class="flex max-w-4xl flex-col flex-col justify-center gap-16 md:flex-row md:items-center md:py-48"
+    class="flex max-w-4xl flex-col flex-col justify-center gap-16 py-12 md:flex-row md:items-center md:py-48"
     id="about"
   >
     <div class="md:basis-3/5">
@@ -11,9 +11,10 @@
         class="mb-4 max-w-[32rem] leading-relaxed text-gray-600 dark:text-gray-400 md:text-lg"
       >
         Hi there! I'm a <strong>full-stack web developer</strong> and
-        <strong>Linux</strong> enthusiast with a passion for building beautiful
-        and functional websites. As a <strong>student</strong>, I'm constantly
-        <strong>learning</strong> to stay on top of the latest technologies.
+        <strong>Linux</strong> enthusiast based in <strong>Flanders</strong>. I
+        enjoy building beautiful and functional websites. As a
+        <strong>student</strong>, I'm constantly <strong>learning</strong> to
+        stay on top of the latest technologies.
       </p>
       <p
         class="mb-4 max-w-[32rem] leading-relaxed text-gray-600 dark:text-gray-400 md:text-lg"
@@ -25,8 +26,31 @@
       </p>
     </div>
 
-    <div class="lg:basis-2/5">
-      <img src="/profile.jpg" alt="Profile" />
+    <div class="flex justify-center p-2 lg:basis-2/5">
+      <NoiseImage
+        src="/images/profile.webp"
+        alt="Profile"
+        width="300px"
+        aspect-ratio="1"
+        :noise-scale="noiseScale"
+        class="rounded-lg shadow-lg"
+      />
     </div>
   </article>
 </template>
+
+<script setup lang="ts">
+import NoiseImage from '~/components/Styled/noiseImage.vue'
+
+const { viewportWidth } = useViewportSize()
+
+const noiseScale = computed((): number => {
+  if (viewportWidth.value > 1024) {
+    return 30
+  } else if (viewportWidth.value > 768) {
+    return 25
+  } else {
+    return 20
+  }
+})
+</script>

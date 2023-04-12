@@ -7,17 +7,17 @@
     >
       <div class="mx-6 md:mx-0">
         <div
-          class="fixed top-0 z-10 w-full transition-all duration-200"
+          class="fixed top-0 z-20 h-[72px] w-full transition-all duration-200"
           ref="header"
-          :class="
-            (isHidden && '-translate-y-[72px]') ||
-            (isSticky &&
-              'bg-[#dee0dd]/80 backdrop-blur-sm backdrop-filter dark:bg-[#211f22]/20')
-          "
+          :class="{
+            '-translate-y-[72px]': isHidden,
+            'bg-[#dee0dd]/80 backdrop-blur-sm backdrop-filter dark:bg-[#211f22]/20':
+              isSticky,
+          }"
         >
           <DesktopNavigation class="hidden md:flex" />
           <MobileNavigationButton
-            class="md:hidden"
+            class="mr-8 flex justify-end md:hidden"
             :is-open="isOpen"
             v-on:click="isOpen = !isOpen"
           />
@@ -28,7 +28,9 @@
           :is-open="isOpen"
           v-on:close="isOpen = false"
         />
-        <slot />
+        <div ref="scrollLockContent">
+          <slot />
+        </div>
         <Foot></Foot>
       </div>
     </div>
@@ -38,4 +40,14 @@
 <script setup lang="ts">
 const { isHidden, isSticky } = useStickyHeader()
 const isOpen = ref(false)
+
+onMounted(() => {
+  watchEffect(() => {
+    if (isOpen.value) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'overlay'
+    }
+  })
+})
 </script>

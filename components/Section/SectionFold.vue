@@ -9,7 +9,7 @@
       I'm <span class="font-mono text-teal-400">Jarne Delarue</span>
     </p>
     <p class="pb-6 text-3xl text-neutral-400">
-      A full stack web developer and linux enthousiast
+      A full stack web developer and Linux enthousiast
     </p>
     <nuxt-link
       to="/#about"

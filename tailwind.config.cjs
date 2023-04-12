@@ -12,6 +12,10 @@ module.exports = {
       width: {
         99: "55rem"
       },
+      shadow: {
+        'outline-primary-light': '0 0 0 3px rgba(45, 212, 191, 0.5)',
+        'outline-primary-dark': '0 0 0 3px rgba(35, 166, 148, 0.5)',
+      },
       colors: {
         primary: {
           dark: "#2dd4bf",
@@ -42,7 +46,7 @@ module.exports = {
         moveBg: {
           '0%': { backgroundPosition: '0 0' },
           '100%': { backgroundPosition: '36px 36px' },
-        }
+        },
       },
       animation: {
         moveBg: 'moveBg 3s linear infinite',
@@ -51,7 +55,7 @@ module.exports = {
   },
   plugins: [
     plugin(function ({ addVariant }) {
-      addVariant('hocus', ['&:hover', '&:focus-visable'])
+      addVariant('hocus', ['&:hover', '&:focus-visible'])
     }),
   ],
 }
