@@ -1,9 +1,14 @@
 <template>
-  <div class="overflow-hidden drop-shadow-2xl" id="card">
-    <img :src="src" :alt="alt" class="h-full w-full object-cover" />
+  <div class="overflow-hidden drop-shadow-2xl" :id="'card' + id">
+    <img
+      :src="src"
+      :alt="alt"
+      class="h-full w-full object-cover"
+      :style="'filter: url(#noise' + id + ')'"
+    />
     <svg class="hidden">
       <defs>
-        <filter id="noise">
+        <filter :id="'noise' + id" ref="noise">
           <feTurbulence
             baseFrequency="0.7,0.8"
             seed="0"
@@ -15,7 +20,7 @@
               values="0;100"
               :dur="duration"
               repeatCount="1"
-              begin="card.mouseenter"
+              :begin="'card' + id + '.mouseenter'"
             />
           </feTurbulence>
           <feDisplacementMap in="SourceGraphic" in2="static" scale="0">
@@ -24,7 +29,7 @@
               :values="'0;' + noiseScale + ';0'"
               :dur="duration"
               repeatCount="1"
-              begin="card.mouseenter"
+              :begin="'card' + id + '.mouseenter'"
             />
           </feDisplacementMap>
         </filter>
@@ -34,6 +39,14 @@
 </template>
 
 <script setup lang="ts">
+const id = ref(
+  Math.random()
+    .toString(36)
+    .replace(/[^a-z]+/g, '')
+    .substring(0, 5),
+)
+console.log(id.value)
+
 defineProps({
   src: {
     type: String,
@@ -44,11 +57,11 @@ defineProps({
     required: true,
   },
   width: {
-    type: Number,
+    type: String,
     required: true,
   },
   aspectRatio: {
-    type: Number,
+    type: String,
     required: true,
   },
   zoomScale: {
@@ -70,13 +83,10 @@ defineProps({
 </script>
 
 <style scoped>
-div#card {
-  width: v-bind(width + 'px');
+div {
+  width: 100%;
+  max-width: v-bind(width);
   aspect-ratio: v-bind(aspectRatio);
-}
-
-img {
-  filter: url(#noise);
 }
 
 img:hover {

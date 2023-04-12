@@ -27,13 +27,29 @@
 
     <div class="flex justify-center p-2 lg:basis-2/5">
       <NoiseImage
-        src="/profile.jpg"
+        src="/profile.webp"
         alt="Profile"
-        width="300"
+        width="300px"
         aspect-ratio="1"
-        noise-scale="20"
+        :noise-scale="noiseScale"
         class="rounded-lg shadow-lg"
       />
     </div>
   </article>
 </template>
+
+<script setup lang="ts">
+import NoiseImage from '~/components/Styled/noiseImage.vue'
+
+const { viewportWidth } = useViewportSize()
+
+const noiseScale = computed((): number => {
+  if (viewportWidth.value > 1024) {
+    return 30
+  } else if (viewportWidth.value > 768) {
+    return 25
+  } else {
+    return 20
+  }
+})
+</script>

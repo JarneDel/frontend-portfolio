@@ -1,5 +1,5 @@
 <template>
-  <footer class="mt-24 flex w-full flex-col items-center justify-center">
+  <footer class="mt-24 flex w-full flex-col items-center justify-center pb-1">
     <div
       class="mb-2 flex flex-row gap-4 text-gray-500 dark:text-gray-400 lg:fixed lg:bottom-0 lg:right-0 lg:z-10 lg:mb-0 lg:mr-4 lg:flex-col lg:justify-center"
     >
