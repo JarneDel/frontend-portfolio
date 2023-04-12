@@ -2,7 +2,7 @@
   <div class="py-1 pl-3">
     <button
       v-on:click="$emit('click')"
-      class="-mx-6 flex h-12 w-12 flex-col items-center justify-center rounded-xl outline-none transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:ring-opacity-50 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-light hocus:bg-primary-dark hocus:ring-primary-dark dark:bg-primary-dark dark:focus:ring-offset-primary-dark hocus:dark:bg-primary-light hocus:dark:ring-primary-light"
+      class="mt-2 grid items-center rounded-lg border-2 border-transparent p-1 outline-none focus-visible:border-solid focus-visible:border-primary-light dark:shadow-primary-dark dark:focus-visible:border-primary-light"
     >
       <svg
         v-if="!isOpen"

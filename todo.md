@@ -4,5 +4,3 @@
 5. style portrait image
 6. make logo
 7. add favicon
-8. fix useViewport hook to be faster
-9. 404 page

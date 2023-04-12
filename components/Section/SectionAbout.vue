@@ -1,6 +1,6 @@
 <template>
   <article
-    class="flex max-w-4xl flex-col flex-col justify-center gap-16 md:flex-row md:items-center md:py-48"
+    class="py:12 flex max-w-4xl flex-col flex-col justify-center gap-16 md:flex-row md:items-center md:py-48"
     id="about"
   >
     <div class="md:basis-3/5">
@@ -25,8 +25,15 @@
       </p>
     </div>
 
-    <div class="lg:basis-2/5">
-      <img src="/profile.jpg" alt="Profile" />
+    <div class="flex justify-center p-2 lg:basis-2/5">
+      <NoiseImage
+        src="/profile.jpg"
+        alt="Profile"
+        width="300"
+        aspect-ratio="1"
+        noise-scale="20"
+        class="rounded-lg shadow-lg"
+      />
     </div>
   </article>
 </template>

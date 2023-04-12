@@ -1,6 +1,6 @@
 <template>
   <aside
-    class="fixed top-0 bottom-0 right-0 z-50 flex h-full w-4/5 transform flex-col bg-background-light-300/90 p-4 shadow-lg backdrop-blur transition-transform duration-300 ease-in-out"
+    class="fixed top-0 bottom-0 right-0 z-10 flex h-full w-4/5 transform flex-col bg-background-light-300/90 p-4 shadow-lg backdrop-blur transition-transform duration-300 ease-in-out dark:bg-background-dark-300/90"
     :class="{ 'translate-x-0': isOpen, 'translate-x-full': !isOpen }"
   >
     <div class="flex h-full flex-col">

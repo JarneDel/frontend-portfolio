@@ -7,7 +7,8 @@
     >
       <div class="mx-6 md:mx-0">
         <div
-          class="fixed top-0 z-10 w-full transition-all duration-200"
+          class="fixed top-0 z-20 w-full transition-all duration-200"
+          tabindex="0"
           ref="header"
           :class="
             (isHidden && '-translate-y-[72px]') ||
@@ -17,7 +18,7 @@
         >
           <DesktopNavigation class="hidden md:flex" />
           <MobileNavigationButton
-            class="md:hidden"
+            class="mr-8 flex justify-end md:hidden"
             :is-open="isOpen"
             v-on:click="isOpen = !isOpen"
           />
@@ -28,7 +29,9 @@
           :is-open="isOpen"
           v-on:close="isOpen = false"
         />
-        <slot />
+        <div ref="scrollLockContent">
+          <slot />
+        </div>
         <Foot></Foot>
       </div>
     </div>
@@ -38,4 +41,14 @@
 <script setup lang="ts">
 const { isHidden, isSticky } = useStickyHeader()
 const isOpen = ref(false)
+
+onMounted(() => {
+  watchEffect(() => {
+    if (isOpen.value) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'overlay'
+    }
+  })
+})
 </script>
