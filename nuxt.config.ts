@@ -17,4 +17,7 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true,
   },
+  head: {
+    title: 'Jarne Delarue',
+  },
 })

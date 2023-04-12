@@ -1,6 +1,6 @@
 <template>
   <article
-    class="py:12 flex max-w-4xl flex-col flex-col justify-center gap-16 md:flex-row md:items-center md:py-48"
+    class="flex max-w-4xl flex-col flex-col justify-center gap-16 py-12 md:flex-row md:items-center md:py-48"
     id="about"
   >
     <div class="md:basis-3/5">

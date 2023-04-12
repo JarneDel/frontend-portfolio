@@ -1,7 +1,12 @@
 <template>
   <aside
-    class="fixed top-0 bottom-0 right-0 z-10 flex h-full w-3/5 transform flex-col bg-background-light-300/90 p-4 shadow-lg backdrop-blur transition-transform duration-300 ease-in-out dark:bg-background-dark-300/90"
-    :class="{ 'translate-x-0': isOpen, 'hidden translate-x-full': !isOpen }"
+    class="fixed top-0 bottom-0 right-0 z-10 flex h-full w-3/5 transform flex-col bg-background-light-300/90 p-4 shadow-lg backdrop-blur transition-all duration-300 ease-in-out dark:bg-background-dark-300/90"
+    :class="{
+      'translate-x-0 opacity-100': isOpen,
+      'translate-x-full opacity-0': !isOpen,
+      invisible: isTransparent,
+      visible: !isTransparent,
+    }"
   >
     <div class="flex h-full flex-col">
       <div class="flex h-full flex-col">
@@ -54,7 +59,8 @@
 
 <script setup lang="ts">
 import { User, Contact, Code2, FileText } from 'lucide-vue-next'
-defineProps({
+
+const props = defineProps({
   isOpen: {
     type: Boolean || undefined,
     required: false,
@@ -62,4 +68,16 @@ defineProps({
   },
 })
 defineEmits(['close'])
+
+const { isOpen } = toRefs(props)
+const isTransparent = ref(isOpen.value)
+watch(isOpen, value => {
+  if (value) {
+    isTransparent.value = false
+  } else {
+    setTimeout(() => {
+      isTransparent.value = true
+    }, 300)
+  }
+})
 </script>
