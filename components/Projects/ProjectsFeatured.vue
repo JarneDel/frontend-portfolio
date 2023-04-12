@@ -86,7 +86,7 @@ const projects: IFeaturedProject[] = [
     external: 'https://leagueofstatistics.jarnedel.dev',
     externalTitle: 'Visit League of Statistics',
     github: 'https://github.com/JarneDel/LolApi',
-    image: '/lolstats.png',
+    image: '/lolstats.webp',
     imageAlt: 'LeagueOfStatisticsMockup',
   },
   {

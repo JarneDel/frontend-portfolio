@@ -8,7 +8,6 @@
       <div class="mx-6 md:mx-0">
         <div
           class="fixed top-0 z-20 w-full transition-all duration-200"
-          tabindex="0"
           ref="header"
           :class="
             (isHidden && '-translate-y-[72px]') ||
