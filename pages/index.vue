@@ -3,6 +3,7 @@
     <Head>
       <title>Jarne Delarue</title>
     </Head>
+    <Html lang="en"></Html>
     <div class="max-w-[55rem]">
       <SectionFold></SectionFold>
       <SectionAbout></SectionAbout>

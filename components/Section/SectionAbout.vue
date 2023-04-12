@@ -11,9 +11,10 @@
         class="mb-4 max-w-[32rem] leading-relaxed text-gray-600 dark:text-gray-400 md:text-lg"
       >
         Hi there! I'm a <strong>full-stack web developer</strong> and
-        <strong>Linux</strong> enthusiast with a passion for building beautiful
-        and functional websites. As a <strong>student</strong>, I'm constantly
-        <strong>learning</strong> to stay on top of the latest technologies.
+        <strong>Linux</strong> enthusiast based in <strong>Flanders</strong>. I
+        enjoy building beautiful and functional websites. As a
+        <strong>student</strong>, I'm constantly <strong>learning</strong> to
+        stay on top of the latest technologies.
       </p>
       <p
         class="mb-4 max-w-[32rem] leading-relaxed text-gray-600 dark:text-gray-400 md:text-lg"

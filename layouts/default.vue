@@ -7,13 +7,13 @@
     >
       <div class="mx-6 md:mx-0">
         <div
-          class="fixed top-0 z-20 w-full transition-all duration-200"
+          class="fixed top-0 z-20 h-[72px] w-full transition-all duration-200"
           ref="header"
-          :class="
-            (isHidden && '-translate-y-[72px]') ||
-            (isSticky &&
-              'bg-[#dee0dd]/80 backdrop-blur-sm backdrop-filter dark:bg-[#211f22]/20')
-          "
+          :class="{
+            '-translate-y-[72px]': isHidden,
+            'bg-[#dee0dd]/80 backdrop-blur-sm backdrop-filter dark:bg-[#211f22]/20':
+              isSticky,
+          }"
         >
           <DesktopNavigation class="hidden md:flex" />
           <MobileNavigationButton
