@@ -86,7 +86,7 @@ const projects: IFeaturedProject[] = [
     external: 'https://leagueofstatistics.jarnedel.dev',
     externalTitle: 'Visit League of Statistics',
     github: 'https://github.com/JarneDel/LolApi',
-    image: '/lolstats.webp',
+    image: '/images/lolstats.webp',
     imageAlt: 'LeagueOfStatisticsMockup',
   },
   {
@@ -100,7 +100,7 @@ const projects: IFeaturedProject[] = [
     github: 'https://github.com/DauweQuinten/Trampoline_Groep2_FrontEnd',
     designDocument: '/documents/DesignDocument.pdf',
     functionalAnalysis: '/documents/FunctionalAnalysis.pdf',
-    image: '/jumpingjawsnoframe.webp',
+    image: '/images/jumpingjawsnoframe.webp',
     imageAlt: 'JumpingJawsMockup',
   },
   {
@@ -115,7 +115,7 @@ const projects: IFeaturedProject[] = [
     external:
       'https://www.instructables.com/Air-Insight-Air-Quality-Monitor-With-Raspberry-Pi/',
     externalTitle: 'Instructables',
-    image: '/PROJECT1.webp',
+    image: '/images/PROJECT1.webp',
     imageAlt: 'AirInsightMockup',
   },
 ]

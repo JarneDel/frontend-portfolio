@@ -27,7 +27,7 @@
 
     <div class="flex justify-center p-2 lg:basis-2/5">
       <NoiseImage
-        src="/profile.webp"
+        src="/images/profile.webp"
         alt="Profile"
         width="300px"
         aspect-ratio="1"

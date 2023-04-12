@@ -39,8 +39,8 @@ module.exports = {
         }
       },
       backgroundImage: {
-        'dark-repeating-bg': "url('/dark-repeating-bg.svg')",
-        'light-repeating-bg': "url('/light-repeating-bg.svg')",
+        'dark-repeating-bg': "url('/images/dark-repeating-bg.svg')",
+        'light-repeating-bg': "url('/images/light-repeating-bg.svg')",
       },
       keyframes: {
         moveBg: {
