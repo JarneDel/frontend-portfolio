@@ -1,7 +1,7 @@
 <template>
   <article class="py-24" id="projects">
     <h2
-      class="mb-12 text-3xl font-bold text-gray-900 accent-teal-700 dark:text-gray-100"
+      class="mx-auto mb-12 max-w-[30rem] text-3xl font-bold text-gray-900 accent-teal-700 dark:text-gray-100 md:mx-0"
     >
       Some projects I've built
     </h2>

@@ -3,8 +3,10 @@
     class="flex max-w-4xl flex-col flex-col justify-center gap-16 py-12 md:flex-row md:items-center md:py-48"
     id="about"
   >
-    <div class="md:basis-3/5">
-      <h2 class="mb-4 text-3xl font-bold text-gray-900 dark:text-gray-100">
+    <div class="flex flex-col items-center md:basis-3/5">
+      <h2
+        class="mb-4 w-full max-w-[32rem] text-3xl font-bold text-gray-900 dark:text-gray-100"
+      >
         About me
       </h2>
       <p
