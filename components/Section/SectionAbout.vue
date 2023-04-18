@@ -1,6 +1,6 @@
 <template>
   <article
-    class="flex max-w-4xl flex-col flex-col justify-center gap-16 py-12 md:flex-row md:items-center md:py-48"
+    class="flex max-w-4xl flex-col justify-center gap-16 py-12 md:flex-row md:items-center md:py-48"
     id="about"
   >
     <div class="flex flex-col items-center md:basis-3/5">
@@ -48,11 +48,11 @@ const { viewportWidth } = useViewportSize()
 
 const noiseScale = computed((): number => {
   if (viewportWidth.value > 1024) {
-    return 30
-  } else if (viewportWidth.value > 768) {
-    return 25
-  } else {
     return 20
+  } else if (viewportWidth.value > 768) {
+    return 17
+  } else {
+    return 15
   }
 })
 </script>

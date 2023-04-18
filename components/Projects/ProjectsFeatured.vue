@@ -12,7 +12,7 @@
           :width="viewportWidth > 768 ? '27rem' : '32rem'"
           class="rounded-xl"
           :noise-scale="
-            viewportWidth > 1080 ? 25 : viewportWidth > 768 ? 20 : 15
+            viewportWidth > 1080 ? 25 : viewportWidth > 768 ? 17 : 15
           "
         />
       </div>

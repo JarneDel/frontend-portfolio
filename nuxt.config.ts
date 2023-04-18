@@ -19,5 +19,24 @@ export default defineNuxtConfig({
   },
   head: {
     title: 'Jarne Delarue',
+    meta: [
+      {
+        name: 'description',
+        content:
+          "Hi there, I'm Jarne Delarue. Welcome to my portfolio, I'm a Full-Stack Web Developer based in Flanders. I enjoy building beautiful and functional websites ",
+      },
+      {
+        name: 'robots',
+        content: 'index, follow',
+      },
+      {
+        name: 'keywords',
+        content: 'Jarne Delarue, Portfolio, Web Developer, Full-Stack,',
+      },
+      {
+        name: 'author',
+        content: 'Jarne Delarue',
+      },
+    ],
   },
 })
