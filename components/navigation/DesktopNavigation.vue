@@ -1,10 +1,5 @@
 <template>
   <div class="flex flex-row justify-between">
-    <h1 class="p-3">
-      <NuxtLink to="/">
-        <Logo></Logo>
-      </NuxtLink>
-    </h1>
     <ul class="flex-rows mx-6 my-4 flex gap-8">
       <li>
         <StyledNuxtLink :to="'/#about'">

@@ -1,5 +1,5 @@
 <template>
-  <article class="mt-[20vh] mb-[30vh] font-sans md:my-48 md:mt-80">
+  <article class="mt-40 mb-24 font-sans md:my-48 md:mt-80">
     <p
       class="text-2xl font-medium text-gray-800 dark:text-gray-200 lg:text-3xl"
     >

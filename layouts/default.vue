@@ -1,13 +1,14 @@
 <template>
   <div
-    class="scroll-smooth bg-gradient-to-tr from-background-light-500 via-background-light-300 to-background-light-100 bg-fixed bg-no-repeat dark:from-background-dark-500 dark:via-background-dark-300 dark:to-background-dark-100"
+    class="scroll-smooth bg-gradient-to-tr from-background-light-500 via-background-light-300 to-background-light-100 bg-no-repeat dark:from-background-dark-500 dark:via-background-dark-300 dark:to-background-dark-100"
   >
     <div
-      class="min-h-screen bg-light-repeating-bg motion-safe:animate-moveBg dark:bg-dark-repeating-bg dark:text-gray-100 lg:mx-0"
+      class="min-h-screen bg-light-repeating-bg dark:bg-dark-repeating-bg dark:text-gray-100 lg:mx-0"
+      :class="false && 'motion-safe:animate-moveBg'"
     >
-      <div class="mx-6 md:mx-0">
+      <div class="mx-6">
         <div
-          class="fixed top-0 z-20 h-[72px] w-full transition-all duration-200"
+          class="fixed left-0 right-0 top-0 z-20 flex h-[72px] w-full flex-row justify-between transition-all duration-200 md:mx-0"
           ref="header"
           :class="{
             '-translate-y-[72px]': isHidden,
@@ -15,14 +16,18 @@
               isSticky,
           }"
         >
+          <h1 class="p-3 md:mx-2">
+            <NuxtLink to="/">
+              <Logo></Logo>
+            </NuxtLink>
+          </h1>
           <DesktopNavigation class="hidden md:flex" />
           <MobileNavigationButton
-            class="mr-8 flex justify-end md:hidden"
+            class="md:hidden"
             :is-open="isOpen"
             v-on:click="isOpen = !isOpen"
           />
         </div>
-
         <MobileSideNav
           class="md:hidden"
           :is-open="isOpen"

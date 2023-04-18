@@ -5,6 +5,7 @@
     viewBox="0 0 12.7 12.7"
     xml:space="preserve"
     xmlns="http://www.w3.org/2000/svg"
+    title="Jarne Delarue"
   >
     <g fill="#2dd4bf">
       <path
