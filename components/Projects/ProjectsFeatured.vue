@@ -12,8 +12,9 @@
           :width="viewportWidth > 768 ? '27rem' : '32rem'"
           class="rounded-xl"
           :noise-scale="
-            viewportWidth > 1080 ? 25 : viewportWidth > 768 ? 20 : 15
+            viewportWidth > 1080 ? 15 : viewportWidth > 768 ? 13 : 10
           "
+          :zoom-scale="1.05"
         />
       </div>
       <div
