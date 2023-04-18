@@ -36,6 +36,7 @@
         aspect-ratio="1"
         :noise-scale="noiseScale"
         class="rounded-lg shadow-lg"
+        :zoom-scale="1.05"
       />
     </div>
   </article>
@@ -48,11 +49,11 @@ const { viewportWidth } = useViewportSize()
 
 const noiseScale = computed((): number => {
   if (viewportWidth.value > 1024) {
-    return 20
-  } else if (viewportWidth.value > 768) {
-    return 17
-  } else {
     return 15
+  } else if (viewportWidth.value > 768) {
+    return 13
+  } else {
+    return 10
   }
 })
 </script>
