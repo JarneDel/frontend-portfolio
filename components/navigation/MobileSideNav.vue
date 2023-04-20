@@ -9,46 +9,16 @@
     }"
   >
     <div class="flex h-full flex-col">
-      <div class="flex h-full flex-col">
+      <div class="flex h-full flex-col items-center">
         <ul class="flex h-full w-full flex-col justify-center align-middle">
-          <li>
+          <li v-for="link in links" :key="link">
             <NuxtLink
-              :to="'/#about'"
+              :to="link.path"
               @click="$emit('close')"
-              class="focus: flex flex-row items-center justify-center gap-4 rounded-lg p-2 transition-colors duration-300 ease-in-out hocus:bg-primary-light/20 hocus:text-primary-light dark:hocus:bg-primary-dark/20 dark:hocus:text-primary-dark"
+              class="focus: flex flex-row items-center gap-4 rounded-lg p-2 transition-colors duration-300 ease-in-out hocus:bg-primary-light/20 hocus:text-primary-light dark:hocus:bg-primary-dark/20 dark:hocus:text-primary-dark"
             >
-              <User class="h-6 w-6"></User>
-              <p class="text-lg">About</p>
-            </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink
-              :to="'/#projects'"
-              @click="$emit('close')"
-              class="flex flex-row items-center justify-center gap-4 rounded-lg p-2 transition-colors duration-300 ease-in-out hocus:bg-primary-light/20 hocus:text-primary-light dark:hocus:bg-primary-dark/20 dark:hocus:text-primary-dark"
-            >
-              <Code2 class="h-6 w-6" />
-              <p class="text-lg">Projects</p>
-            </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink
-              :to="'/#contact'"
-              @click="$emit('close')"
-              class="flex flex-row items-center justify-center gap-4 rounded-lg p-2 transition-colors duration-300 ease-in-out hocus:bg-primary-light/20 hocus:text-primary-light dark:hocus:bg-primary-dark/20 dark:hocus:text-primary-dark"
-            >
-              <Contact></Contact>
-              <p>Contact</p>
-            </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink
-              :to="'/#Resume'"
-              @click="$emit('close')"
-              class="flex flex-row items-center justify-center gap-4 rounded-lg p-2 transition-colors duration-300 ease-in-out hocus:bg-primary-light/20 hocus:text-primary-light dark:hocus:bg-primary-dark/20 dark:hocus:text-primary-dark"
-            >
-              <file-text />
-              <p>Resume</p>
+              <component :is="link.icon" class="h-6 w-6" />
+              <span class="text-lg">{{ link.text }}</span>
             </NuxtLink>
           </li>
         </ul>
@@ -58,13 +28,18 @@
 </template>
 
 <script setup lang="ts">
-import { User, Contact, Code2, FileText } from 'lucide-vue-next'
+import { ILink } from '~/Interfaces/ILink'
+import { PropType } from '@vue/runtime-core'
 
 const props = defineProps({
   isOpen: {
     type: Boolean || undefined,
     required: false,
     default: false,
+  },
+  links: {
+    type: Array as PropType<ILink[]>,
+    required: true,
   },
 })
 defineEmits(['close'])

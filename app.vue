@@ -30,8 +30,10 @@ body {
   overflow-x: hidden;
 }
 
-html {
-  scroll-behavior: smooth;
+@media (min-width: 768px) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 ::selection {

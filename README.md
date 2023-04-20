@@ -1,6 +1,9 @@
-# Nuxt 3 Minimal Starter
+# Portfolio
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Technologies
+1. Nuxt js
+2. Tailwind css
+3. 
 
 ## Setup
 

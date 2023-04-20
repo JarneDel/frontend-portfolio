@@ -6,6 +6,7 @@
       id=""
       class="peer"
       @change="$emit('click')"
+      :checked="isOpen"
     />
     <div class="hamburger-lines">
       <span class="line line-1 bg-black dark:bg-white"></span>
@@ -16,8 +17,10 @@
 </template>
 
 <script setup lang="ts">
+const open = ref(false)
+
 defineEmits(['click'])
-defineProps({
+const props = defineProps({
   isOpen: {
     type: Boolean || undefined,
     required: true,

@@ -1,10 +1,9 @@
 <template>
   <div
-    class="scroll-smooth bg-gradient-to-tr from-background-light-500 via-background-light-300 to-background-light-100 bg-no-repeat dark:from-background-dark-500 dark:via-background-dark-300 dark:to-background-dark-100"
+    class="bg-gradient-to-tr from-background-light-500 via-background-light-300 to-background-light-100 bg-no-repeat dark:from-background-dark-500 dark:via-background-dark-300 dark:to-background-dark-100 md:bg-fixed"
   >
     <div
-      class="min-h-screen bg-light-repeating-bg dark:bg-dark-repeating-bg dark:text-gray-100 lg:mx-0"
-      :class="false && 'motion-safe:animate-moveBg'"
+      class="min-h-screen bg-light-repeating-bg dark:bg-dark-repeating-bg dark:text-gray-100 md:motion-safe:animate-moveBg lg:mx-0"
     >
       <div class="mx-6">
         <div
@@ -21,7 +20,7 @@
               <Logo></Logo>
             </NuxtLink>
           </h1>
-          <DesktopNavigation class="hidden md:flex" />
+          <DesktopNavigation class="hidden md:flex" :links="links" />
           <MobileNavigationButton
             class="md:hidden"
             :is-open="isOpen"
@@ -31,6 +30,7 @@
         <MobileSideNav
           class="md:hidden"
           :is-open="isOpen"
+          :links="links"
           v-on:close="isOpen = false"
         />
         <div ref="scrollLockContent">
@@ -43,8 +43,34 @@
 </template>
 
 <script setup lang="ts">
+import { ILink } from '~/Interfaces/ILink'
+
 const { isHidden, isSticky } = useStickyHeader()
+import { User, Contact, Code2, FileText } from 'lucide-vue-next'
+
 const isOpen = ref(false)
+const links: ILink[] = [
+  {
+    text: 'About',
+    path: '/#about',
+    icon: User,
+  },
+  {
+    text: 'Projects',
+    path: '/#projects',
+    icon: Code2,
+  },
+  {
+    text: 'Contact',
+    path: '/#contact',
+    icon: Contact,
+  },
+  {
+    text: 'Resume',
+    path: '/resume',
+    icon: FileText,
+  },
+]
 
 onMounted(() => {
   watchEffect(() => {
