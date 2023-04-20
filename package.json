@@ -32,5 +32,9 @@
   },
   "volta": {
     "node": "18.15.0"
+  },
+  "dependencies": {
+    "bodymovin": "^4.13.0",
+    "lottie-web": "^5.11.0"
   }
 }
