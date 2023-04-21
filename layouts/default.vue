@@ -52,7 +52,7 @@ const isOpen = ref(false)
 const links: ILink[] = [
   {
     text: 'About',
-    path: '/#about',
+    path: '/about',
     icon: User,
   },
   {
