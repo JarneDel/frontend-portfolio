@@ -8,18 +8,31 @@
         Sorry, but the page you were trying to view does not exist.
       </p>
       <StyledNuxtLink to="/" class="mt-4 max-w-fit text-lg">
-        <LucideArrowLeft></LucideArrowLeft>
-        Go back home
+        <div class="row flex gap-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-arrow-left"
+          >
+            <line x1="19" x2="5" y1="12" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span> Go back home </span>
+        </div>
       </StyledNuxtLink>
     </div>
-    <client-only>
-      <Lottie></Lottie>
-    </client-only>
+    <Lottie></Lottie>
   </article>
 </template>
 
 <script setup>
-import { LucideArrowLeft } from 'lucide-vue-next'
 useHead({
   title: '404 | Page not found',
   meta: [

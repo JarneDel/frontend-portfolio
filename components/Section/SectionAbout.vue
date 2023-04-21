@@ -1,9 +1,9 @@
 <template>
   <article
-    class="flex max-w-4xl flex-col justify-center gap-16 py-12 md:flex-row md:items-center md:py-48"
+    class="flex max-w-4xl flex-col gap-16 py-12 md:flex-row md:items-center md:justify-center md:py-48"
     id="about"
   >
-    <div class="flex flex-col items-center md:basis-3/5">
+    <div class="flex flex-col md:basis-3/5 md:items-center">
       <h2
         class="mb-4 w-full max-w-[32rem] text-3xl font-bold text-gray-900 dark:text-gray-100"
       >
@@ -28,7 +28,7 @@
       </p>
     </div>
 
-    <div class="flex justify-center p-2 lg:basis-2/5">
+    <div class="flex p-2 md:justify-center lg:basis-2/5">
       <NoiseImage
         src="/images/profile.webp"
         alt="Profile"

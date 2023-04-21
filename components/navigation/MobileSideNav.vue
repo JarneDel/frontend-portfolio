@@ -8,8 +8,8 @@
       visible: !isTransparent,
     }"
   >
-    <div class="flex h-full flex-col">
-      <div class="flex h-full flex-col items-center">
+    <div class="flex h-full flex-col items-center">
+      <div class="flex h-full flex-col">
         <ul class="flex h-full w-full flex-col justify-center align-middle">
           <li v-for="link in links" :key="link">
             <NuxtLink
