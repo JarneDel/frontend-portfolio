@@ -21,6 +21,18 @@
               <span class="text-lg">{{ link.text }}</span>
             </NuxtLink>
           </li>
+          <li v-for="download of downloads" :key="download.text">
+            <a
+              :href="download.path"
+              download=""
+              target="_blank"
+              rel="noopener noreferrer"
+              class="border-1 flex flex-row gap-3 rounded-lg border-transparent p-2 transition-colors duration-200 focus:outline-none hocus:bg-primary-light/20 hocus:text-primary-light dark:hover:border-primary-light dark:hocus:bg-gray-600/20"
+            >
+              <component :is="download.icon" />
+              <p>{{ download.text }}</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -40,9 +52,14 @@ const props = defineProps({
     type: Array as PropType<ILink[]>,
     required: true,
   },
+  downloads: {
+    type: Array as PropType<ILink[]>,
+    default: [],
+    required: false,
+  },
 })
 defineEmits(['close'])
-const { links } = toRefs(props)
+const { links, downloads } = toRefs(props)
 
 const { isOpen } = toRefs(props)
 const isTransparent = ref(isOpen.value)
