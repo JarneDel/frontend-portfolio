@@ -8,8 +8,8 @@
       visible: !isTransparent,
     }"
   >
-    <div class="flex h-full flex-col">
-      <div class="flex h-full flex-col items-center">
+    <div class="flex h-full flex-col items-center">
+      <div class="flex h-full flex-col">
         <ul class="flex h-full w-full flex-col justify-center align-middle">
           <li v-for="link in links" :key="link">
             <NuxtLink
@@ -33,7 +33,6 @@ import { PropType } from '@vue/runtime-core'
 
 const props = defineProps({
   isOpen: {
-    type: Boolean || undefined,
     required: false,
     default: false,
   },
@@ -43,6 +42,7 @@ const props = defineProps({
   },
 })
 defineEmits(['close'])
+const { links } = toRefs(props)
 
 const { isOpen } = toRefs(props)
 const isTransparent = ref(isOpen.value)

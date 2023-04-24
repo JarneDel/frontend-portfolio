@@ -16,8 +16,13 @@
           }"
         >
           <h1 class="p-3 md:mx-2">
-            <NuxtLink to="/">
-              <Logo></Logo>
+            <NuxtLink
+              to="/"
+              class="logo-link hover:bg-active rounded-lg focus:outline-none"
+            >
+              <Logo
+                class="logo rounded-lg fill-primary-light transition-colors duration-200 dark:fill-primary-light"
+              ></Logo>
             </NuxtLink>
           </h1>
           <DesktopNavigation class="hidden md:flex" :links="links" />
@@ -42,6 +47,20 @@
   </div>
 </template>
 
+<style scoped>
+.logo-link:is(:hover, :focus-visible) .logo {
+  fill: #e5e7eb;
+  background: rgb(35 166 148 / 0.2);
+}
+
+@media (prefers-color-scheme: dark) .logo {
+  .logo:is(:hover, :focus-visible) {
+    fill: #1f2937;
+    background: rgb(75 85 99 / 0.2);
+  }
+}
+</style>
+
 <script setup lang="ts">
 import { ILink } from '~/Interfaces/ILink'
 
@@ -52,7 +71,7 @@ const isOpen = ref(false)
 const links: ILink[] = [
   {
     text: 'About',
-    path: '/#about',
+    path: '/about',
     icon: User,
   },
   {

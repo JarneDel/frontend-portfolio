@@ -53,5 +53,12 @@ const projects: IProject[] = [
     technologies: 'Expo ReactNative TypeScript Animation',
     githubUrl: 'https://github.com/JarneDel/app-html-kleuren/tree/develop',
   },
+  {
+    id: 3,
+    name: 'Portfolio',
+    description: 'This portfolio',
+    technologies: 'Nuxt, Vue, Typescript, TailwindCss, SPA',
+    githubUrl: 'https://github.com/JarneDel/frontend-portfolio',
+  },
 ]
 </script>

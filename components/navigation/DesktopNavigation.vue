@@ -3,7 +3,7 @@
     <ul class="flex-rows mx-6 my-4 flex gap-8">
       <li v-for="link of links">
         <StyledNuxtLink :to="link.path">
-          <Component :is="link.icon" />
+          <component :is="link.icon" />
           <p>{{ link.text }}</p>
         </StyledNuxtLink>
       </li>
@@ -14,10 +14,12 @@
 import { ILink } from '~/Interfaces/ILink'
 import { PropType } from '@vue/runtime-core'
 
-const pros = defineProps({
+const props = defineProps({
   links: {
     type: Array as PropType<ILink[]>,
     required: true,
   },
 })
+
+const { links } = toRefs(props)
 </script>

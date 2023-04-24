@@ -1,7 +1,7 @@
 <template>
   <div v-for="project in projects" :key="project.id">
     <div
-      class="mb-24 flex w-full flex-col-reverse items-center gap-4 md:flex-row"
+      class="mb-24 flex w-full flex-col-reverse gap-4 md:flex-row md:items-center"
       :class="project.id % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'"
     >
       <div class="drop-shadow-xl md:basis-1/2">
