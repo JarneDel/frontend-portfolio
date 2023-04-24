@@ -25,7 +25,11 @@
               ></Logo>
             </NuxtLink>
           </h1>
-          <DesktopNavigation class="hidden md:flex" :links="links" />
+          <DesktopNavigation
+            class="hidden md:flex"
+            :links="links"
+            :downloads="downloads"
+          />
           <MobileNavigationButton
             class="md:hidden"
             :is-open="isOpen"
@@ -36,6 +40,7 @@
           class="md:hidden"
           :is-open="isOpen"
           :links="links"
+          :downloads="downloads"
           v-on:close="isOpen = false"
         />
         <div ref="scrollLockContent">
@@ -84,9 +89,11 @@ const links: ILink[] = [
     path: '/#contact',
     icon: Contact,
   },
+]
+const downloads: ILink[] = [
   {
     text: 'Resume',
-    path: '/resume',
+    path: '/resume.pdf',
     icon: FileText,
   },
 ]

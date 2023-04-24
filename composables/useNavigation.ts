@@ -19,7 +19,7 @@ export default () => {
       {
         name: 'resume',
         title: 'Resume',
-        url: '/resume',
+        url: '/documents/Resume.pdf',
       },
     ],
   }
