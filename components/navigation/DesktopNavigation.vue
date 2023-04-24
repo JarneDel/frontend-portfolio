@@ -14,10 +14,12 @@
 import { ILink } from '~/Interfaces/ILink'
 import { PropType } from '@vue/runtime-core'
 
-const pros = defineProps({
+const props = defineProps({
   links: {
     type: Array as PropType<ILink[]>,
     required: true,
   },
 })
+
+const { links } = toRefs(props)
 </script>

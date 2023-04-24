@@ -1,8 +1,28 @@
 <template xmlns="http://www.w3.org/1999/html">
   <main class="mx-auto max-w-[768px] pt-40">
     <h2
-      class="text-3xl font-bold text-gray-900 accent-teal-700 dark:text-gray-100"
+      class="flex flex-row gap-3 align-middle text-3xl font-bold text-gray-900 accent-teal-700 dark:text-gray-100"
     >
+      <NuxtLink
+        to="/"
+        title="Go back home"
+        class="rounded-lg transition-colors duration-300 hover:text-teal-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 dark:hover:text-teal-600 dark:focus-visible:ring-teal-400"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="19" x2="5" y1="12" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      </NuxtLink>
       My road to becoming a developer
     </h2>
     <h3 class="mt-6 text-2xl font-medium">The very beginning</h3>

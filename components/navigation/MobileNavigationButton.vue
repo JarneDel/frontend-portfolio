@@ -22,7 +22,6 @@ const open = ref(false)
 defineEmits(['click'])
 const props = defineProps({
   isOpen: {
-    type: Boolean || undefined,
     required: true,
     default: false,
   },

@@ -33,7 +33,6 @@ import { PropType } from '@vue/runtime-core'
 
 const props = defineProps({
   isOpen: {
-    type: Boolean || undefined,
     required: false,
     default: false,
   },
@@ -43,6 +42,7 @@ const props = defineProps({
   },
 })
 defineEmits(['close'])
+const { links } = toRefs(props)
 
 const { isOpen } = toRefs(props)
 const isTransparent = ref(isOpen.value)
