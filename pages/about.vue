@@ -1,7 +1,7 @@
 <template xmlns="http://www.w3.org/1999/html">
   <main class="mx-auto max-w-[768px] pt-40">
     <h2
-      class="flex flex-row gap-3 align-middle text-3xl font-bold text-gray-900 accent-teal-700 dark:text-gray-100"
+      class="flex flex-row gap-3 align-middle text-xl font-bold text-gray-900 accent-teal-700 dark:text-gray-100 md:text-3xl"
     >
       <NuxtLink
         to="/"
