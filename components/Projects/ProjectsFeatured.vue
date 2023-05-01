@@ -95,7 +95,7 @@ const projects: IFeaturedProject[] = [
     category: 'Featured',
     title: 'Team Project - Jumping Jaws',
     description:
-      'Jumping Jaws is a co-op game where you have steer a boat through a river full of obstacles. You have to avoid the obstacles by jumping on a trampoline. If the left player jumps on the trampoline, the boat will move to the left and vice versa. The jump tracking was done with an Xbox Kinect 2. There are 2 buttons, to navigate through the menus. We were fortunate enough to present our game to the public at Facts gent 2023',
+      'Jumping Jaws is a co-op game where you have to steer a boat through a river full of obstacles. You have to avoid obstacles by jumping on a trampoline. If the left player jumps on the trampoline, the boat will move to the left and vice versa. The jump tracking was done with an Xbox Kinect 2. There are 2 buttons, to navigate through the menus. We were fortunate enough to present our game to the public at Facts gent 2023',
     technologies:
       'C# Unity Xbox-Kinect-2 NodeJs Express MySql Websockets ESP-32 C++ Serial-communication Scrum Agile',
     github: 'https://github.com/DauweQuinten/Trampoline_Groep2_FrontEnd',
