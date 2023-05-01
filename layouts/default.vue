@@ -93,7 +93,7 @@ const links: ILink[] = [
 const downloads: ILink[] = [
   {
     text: 'Resume',
-    path: '/resume.pdf',
+    path: '/documents/Resume.pdf',
     icon: FileText,
   },
 ]
