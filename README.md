@@ -1,24 +1,23 @@
 # Portfolio
 
+## Website URL
+https://www.jarnedel.dev/
+
 ## Technologies
 1. Nuxt js
 2. Tailwind css
-3. 
+3. Typescript
 
 ## Setup
 
 Make sure to install the dependencies:
 
 ```bash
-# yarn
-yarn install
 
 # npm
 npm install
-
-# pnpm
-pnpm install
 ```
+
 
 ## Development Server
 
