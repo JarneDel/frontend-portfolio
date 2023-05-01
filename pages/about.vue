@@ -34,7 +34,7 @@
       a led with a few lines of code. Instantly i knew that this was the
       beginning of my journey.
     </p>
-    <h3 class="mt-2 text-2xl font-medium">Chapter 2</h3>
+    <h3 class="mt-6 text-2xl font-medium">Chapter 2</h3>
     <p class="mt-4 text-neutral-600 dark:text-neutral-300">
       After graduating high school, I decided to study Multimedia and Creative
       Technologies at the Hogeschool West-Vlaanderen. Here I learned how to code
@@ -44,7 +44,7 @@
       came the end of the second semester, where we had to combine all of our
       knowledge into a project, this way <strong>Project One</strong> was born.
     </p>
-    <h3 class="mt-2 text-2xl font-medium">Making Choices, Again...</h3>
+    <h3 class="mt-6 text-2xl font-medium">Making Choices, Again...</h3>
     <p class="mt-4 text-neutral-600 dark:text-neutral-300">
       In the third semester, after learning some more advanced code, we learnt
       basic app development in Xamarin forms. I had my first touch with cloud
@@ -59,7 +59,7 @@
       because I made League of Statistics without any Javascript frameworks and
       was eager to find out what is capable with them.
     </p>
-    <h3 class="mt-2 text-2xl font-medium">The present</h3>
+    <h3 class="mt-6 text-2xl font-medium">The present</h3>
     <p class="mt-4 text-neutral-600 dark:text-neutral-300">
       Now I'm in at the end of my second year, getting ready for my first
       contact with the industry project, where I will be working in a team of 4
