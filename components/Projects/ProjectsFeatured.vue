@@ -58,7 +58,14 @@
           >
             <SvgDocument title="Design Document" />
           </a>
-          <Github :to="project.github" />
+          <a v-if='project.technicalAnalysis'
+            :href='project.technicalAnalysis'
+             class="hocus:text-primary-light hocus:dark:text-primary-dark"
+            download
+          >
+            <LucideServer title="Technical Analysis" />
+          </a>
+          <Github :to="project.github" v-if='project.github'/>
           <External
             v-if="project.external"
             :to="project.external"
@@ -73,6 +80,7 @@
 </template>
 <script setup lang="ts">
 import { IFeaturedProject } from '~/Interfaces/IFeaturedProject'
+import { LucideServer } from 'lucide-vue-next'
 
 const { viewportWidth } = useViewportSize()
 
@@ -119,5 +127,16 @@ const projects: IFeaturedProject[] = [
     image: '/images/PROJECT1.webp',
     imageAlt: 'AirInsightMockup',
   },
+  {
+    id: 4,
+    category: 'Featured',
+    title: 'Industry Project - Digital Patient Twin',
+    description: "Digital Patient twin is a platform to enable continuous observation of a patient, offering notifications, realtime data, and patient analysis to a medical professional, unfortunately, I can't show the code for this project.",
+    technologies: "Vue Nuxt Typescript .NET Azure authentication pub-sub cosmosdb Microservices Dapr",
+    image: "/images/dpt.webp",
+    imageAlt: "DigitalPatientTwinMockup",
+    functionalAnalysis: "/documents/FA02.pdf",
+    technicalAnalysis: "/documents/componenten.pdf",
+  }
 ]
 </script>

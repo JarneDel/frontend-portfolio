@@ -4,11 +4,12 @@ export interface IFeaturedProject {
   title: string
   description: string
   technologies: string
-  github: string
+  github?: string
   image: string
   imageAlt: string
   external?: string
   externalTitle?: string
   designDocument?: string
   functionalAnalysis?: string
+  technicalAnalysis?: string
 }
