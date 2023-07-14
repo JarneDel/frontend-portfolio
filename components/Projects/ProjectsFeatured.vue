@@ -62,8 +62,9 @@
             :href='project.technicalAnalysis'
              class="hocus:text-primary-light hocus:dark:text-primary-dark"
             download
+             title='Technical components'
           >
-            <LucideServer title="Technical Analysis" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-server"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
           </a>
           <Github :to="project.github" v-if='project.github'/>
           <External
@@ -80,7 +81,6 @@
 </template>
 <script setup lang="ts">
 import { IFeaturedProject } from '~/Interfaces/IFeaturedProject'
-import { LucideServer } from 'lucide-vue-next'
 
 const { viewportWidth } = useViewportSize()
 
@@ -137,6 +137,7 @@ const projects: IFeaturedProject[] = [
     imageAlt: "DigitalPatientTwinMockup",
     functionalAnalysis: "/documents/FA02.pdf",
     technicalAnalysis: "/documents/componenten.pdf",
+
   }
 ]
 </script>
