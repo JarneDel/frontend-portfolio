@@ -43,28 +43,28 @@ const projects: IProject[] = [
     id: 1,
     name: 'Roman converter',
     description: 'A simple app to convert Latin numbers to Roman numbers.',
-    technologies: 'Expo, ReactNative, TypeScript',
+    technologies: 'Expo ReactNative TypeScript',
     githubUrl: 'https://github.com/JarneDel/app-converter',
   },
   {
     id: 2,
     name: 'HTML colors',
     description: 'A simple app that shows you a random html color.',
-    technologies: 'Expo, ReactNative, TypeScript, Animation',
+    technologies: 'Expo ReactNative TypeScript Animation',
     githubUrl: 'https://github.com/JarneDel/app-html-kleuren/tree/develop',
   },
   {
     id: 3,
     name: 'Portfolio',
     description: 'This portfolio',
-    technologies: 'Nuxt, Vue, Typescript, TailwindCss, SPA',
+    technologies: 'Nuxt Vue Typescript TailwindCss SPA',
     githubUrl: 'https://github.com/JarneDel/frontend-portfolio',
   },
   {
     id: 4,
     name: 'Sports Complex',
     description: 'Work in progress: A website to manage a sport complex',
-    technologies: 'Vue, Nestjs, Docker, Typescript, TailwindCss, SPA, PWA, GraphQL, Jest, MonoRepo, MongoDB',
+    technologies: 'Vue Nestjs Docker Typescript TailwindCss SPA PWA GraphQL Jest MonoRepo MongoDB Firebase',
     githubUrl: 'https://github.com/JarneDel/Doran-Jarne-Tibo',
   },
   {
@@ -72,7 +72,7 @@ const projects: IProject[] = [
     name: "Upcoming: Research Project",
     description: "How do you build a performant real-time livestream collaboration tool with HTMX and bun-ElysiaJS",
     githubUrl: "/404",
-    technologies: "HTMX, ElysiaJS, Livestreaming",
+    technologies: "HTMX ElysiaJS Livestreaming",
   }
 ]
 </script>
