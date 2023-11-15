@@ -66,6 +66,13 @@ const projects: IProject[] = [
     description: 'Work in progress: A website to manage a sport complex',
     technologies: 'Vue, Nestjs, Docker, Typescript, TailwindCss, SPA, PWA, GraphQL, Jest, MonoRepo, MongoDB',
     githubUrl: 'https://github.com/JarneDel/Doran-Jarne-Tibo',
+  },
+  {
+    id: 5,
+    name: "Upcoming: Research Project",
+    description: "How do you build a performant real-time livestream collaboration tool with HTMX and bun-ElysiaJS",
+    githubUrl: "/404",
+    technologies: "HTMX, ElysiaJS, Livestreaming",
   }
 ]
 </script>
