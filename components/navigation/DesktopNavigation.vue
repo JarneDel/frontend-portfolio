@@ -23,8 +23,8 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ILink } from '~/Interfaces/ILink'
-import { PropType } from '@vue/runtime-core'
+import { type ILink } from '~/Interfaces/ILink'
+import { type PropType } from '@vue/runtime-core'
 
 const props = defineProps({
   links: {

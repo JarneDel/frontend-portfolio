@@ -74,11 +74,7 @@ import { User, Contact, Code2, FileText } from 'lucide-vue-next'
 
 const isOpen = ref(false)
 const links: ILink[] = [
-  {
-    text: 'About',
-    path: '/about',
-    icon: User,
-  },
+
   {
     text: 'Projects',
     path: '/#projects',

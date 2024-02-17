@@ -36,7 +36,16 @@
 </template>
 
 <script setup lang="ts">
-import { IProject } from '~/Interfaces/IProject'
+interface IProject {
+  id: number
+  name: string
+  description: string
+  technologies: string
+  githubUrl: string
+  link?: string
+  externalTitle?: string
+}
+
 
 const projects: IProject[] = [
   {
@@ -67,12 +76,5 @@ const projects: IProject[] = [
     technologies: 'Vue Nestjs Docker Typescript TailwindCss SPA PWA GraphQL Jest MonoRepo MongoDB Firebase',
     githubUrl: 'https://github.com/JarneDel/Doran-Jarne-Tibo',
   },
-  {
-    id: 5,
-    name: "Upcoming: Research Project",
-    description: "How do you build a performant real-time livestream collaboration tool with HTMX and bun-ElysiaJS",
-    githubUrl: "/404",
-    technologies: "HTMX ElysiaJS Livestreaming",
-  }
 ]
 </script>

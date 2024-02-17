@@ -8,14 +8,14 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^0.3.1",
-    "@nuxtjs/tailwindcss": "^6.6.0",
+    "@nuxt/devtools": "^0.3.2",
+    "@nuxtjs/tailwindcss": "^6.11.4",
     "@vueuse/components": "^9.13.0",
-    "lucide-vue-next": "^0.127.0",
-    "nuxt": "^3.3.1",
-    "prettier": "^2.8.5",
-    "prettier-plugin-tailwindcss": "^0.2.5",
-    "tailwindcss": "^3.2.7"
+    "lucide-vue-next": "^0.331.0",
+    "nuxt": "^3.10.2",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.11",
+    "tailwindcss": "^3.4.1"
   },
   "prettier": {
     "arrowParens": "avoid",
@@ -35,6 +35,6 @@
   },
   "dependencies": {
     "bodymovin": "^4.13.0",
-    "lottie-web": "^5.11.0"
+    "lottie-web": "^5.12.2"
   }
 }

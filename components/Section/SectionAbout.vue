@@ -26,14 +26,7 @@
         life. When I'm not coding away at my computer or studying for exams, you
         can find me tinkering with Linux and exploring new technologies.
       </p>
-      <div class="mt-2">
-        <nuxt-link
-          to="/about"
-          class="rounded-lg border-2 border-solid border-teal-400 p-2 outline-none transition-colors duration-300 focus-visible:ring focus-visible:ring-teal-600 hocus:bg-primary-dark hocus:text-white"
-        >
-          More details
-        </nuxt-link>
-      </div>
+
     </div>
 
     <div class="flex p-2 md:justify-center lg:basis-2/5">

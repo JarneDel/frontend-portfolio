@@ -3,7 +3,6 @@
 </template>
 
 <script setup>
-import { LucideArrowLeft } from 'lucide-vue-next'
 import bodymovin from 'lottie-web'
 const lottieAnimation = ref(null)
 onMounted(() => {
