@@ -185,6 +185,7 @@ const projects: IFeaturedProject[] = [
     imageAlt: 'DigitalPatientTwinMockup',
     functionalAnalysis: '/documents/FA02.pdf',
     technicalAnalysis: '/documents/componenten.pdf',
+    github: 'https://github.com/JarneDel/digital-patient-twin-backend',
   },
   {
     id: 5,

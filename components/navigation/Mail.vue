@@ -3,6 +3,7 @@
     :href="to"
     target="_blank"
     rel="noopener noreferrer"
+    aria-label="Send me an email"
     class="inline-block hocus:text-primary-light hocus:dark:text-primary-dark"
   >
     <svg

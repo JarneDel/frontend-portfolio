@@ -4,6 +4,7 @@
     target="_blank"
     rel="noopener noreferrer"
     class="inline-block hocus:text-primary-light hocus:dark:text-primary-dark"
+    aria-label="LinkedIn"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"

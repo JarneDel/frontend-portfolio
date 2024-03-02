@@ -81,7 +81,8 @@ const projects: IProject[] = [
   {
     id: 4,
     name: 'Sports Complex',
-    description: 'Work in progress: A website to manage a sport complex',
+    description:
+      'A website to manage a sport complex. Currently not live due to cost of hosting.',
     technologies:
       'Vue Nestjs Docker Typescript TailwindCss SPA PWA GraphQL Jest MonoRepo MongoDB Firebase',
     githubUrl: 'https://github.com/JarneDel/Doran-Jarne-Tibo',
