@@ -6,8 +6,12 @@
 
 <style>
 ::-webkit-scrollbar {
-  width: 0.3em;
-  /*background-color: transparent;*/
+  width: 0.2em;
+}
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar {
+    background-color: #211f22;
+  }
 }
 
 ::-webkit-scrollbar:hover {
@@ -26,7 +30,6 @@
 }
 
 body {
-  overflow: overlay;
   overflow-x: hidden;
 }
 
@@ -37,13 +40,13 @@ body {
 }
 
 ::selection {
-  background: #2dd4bf;
-  color: #fff;
+  background: #f2aeff;
+  color: #4e165f;
 }
 @media (prefers-color-scheme: dark) {
   ::selection {
-    background: #15665b;
-    color: #fff;
+    background: #f2aeff;
+    color: #4e165f;
   }
 }
 </style>

@@ -1,11 +1,48 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/devtools'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    '@nuxt/devtools',
+    '@vueuse/motion/nuxt',
+    "@nuxt/image"
+  ],
   nitro: {
     compressPublicAssets: {
       brotli: true,
       gzip: true,
+    },
+  },
+  runtimeConfig: {
+    public: {
+      motion: {
+        directives: {
+          'slide-up': {
+            initial: {
+              scale: 0,
+              opacity: 0,
+              y: 100,
+            },
+            visible: {
+              scale: 1,
+              opacity: 1,
+              y: 0,
+            },
+          },
+          'pop-bottom': {
+            initial: {
+              scale: 0,
+              opacity: 0,
+              y: 100,
+            },
+            visible: {
+              scale: 1,
+              opacity: 1,
+              y: 0,
+            },
+          },
+        },
+      },
     },
   },
   components: [
@@ -23,7 +60,7 @@ export default defineNuxtConfig({
       {
         name: 'description',
         content:
-          "Hi there, I'm Jarne Delarue. Welcome to my portfolio, I'm a Full-Stack Web Developer based in Flanders. I enjoy building beautiful and functional websites ",
+          'Hi there, I\'m Jarne Delarue. Welcome to my portfolio, I\'m a Full-Stack Web Developer based in Flanders. I enjoy building beautiful and functional websites ',
       },
       {
         name: 'robots',
@@ -57,7 +94,7 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content:
-            "Hi there, I'm Jarne Delarue. Welcome to my portfolio, I'm a Full-Stack Web Developer based in Flanders. I enjoy building beautiful and functional websites ",
+            'Hi there, I\'m Jarne Delarue. Welcome to my portfolio, I\'m a Full-Stack Web Developer based in Flanders. I enjoy building beautiful and functional websites ',
         },
         {
           name: 'robots',

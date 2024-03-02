@@ -1,13 +1,23 @@
 <template>
-  <h3 class="mb-6 text-2xl font-bold text-gray-900 dark:text-gray-100">
+  <h3
+    class="mb-6 text-2xl font-bold text-gray-900 dark:text-gray-100"
+    v-motion="{
+      initial: { opacity: 0, y: 20 },
+      visibleOnce: { opacity: 1, y: 0 },
+    }"
+  >
     Other projects
   </h3>
   <ul
     class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-8"
   >
     <li
-      v-for="project in projects"
+      v-for="(project, index) in projects"
       :key="project.id"
+      v-motion="{
+        initial: { opacity: 0 },
+        visibleOnce: { opacity: 1, transition: { delay: 100 * index } },
+      }"
       class="flex flex-col justify-center gap-4 rounded-lg bg-gray-100 p-4 shadow-lg transition-transform duration-200 hocus:-translate-y-1 dark:bg-gray-800"
     >
       <div class="flex w-full flex-row items-center justify-between">
@@ -46,7 +56,6 @@ interface IProject {
   externalTitle?: string
 }
 
-
 const projects: IProject[] = [
   {
     id: 1,
@@ -73,7 +82,8 @@ const projects: IProject[] = [
     id: 4,
     name: 'Sports Complex',
     description: 'Work in progress: A website to manage a sport complex',
-    technologies: 'Vue Nestjs Docker Typescript TailwindCss SPA PWA GraphQL Jest MonoRepo MongoDB Firebase',
+    technologies:
+      'Vue Nestjs Docker Typescript TailwindCss SPA PWA GraphQL Jest MonoRepo MongoDB Firebase',
     githubUrl: 'https://github.com/JarneDel/Doran-Jarne-Tibo',
   },
 ]

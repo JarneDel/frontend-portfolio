@@ -1,9 +1,9 @@
 <template>
   <div
-    class="bg-gradient-to-tr from-background-light-500 via-background-light-300 to-background-light-100 bg-no-repeat dark:from-background-dark-500 dark:via-background-dark-300 dark:to-background-dark-100 md:bg-fixed"
+    class="bg-gradient-to-tr from-background-light-500 via-background-light-300 to-background-light-100 bg-no-repeat md:bg-fixed dark:from-background-dark-500 dark:via-background-dark-300 dark:to-background-dark-100"
   >
     <div
-      class="min-h-screen bg-light-repeating-bg dark:bg-dark-repeating-bg dark:text-gray-100 md:motion-safe:animate-moveBg lg:mx-0"
+      class="min-h-screen bg-light-repeating-bg md:motion-safe:animate-moveBg lg:mx-0 dark:bg-dark-repeating-bg dark:text-gray-100"
     >
       <div class="mx-6">
         <div
@@ -15,7 +15,13 @@
               isSticky,
           }"
         >
-          <h1 class="p-3 md:mx-2">
+          <h1
+            class="p-3 md:mx-2"
+            v-motion="{
+              initial: { opacity: 0, y: -20, x: -20 },
+              enter: { opacity: 1, y: 0, x: 0, transition: { delay: 100 } },
+            }"
+          >
             <NuxtLink
               to="/"
               class="logo-link hover:bg-active rounded-lg focus:outline-none"
@@ -67,14 +73,13 @@
 </style>
 
 <script setup lang="ts">
-import { ILink } from '~/Interfaces/ILink'
+import type { ILink } from '~/Interfaces/ILink'
 
 const { isHidden, isSticky } = useStickyHeader()
 import { User, Contact, Code2, FileText } from 'lucide-vue-next'
 
 const isOpen = ref(false)
 const links: ILink[] = [
-
   {
     text: 'Projects',
     path: '/#projects',
@@ -99,7 +104,7 @@ onMounted(() => {
     if (isOpen.value) {
       document.body.style.overflow = 'hidden'
     } else {
-      document.body.style.overflow = 'overlay'
+      document.body.style.overflow = 'auto'
     }
   })
 })

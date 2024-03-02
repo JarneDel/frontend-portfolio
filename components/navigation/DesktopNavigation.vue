@@ -1,13 +1,30 @@
 <template>
   <div class="flex flex-row justify-between">
     <ul class="flex-rows mx-6 my-4 flex gap-8">
-      <li v-for="link of links">
+      <li
+        v-for="(link, index) of links"
+        v-motion="{
+          initial: { opacity: 0, y: -40 },
+          enter: { opacity: 1, y: 0, transition: { delay: 100 * index } },
+        }"
+      >
         <StyledNuxtLink :to="link.path">
           <component :is="link.icon" />
           <p>{{ link.text }}</p>
         </StyledNuxtLink>
       </li>
-      <li v-for="download of downloads" :key="download.text">
+      <li
+        v-for="(download, index) of downloads"
+        :key="download.text"
+        v-motion="{
+          initial: { opacity: 0, y: -40 },
+          enter: {
+            opacity: 1,
+            y: 0,
+            transition: { delay: 100 * (index + links.length) },
+          },
+        }"
+      >
         <a
           :href="download.path"
           download=""

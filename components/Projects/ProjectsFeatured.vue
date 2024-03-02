@@ -1,18 +1,35 @@
 <template>
-  <div v-for="project in projects" :key="project.id">
+  <div v-for="(project, number) in projects" :key="project.id">
     <div
+      v-motion="{
+        initial: { opacity: 0, x: number % 2 === 0 ? -100 : 100 },
+        visibleOnce: {
+          opacity: 1,
+          x: 0,
+          transition: { duration: 200, delay: 100 * number, ease: 'easeOut' },
+        },
+      }"
       class="mb-24 flex w-full flex-col-reverse gap-4 md:flex-row md:items-center"
       :class="project.id % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'"
     >
-      <a class="drop-shadow-xl md:basis-1/2" :href='project.external?? project.github'>
+      <a
+        class="drop-shadow-xl md:basis-1/2"
+        :href="project.external ?? project.github"
+      >
         <NoiseImage
           :src="project.image"
           :alt="project.imageAlt"
           aspect-ratio="16/9"
+          heightPx="270"
+          widthPx="470"
           :width="viewportWidth.valueOf() > 768 ? '27rem' : '32rem'"
           class="rounded-xl"
           :noise-scale="
-            viewportWidth.valueOf() > 1080 ? 15 : viewportWidth.valueOf() > 768 ? 13 : 10
+            viewportWidth.valueOf() > 1080
+              ? 15
+              : viewportWidth.valueOf() > 768
+                ? 13
+                : 10
           "
           :zoom-scale="1.05"
         />
@@ -58,15 +75,32 @@
           >
             <SvgDocument title="Design Document" />
           </a>
-          <a v-if='project.technicalAnalysis'
-            :href='project.technicalAnalysis'
-             class="hocus:text-primary-light hocus:dark:text-primary-dark"
+          <a
+            v-if="project.technicalAnalysis"
+            :href="project.technicalAnalysis"
+            class="hocus:text-primary-light hocus:dark:text-primary-dark"
             download
-             title='Technical components'
+            title="Technical components"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-server"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-server"
+            >
+              <rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
+              <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
+              <line x1="6" x2="6.01" y1="6" y2="6" />
+              <line x1="6" x2="6.01" y1="18" y2="18" />
+            </svg>
           </a>
-          <Github :to="project.github" v-if='project.github'/>
+          <Github :to="project.github" v-if="project.github" />
           <External
             v-if="project.external"
             :to="project.external"
@@ -113,15 +147,16 @@ const projects: IFeaturedProject[] = [
   },
   {
     id: 2,
-    title: "Research Project - HTMX - ElysiaJS - Live-streaming",
-    category: "Featured",
-    description: "How do you build a performant real-time live stream collaboration tool using HTMX and a bun-Elysiajs backend?",
-    technologies: "HTMX ElysiaJS Websockets WebRTC Cloudflare-Stream Supabase",
-    image: "/images/research.png",
-    imageAlt: "HTMXMockup",
-    external: "https://quizx.jarnedel.dev",
-    externalTitle: "Visit QuizX",
-    github: "https://github.com/JarneDel/Research-Elysia-HTMX",
+    title: 'Research Project - HTMX - ElysiaJS - Live-streaming',
+    category: 'Featured',
+    description:
+      'How do you build a performant real-time live stream collaboration tool using HTMX and a bun-Elysiajs backend?',
+    technologies: 'HTMX ElysiaJS Websockets WebRTC Cloudflare-Stream Supabase',
+    image: '/images/research.png',
+    imageAlt: 'HTMXMockup',
+    external: 'https://quizx.jarnedel.dev',
+    externalTitle: 'Visit QuizX',
+    github: 'https://github.com/JarneDel/Research-Elysia-HTMX',
   },
   {
     id: 3,
@@ -142,13 +177,14 @@ const projects: IFeaturedProject[] = [
     id: 4,
     category: 'Featured',
     title: 'Industry Project - Digital Patient Twin',
-    description: "Digital Patient twin is a platform to enable continuous observation of a patient, offering notifications, realtime data, and patient analysis to a medical professional, unfortunately, I can't show the code for this project.",
-    technologies: "Vue Nuxt Typescript .NET Azure authentication pub-sub cosmosdb Microservices Dapr",
-    image: "/images/dpt.webp",
-    imageAlt: "DigitalPatientTwinMockup",
-    functionalAnalysis: "/documents/FA02.pdf",
-    technicalAnalysis: "/documents/componenten.pdf",
-
+    description:
+      "Digital Patient twin is a platform to enable continuous observation of a patient, offering notifications, realtime data, and patient analysis to a medical professional, unfortunately, I can't show the code for this project.",
+    technologies:
+      'Vue Nuxt Typescript .NET Azure authentication pub-sub cosmosdb Microservices Dapr',
+    image: '/images/dpt.webp',
+    imageAlt: 'DigitalPatientTwinMockup',
+    functionalAnalysis: '/documents/FA02.pdf',
+    technicalAnalysis: '/documents/componenten.pdf',
   },
   {
     id: 5,
