@@ -5,8 +5,11 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxt/devtools',
     '@vueuse/motion/nuxt',
-    "@nuxt/image"
+    '@nuxt/image',
   ],
+  image: {
+    provider: 'netlify',
+  },
   nitro: {
     compressPublicAssets: {
       brotli: true,
@@ -60,7 +63,7 @@ export default defineNuxtConfig({
       {
         name: 'description',
         content:
-          'Hi there, I\'m Jarne Delarue. Welcome to my portfolio, I\'m a Full-Stack Web Developer based in Flanders. I enjoy building beautiful and functional websites ',
+          "Hi there, I'm Jarne Delarue. Welcome to my portfolio, I'm a Full-Stack Web Developer based in Flanders. I enjoy building beautiful and functional websites ",
       },
       {
         name: 'robots',
@@ -94,7 +97,7 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content:
-            'Hi there, I\'m Jarne Delarue. Welcome to my portfolio, I\'m a Full-Stack Web Developer based in Flanders. I enjoy building beautiful and functional websites ',
+            "Hi there, I'm Jarne Delarue. Welcome to my portfolio, I'm a Full-Stack Web Developer based in Flanders. I enjoy building beautiful and functional websites ",
         },
         {
           name: 'robots',
