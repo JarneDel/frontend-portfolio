@@ -152,7 +152,7 @@ const projects: IFeaturedProject[] = [
     description:
       'How do you build a performant real-time live stream collaboration tool using HTMX and a bun-Elysiajs backend?',
     technologies: 'HTMX ElysiaJS Websockets WebRTC Cloudflare-Stream Supabase',
-    image: '/images/research.png',
+    image: '/images/research.webp',
     imageAlt: 'HTMXMockup',
     external: 'https://quizx.jarnedel.dev',
     externalTitle: 'Visit QuizX',
