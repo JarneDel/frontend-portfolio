@@ -1,9 +1,41 @@
+<style scoped lang="scss">
+article {
+  display: flex;
+  max-width: 56rem;
+  flex-direction: column;
+  gap: 4rem;
+  padding-block: 3rem;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-block: 12rem;
+  }
+  .about {
+    display: flex;
+    flex-direction: column;
+    @media (min-width: 768px) {
+      flex-basis: 3/5;
+    }
+    h2 {
+      margin-bottom: 1rem;
+      width: 100%;
+      max-width: 32rem;
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+      font-weight: 700;
+      color: #111827ff;
+      @media (prefers-color-scheme: dark) {
+        color: #f3f4f6;
+      }
+    }
+  }
+}
+</style>
+
 <template>
-  <article
-    class="flex max-w-4xl flex-col gap-16 py-12 md:flex-row md:items-center md:justify-center md:py-48"
-    id="about"
-  >
-    <div class="flex flex-col md:basis-3/5">
+  <article id="about">
+    <div class="about">
       <h2
         v-motion="{
           initial: { opacity: 0, y: 20 },
