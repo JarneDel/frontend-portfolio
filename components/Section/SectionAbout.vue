@@ -54,10 +54,11 @@ article {
         }"
       >
         Hi there! I'm a <strong>full-stack web developer</strong> and
-        <strong>Linux</strong> enthusiast based in <strong>Flanders</strong>. I
-        enjoy building beautiful and functional websites. As a
-        <strong>student</strong>, I'm constantly <strong>learning</strong> to
-        stay on top of the latest technologies.
+        <strong>Linux</strong> enthusiast based in
+        <strong>Ghent, Belgium</strong>. I enjoy building beautiful and
+        functional websites, with a strong eye for accessibility and attention
+        to detail. I love constantly learning to stay on top of the latest
+        technologies.
       </p>
       <p
         v-motion="{
@@ -69,8 +70,20 @@ article {
       >
         With my strong technical skills and attention to detail, I strive to
         create <strong>seamless</strong> user experiences that bring ideas to
-        life. When I'm not coding away at my computer or studying for exams, you
-        can find me tinkering with Linux and exploring new technologies.
+        life. When I'm not coding away at my computer, you can find me tinkering
+        with Linux and exploring new technologies.
+      </p>
+
+      <p
+        v-motion="{
+          initial: { opacity: 0, y: 20 },
+          enter: { opacity: 1, y: 0, transition: { delay: 0.7 } },
+          visible: { opacity: 1, y: 0 },
+        }"
+        class="mb-4 max-w-[32rem] leading-relaxed text-gray-600 md:text-lg dark:text-gray-400"
+      >
+        Im currently employed at Numble, working on Full stack experiences with
+        Umbraco CMS
       </p>
     </div>
 
@@ -107,18 +120,4 @@ article {
   </article>
 </template>
 
-<script setup lang="ts">
-import NoiseImage from '~/components/Styled/noiseImage.vue'
-
-const { viewportWidth } = useViewportSize()
-
-const noiseScale = computed((): number => {
-  if (viewportWidth.value > 1024) {
-    return 15
-  } else if (viewportWidth.value > 768) {
-    return 13
-  } else {
-    return 10
-  }
-})
-</script>
+<script setup lang="ts"></script>

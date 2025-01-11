@@ -1,12 +1,14 @@
 <template>
   <div class="overflow-hidden drop-shadow-2xl">
-    <NuxtImg
+    <nuxt-picture
       :src="src"
       :alt="alt"
       :width="widthPx"
       :height="heightPx"
+      densities="x1 x2"
       class="h-full w-full object-cover"
       format="webp"
+      :modifiers="{ position: 'top' }"
     />
   </div>
 </template>
@@ -42,6 +44,11 @@ defineProps({
     required: false,
     default: 1.1,
   },
+  transformOrigin: {
+    type: String,
+    required: false,
+    default: 'center',
+  },
 })
 </script>
 
@@ -51,10 +58,11 @@ div {
   max-width: v-bind(width);
   aspect-ratio: v-bind(aspectRatio);
 }
-img {
+:deep(img) {
   transition: all 400ms ease-in-out;
+  transform-origin: v-bind(transformOrigin);
 }
-img:hover {
+:deep(img:hover) {
   scale: v-bind(zoomScale);
 }
 </style>

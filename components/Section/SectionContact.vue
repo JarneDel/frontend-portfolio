@@ -16,8 +16,9 @@
         visible: { opacity: 1, y: 0, transition: { delay: 0.3 } },
       }"
     >
-      I'm still finishing school, but I'm always open to new opportunities. If
-      you have any questions or want to work together, feel free to contact me.
+      I'm currently gaining valuable experience at Numble. However, I'm always
+      open to discussing new opportunities that align with my skills and career
+      goals. Please don't hesitate to reach out.
     </p>
     <div
       class="mt-6"
