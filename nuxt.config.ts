@@ -1,12 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 console.log(process.env.NODE_ENV)
 export default defineNuxtConfig({
-  modules: [
-    '@nuxtjs/tailwindcss',
-    '@nuxt/devtools',
-    '@vueuse/motion/nuxt',
-    '@nuxt/image',
-  ],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/devtools', '@vueuse/motion/nuxt', '@nuxt/image', '@nuxt/scripts'],
 
   image: {
     provider: process.env.NODE_ENV == 'production' ? 'netlify' : 'ipx',
@@ -104,6 +99,14 @@ export default defineNuxtConfig({
           content: '#211f22',
         },
       ],
+    },
+  },
+
+  scripts: {
+    registry: {
+      cloudflareWebAnalytics: {
+        token: '55b69d9a04c240d582fde78c5c00876c',
+      },
     },
   },
 

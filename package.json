@@ -10,6 +10,7 @@
   "devDependencies": {
     "@nuxt/devtools": "^1.7.0",
     "@nuxt/image": "^1.9.0",
+    "@nuxt/scripts": "0.9.5",
     "@nuxtjs/tailwindcss": "^6.12.2",
     "@vueuse/components": "^10.11.1",
     "lucide-vue-next": "^0.344.0",
@@ -36,6 +37,7 @@
     "node": "18.15.0"
   },
   "dependencies": {
+    "@vueuse/core": "^12.4.0",
     "@vueuse/motion": "^2.2.6",
     "bodymovin": "^4.13.0",
     "lottie-web": "^5.12.2",
