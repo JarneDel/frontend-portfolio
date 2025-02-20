@@ -40,10 +40,11 @@
           transition: { duration: 350, delay: 150, ease: 'easeInOut' },
         },
       }"
-      class="pb-6 text-3xl text-neutral-400"
+      class="pb-8 text-3xl text-neutral-400"
     >
-      A full stack web developer and Linux enthousiast
+      Full stack Umbraco Developer @ Numble
     </p>
+
     <div
       v-motion="{
         initial: { x: 200, opacity: 0 },

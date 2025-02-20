@@ -32,6 +32,7 @@
                 : 10
           "
           :zoom-scale="1.05"
+          :transform-origin="project.transformOrigin"
         />
       </a>
       <div
@@ -128,13 +129,15 @@ interface IFeaturedProject {
   designDocument?: string
   functionalAnalysis?: string
   technicalAnalysis?: string
+  order: number
+  transformOrigin?: string
 }
 const { viewportWidth } = useViewportSize()
 
 const projects: IFeaturedProject[] = [
   {
     id: 1,
-    category: 'Featured',
+    category: 'Favourite',
     title: 'League of Statistics',
     description:
       'League of Statistics is a website that shows you statistics about your League of Legends account, per champion you play. You can also view champion information and abilities. It was build with micro-interactions and accessibility in mind.',
@@ -144,6 +147,7 @@ const projects: IFeaturedProject[] = [
     github: 'https://github.com/JarneDel/LolApi',
     image: '/images/lolstats.webp',
     imageAlt: 'LeagueOfStatisticsMockup',
+    order: 3,
   },
   {
     id: 2,
@@ -157,6 +161,7 @@ const projects: IFeaturedProject[] = [
     external: 'https://quizx.jarnedel.dev',
     externalTitle: 'Visit QuizX',
     github: 'https://github.com/JarneDel/Research-Elysia-HTMX',
+    order: 4,
   },
   {
     id: 3,
@@ -171,6 +176,7 @@ const projects: IFeaturedProject[] = [
     functionalAnalysis: '/documents/FunctionalAnalysis.pdf',
     image: '/images/jumpingjawsnoframe.webp',
     imageAlt: 'JumpingJawsMockup',
+    order: 5,
   },
 
   {
@@ -186,6 +192,7 @@ const projects: IFeaturedProject[] = [
     functionalAnalysis: '/documents/FA02.pdf',
     technicalAnalysis: '/documents/componenten.pdf',
     github: 'https://github.com/JarneDel/digital-patient-twin-backend',
+    order: 6,
   },
   {
     id: 5,
@@ -201,6 +208,35 @@ const projects: IFeaturedProject[] = [
     externalTitle: 'Instructables',
     image: '/images/PROJECT1.webp',
     imageAlt: 'AirInsightMockup',
+    order: 7,
   },
-]
+  {
+    id: 6,
+    category: 'Featured',
+    title: 'Techorama - Huge Belgian tech conference.',
+    description:
+      "Revitalized Techorama's 2025 website with a dynamic 'Sports Edition' theme, achieved primarily through targeted CSS modifications. This strategic approach ensured minimal disruption to the underlying HTML structure, facilitating seamless future updates and maintainability, while improving a11y!",
+    technologies: 'Umbraco scss js',
+    external: 'https://techorama.be/',
+    image: '/images/techorama.webp',
+    imageAlt: 'Techorama 2025 website screenshot',
+    externalTitle: 'Visit the 2025 techorama website',
+    order: 1,
+    transformOrigin: 'top',
+  },
+  {
+    id: 7,
+    category: 'Featured',
+    title: 'Buildwise - Belgian Construction research and innovation',
+    description:
+      'Contributed to the ongoing development and improvement of the Buildwise platform, a leading resource for construction research and innovation.  Focused on enhancing existing features, resolving bugs, and ensuring a seamless user experience for industry professionals.',
+    technologies: 'Umbraco vue2 .Net Scss',
+    image: '/images/buildwise.webp',
+    imageAlt: 'Buildwise: Belgian Construction research and innovation',
+    externalTitle: 'Visit buildwise',
+    external: 'https://www.buildwise.be',
+    order: 2,
+    transformOrigin: 'top',
+  },
+].toSorted((a, b) => a.order - b.order)
 </script>

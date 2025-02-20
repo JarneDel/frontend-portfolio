@@ -1,21 +1,25 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-
+console.log(process.env.NODE_ENV)
 export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxt/devtools',
     '@vueuse/motion/nuxt',
     '@nuxt/image',
+    '@nuxt/scripts',
   ],
+
   image: {
-    provider: 'netlify',
+    provider: process.env.NODE_ENV == 'production' ? 'netlify' : 'ipx',
   },
+
   nitro: {
     compressPublicAssets: {
       brotli: true,
       gzip: true,
     },
   },
+
   runtimeConfig: {
     public: {
       motion: {
@@ -48,37 +52,18 @@ export default defineNuxtConfig({
       },
     },
   },
+
   components: [
     {
       path: '~/components',
       pathPrefix: false,
     },
   ],
+
   devtools: {
     enabled: true,
   },
-  head: {
-    title: 'Jarne Delarue',
-    meta: [
-      {
-        name: 'description',
-        content:
-          "Hi there, I'm Jarne Delarue. Welcome to my portfolio, I'm a Full-Stack Web Developer based in Flanders. I enjoy building beautiful and functional websites ",
-      },
-      {
-        name: 'robots',
-        content: 'index, follow',
-      },
-      {
-        name: 'keywords',
-        content: 'Jarne Delarue, Portfolio, Web Developer, Full-Stack,',
-      },
-      {
-        name: 'author',
-        content: 'Jarne Delarue',
-      },
-    ],
-  },
+
   app: {
     head: {
       title: 'Jarne Delarue',
@@ -123,5 +108,12 @@ export default defineNuxtConfig({
     },
   },
 
+  scripts: {
+    registry: {
+      cloudflareWebAnalytics: {
+        token: '55b69d9a04c240d582fde78c5c00876c',
+      },
+    },
+  },
   compatibilityDate: '2025-02-20',
 })
