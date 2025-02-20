@@ -32,6 +32,8 @@
         >Get in touch</a
       >
     </div>
+
+    <contact-form />
   </article>
 </template>
 

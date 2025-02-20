@@ -1,59 +1,55 @@
 <template>
   <div
-    class="bg-gradient-to-tr from-background-light-500 via-background-light-300 to-background-light-100 bg-no-repeat md:bg-fixed dark:from-background-dark-500 dark:via-background-dark-300 dark:to-background-dark-100"
+    class="min-h-screen bg-light-repeating-bg md:motion-safe:animate-moveBg lg:mx-0 dark:bg-dark-repeating-bg dark:text-gray-100"
   >
-    <div
-      class="min-h-screen bg-light-repeating-bg md:motion-safe:animate-moveBg lg:mx-0 dark:bg-dark-repeating-bg dark:text-gray-100"
-    >
-      <div class="mx-6">
-        <div
-          class="fixed left-0 right-0 top-0 z-20 flex h-[72px] w-full flex-row justify-between transition-all duration-200 md:mx-0"
-          ref="header"
-          :class="{
-            '-translate-y-[72px]': isHidden,
-            'bg-[#dee0dd]/80 backdrop-blur-sm backdrop-filter dark:bg-[#211f22]/20':
-              isSticky,
+    <div class="mx-6">
+      <div
+        class="fixed left-0 right-0 top-0 z-20 flex h-[72px] w-full flex-row justify-between transition-all duration-200 md:mx-0"
+        ref="header"
+        :class="{
+          '-translate-y-[72px]': isHidden,
+          'bg-[#dee0dd]/80 backdrop-blur-sm backdrop-filter dark:bg-[#211f22]/20':
+            isSticky,
+        }"
+      >
+        <h1
+          class="p-3 md:mx-2"
+          v-motion="{
+            initial: { opacity: 0, y: -20, x: -20 },
+            enter: { opacity: 1, y: 0, x: 0, transition: { delay: 100 } },
           }"
         >
-          <h1
-            class="p-3 md:mx-2"
-            v-motion="{
-              initial: { opacity: 0, y: -20, x: -20 },
-              enter: { opacity: 1, y: 0, x: 0, transition: { delay: 100 } },
-            }"
+          <NuxtLink
+            to="/"
+            class="logo-link hover:bg-active rounded-lg focus:outline-none"
           >
-            <NuxtLink
-              to="/"
-              class="logo-link hover:bg-active rounded-lg focus:outline-none"
-            >
-              <Logo
-                class="logo rounded-lg fill-primary-light transition-colors duration-200 dark:fill-primary-light"
-              ></Logo>
-            </NuxtLink>
-          </h1>
-          <DesktopNavigation
-            class="hidden md:flex"
-            :links="links"
-            :downloads="downloads"
-          />
-          <MobileNavigationButton
-            class="md:hidden"
-            :is-open="isOpen"
-            v-on:click="isOpen = !isOpen"
-          />
-        </div>
-        <MobileSideNav
-          class="md:hidden"
-          :is-open="isOpen"
+            <Logo
+              class="logo rounded-lg fill-primary-light transition-colors duration-200 dark:fill-primary-light"
+            ></Logo>
+          </NuxtLink>
+        </h1>
+        <DesktopNavigation
+          class="hidden md:flex"
           :links="links"
           :downloads="downloads"
-          v-on:close="isOpen = false"
         />
-        <div ref="scrollLockContent">
-          <slot />
-        </div>
-        <Foot></Foot>
+        <MobileNavigationButton
+          class="md:hidden"
+          :is-open="isOpen"
+          v-on:click="isOpen = !isOpen"
+        />
       </div>
+      <MobileSideNav
+        class="md:hidden"
+        :is-open="isOpen"
+        :links="links"
+        :downloads="downloads"
+        v-on:close="isOpen = false"
+      />
+      <div ref="scrollLockContent">
+        <slot />
+      </div>
+      <Foot></Foot>
     </div>
   </div>
 </template>
