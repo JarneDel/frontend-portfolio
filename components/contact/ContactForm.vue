@@ -27,10 +27,13 @@
           id="name"
           v-model="formData.name"
           required
-          class="dark:bg-background-dark-700 mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-primary-light focus:outline-none focus:ring-primary-light sm:text-sm dark:border-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-dark dark:focus:ring-primary-dark"
+          class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-primary-light focus:outline-none focus:ring-primary-light sm:text-sm dark:border-gray-600 dark:bg-background-dark-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-dark dark:focus:ring-primary-dark"
         />
-        <div v-if="validationErrors.name" class="mt-1 text-sm text-red-500">
-          {{ validationErrors.name }}
+        <div
+          v-if="validationErrors?.data?.name"
+          class="mt-1 text-sm text-red-500"
+        >
+          {{ validationErrors.data.name }}
         </div>
       </div>
 
@@ -47,8 +50,11 @@
           required
           class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-primary-light focus:outline-none focus:ring-primary-light sm:text-sm dark:border-gray-600 dark:bg-background-dark-500 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-dark dark:focus:ring-primary-dark"
         />
-        <div v-if="validationErrors.email" class="mt-1 text-sm text-red-700">
-          {{ validationErrors.email }}
+        <div
+          v-if="validationErrors?.data?.email"
+          class="mt-1 text-sm text-red-700"
+        >
+          {{ validationErrors.data.email }}
         </div>
       </div>
 
@@ -63,10 +69,13 @@
           v-model="formData.message"
           required
           rows="4"
-          class="dark:bg-background-dark-700 mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-primary-light focus:outline-none focus:ring-primary-light sm:text-sm dark:border-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-dark dark:focus:ring-primary-dark"
+          class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-primary-light focus:outline-none focus:ring-primary-light sm:text-sm dark:border-gray-600 dark:bg-background-dark-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-dark dark:focus:ring-primary-dark"
         ></textarea>
-        <div v-if="validationErrors.message" class="mt-1 text-sm text-red-500">
-          {{ validationErrors.message }}
+        <div
+          v-if="validationErrors?.data?.message"
+          class="mt-1 text-sm text-red-500"
+        >
+          {{ validationErrors.data.message }}
         </div>
       </div>
 
@@ -120,26 +129,27 @@ const submitForm = async () => {
   try {
     const response = await $fetch('/api/contact', {
       method: 'POST',
-      body: { ...formData.value, honeypot: honeypot.value }, //Include in BE
+      body: { ...formData.value, honeypot: honeypot.value },
     })
 
     if (response.success) {
       successMessage.value = 'Message sent successfully!'
       formData.value = { name: '', email: '', message: '' }
       honeypot.value = '' // Clear honeypot
-    } else {
-      if (response.validationErrors) {
-        // Map validation errors to the correct fields
-        response.validationErrors.forEach(err => {
-          validationErrors.value[err.field] = err.message
-        })
-      } else {
-        errorMessage.value = response.error || 'An unexpected error occurred.'
-      }
     }
   } catch (error) {
-    errorMessage.value = 'Failed to send message. Please try again later.'
-    console.error('Submission error:', error)
+    console.log('Error caught:', error)
+
+    if (error.statusCode === 400 && error.data) {
+      // Use error.data directly - it contains field-specific validation errors
+      // e.g., { message: "Please enter a longer message" } or { email: "Invalid email format" }
+      validationErrors.value = error.data
+      errorMessage.value = '' // Clear general error message
+    } else {
+      // Handle other types of errors
+      errorMessage.value =
+        error.statusMessage || 'Failed to send message. Please try again later.'
+    }
   } finally {
     isSubmitting.value = false
   }
