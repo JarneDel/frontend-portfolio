@@ -43,6 +43,7 @@
     "@vueuse/motion": "^2.2.6",
     "bodymovin": "^4.13.0",
     "lottie-web": "^5.12.2",
+    "unenv": "^1.10.0",
     "vue-router": "4",
     "zod": "^3.24.2"
   }
