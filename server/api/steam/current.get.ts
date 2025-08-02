@@ -57,7 +57,7 @@ export default defineEventHandler(async (event): Promise<{ currentGame: CurrentG
 
         const gameIconData = await gameIconResponse.json()
         const ownedGames: SteamApiOwnedGame[] = gameIconData.response.games || []
-        game = ownedGames.find(g => g.appid.toString() === player.gameid)
+        game = ownedGames.find(g => g.appid.toString() === String(player.gameid))
     }
 
     // Format the response

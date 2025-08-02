@@ -1,11 +1,11 @@
 <template>
-  <article class="py-24" id="contact">
+  <article class="py-12" id="contact">
     <h2
       v-motion="{
         initial: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0 },
       }"
-      class="mb-12 text-3xl font-bold text-gray-900 accent-teal-700 dark:text-gray-100"
+      class="mb-6 text-3xl font-bold text-gray-900 accent-teal-700 dark:text-gray-100"
     >
       Get in touch
     </h2>

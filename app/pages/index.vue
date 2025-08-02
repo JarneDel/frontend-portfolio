@@ -11,8 +11,8 @@
       <SectionFold />
       <SectionAbout />
       <SectionProjects />
-      <SectionContact />
       <SteamWidget />
+      <SectionContact />
     </div>
     <div class="cursor-background" ref="cursorBackground" />
   </div>

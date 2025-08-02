@@ -11,14 +11,14 @@
     >
     
       <div class="flex w-full flex-col gap-4 lg:w-3/5">
-        <div class="flex-1 rounded-lg bg-gray-800 h-max">
+        <div class="flex-1 rounded-lg dark:bg-gray-800 bg-gray-50 h-max">
           <PlayerInfoCard :player-info="currentGameData.playerInfo" />
         </div>
 
-        <div class="flex-1 basis-2/5 rounded-lg bg-gray-800">
+        <div class="flex-1 basis-2/5 rounded-lg dark:bg-gray-800 bg-gray-50">
           <div
             v-if="steamData.recentGames && steamData.recentGames.length > 0"
-            class="flex-1 basis-3/4 rounded-lg bg-gray-800"
+            class="flex-1 basis-3/4 rounded-lg dark:bg-gray-800 bg-gray-50"
           >
             <RecentGamesCard :recent-games="steamData.recentGames" />
           </div>
@@ -26,7 +26,7 @@
 
         <div
           v-if="steamData.platformStats"
-          class="flex-1 basis-1/5 rounded-lg bg-gray-800"
+          class="flex-1 basis-1/5 rounded-lg dark:bg-gray-800 bg-gray-50"
         >
           <PlatformStats :platform-stats="steamData.platformStats" />
         </div>
@@ -41,7 +41,7 @@
           v-if="
             steamData.mostPlayedGames && steamData.mostPlayedGames.length > 0
           "
-          class="flex-1 basis-1/4 rounded-lg bg-gray-800"
+          class="flex-1 basis-1/4 rounded-lg dark:bg-gray-800 bg-gray-50"
         >
           <MostPlayedGamesCard :most-played-games="steamData.mostPlayedGames" :recent-count="steamData.recentGames.length" />
         </div>

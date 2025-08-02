@@ -23,7 +23,7 @@
           <div
             v-for="game in paginatedGames"
             :key="game.id"
-            class="dark:bg-gray-750 flex flex-col items-center rounded-lg bg-gray-100 p-2 text-center transition-all transition-colors duration-200 hover:bg-gray-50 hover:shadow-sm dark:hover:bg-gray-700"
+            class="dark:bg-gray-750 flex flex-col items-center rounded-lg bg-gray-100 p-2 text-center transition-colors duration-200 hover:bg-gray-50 hover:shadow-sm dark:hover:bg-gray-700"
           >
             <BaseImage
               :src="game.iconUrl"

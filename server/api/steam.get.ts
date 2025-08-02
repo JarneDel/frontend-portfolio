@@ -94,7 +94,7 @@ export default defineEventHandler(async (event): Promise<SteamData> => {
       .slice(0, 40)
 
     // get last played game (sorted by rtime_last_played)
-    const lastPlayedGame = ownedGames.sort((a, b) => {
+    const lastPlayedGame = [...ownedGames].sort((a, b) => {
       const aLastPlayed = a.rtime_last_played || 0
       const bLastPlayed = b.rtime_last_played || 0
 

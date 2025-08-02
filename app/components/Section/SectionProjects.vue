@@ -1,5 +1,5 @@
 <template>
-  <article class="py-24" id="projects">
+  <article class="py-12" id="projects">
     <h2
       v-motion="{
         initial: { opacity: 0, y: 20 },

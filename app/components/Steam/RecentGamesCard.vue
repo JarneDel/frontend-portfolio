@@ -43,7 +43,7 @@
 
       <!-- Games 2-6 - smaller grid items -->
       <div
-        v-for="game in sortedRecentGames.slice(1, 8)"
+        v-for="game in sortedRecentGames.slice(1, maxDisplayedGames)"
         :key="game.id"
         class="min-w-0"
         :class="{
@@ -100,6 +100,8 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+
+const maxDisplayedGames = 8
 
 // Sort recent games by last played time (most recent first)
 const sortedRecentGames = computed(() => {
