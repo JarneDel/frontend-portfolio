@@ -40,7 +40,7 @@ article {
         v-motion="{
           initial: { opacity: 0, y: 20 },
           enter: { opacity: 1, y: 0, transition: { delay: 0.5 } },
-          visible: { opacity: 1, y: 0 },
+          visibleOnce: { opacity: 1, y: 0 },
         }"
       >
         About me
@@ -50,7 +50,7 @@ article {
         v-motion="{
           initial: { opacity: 0, y: 20 },
           enter: { opacity: 1, y: 0, transition: { delay: 0.6 } },
-          visible: { opacity: 1, y: 0 },
+          visibleOnce: { opacity: 1, y: 0 },
         }"
       >
         Hi there! I'm a <strong>full-stack web developer</strong> and
@@ -64,7 +64,7 @@ article {
         v-motion="{
           initial: { opacity: 0, y: 20 },
           enter: { opacity: 1, y: 0, transition: { delay: 0.7 } },
-          visible: { opacity: 1, y: 0 },
+          visibleOnce: { opacity: 1, y: 0 },
         }"
         class="mb-4 max-w-[32rem] leading-relaxed text-gray-600 md:text-lg dark:text-gray-400"
       >
@@ -78,7 +78,7 @@ article {
         v-motion="{
           initial: { opacity: 0, y: 20 },
           enter: { opacity: 1, y: 0, transition: { delay: 0.7 } },
-          visible: { opacity: 1, y: 0 },
+          visibleOnce: { opacity: 1, y: 0 },
         }"
         class="mb-4 max-w-[32rem] leading-relaxed text-gray-600 md:text-lg dark:text-gray-400"
       >

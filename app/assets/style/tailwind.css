@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary-dark: #2dd4bf;
+    --color-primary-light: #23a694;
+
+    --color-background-light-100: #fff;
+    --color-background-light-200: #eaeceb;
+    --color-background-light-300: #dee0dd;
+    --color-background-light-400: #d4d3ce;
+    --color-background-light-500: #cbc5bf;
+
+    --color-background-dark-100: #000000;
+    --color-background-dark-200: #151314;
+    --color-background-dark-300: #211f22;
+    --color-background-dark-400: #2b2c31;
+    --color-background-dark-500: #343a40;
+    --color-background-dark-700: #384047;
+
+    --color-gray-750: oklch(32.55% 0.0335 258.29);
+
+    --width-99: 55rem;
+
+    --shadow-outline-primary-light: 0 0 0 3px rgba(45, 212, 191, 0.5);
+    --shadow-outline-primary-dark: 0 0 0 3px rgba(35, 166, 148, 0.5);
+
+    --background-image-dark-repeating-bg: url('/images/dark-repeating-bg.svg');
+    --background-image-light-repeating-bg: url('/images/light-repeating-bg.svg');
+
+    --animate-moveBg: moveBg 3s linear infinite;
+
+    --grid-template-columns-sidebar: fit-content 1fr;
+    --grid-template-rows-sidebar: fit-content 1fr;
+}
+
+@keyframes moveBg {
+    0% { background-position: 0 0; }
+    100% { background-position: 36px 36px; }
+}
+
+@variant hocus (&:hover, &:focus-visible);
+@variant child (& > *);

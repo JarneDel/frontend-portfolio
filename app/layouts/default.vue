@@ -69,7 +69,7 @@
 </style>
 
 <script setup lang="ts">
-import type { ILink } from '~/Interfaces/ILink'
+import type { ILink } from '~~/Interfaces/ILink'
 
 const { isHidden, isSticky } = useStickyHeader()
 import { User, Contact, Code2, FileText } from 'lucide-vue-next'

@@ -1,26 +1,33 @@
+import tailwindcss from '@tailwindcss/vite'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 console.log(process.env.NODE_ENV)
 export default defineNuxtConfig({
   modules: [
-    '@nuxtjs/tailwindcss',
     '@nuxt/devtools',
     '@vueuse/motion/nuxt',
     '@nuxt/image',
     '@nuxt/scripts',
   ],
-
-  image: {
-    provider: process.env.NODE_ENV == 'production' ? 'netlify' : 'ipx',
+  css: ['~/assets/style/tailwind.css'],
+  vite: {
+    plugins: [tailwindcss()],
   },
-
+  image: {
+    provider: process.env.NODE_ENV == 'production' ? 'netlifyImageCdn' : 'ipx',
+    domains: ['media.steampowered.com', 'avatars.steamstatic.com'],
+  },
   nitro: {
     compressPublicAssets: {
       brotli: true,
       gzip: true,
     },
   },
-
   runtimeConfig: {
+    // Private keys (only available on server-side)
+    steamApiKey: process.env.STEAM_API_KEY,
+    steamId: process.env.STEAM_ID,
+
     public: {
       motion: {
         directives: {

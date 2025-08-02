@@ -11,6 +11,7 @@
       <SectionFold />
       <SectionAbout />
       <SectionProjects />
+      <SteamWidget />
       <SectionContact />
     </div>
     <div class="cursor-background" ref="cursorBackground" />
@@ -78,13 +79,13 @@ onMounted(() => {
   width: var(--cursor-size);
   height: var(--cursor-size);
   border-radius: 50%;
-  background-color: #2dd4bf; // Changed to teal
-  opacity: 0.3;
+  background-color: #2dd4bf; 
+  opacity: 0.1;
   pointer-events: none;
   z-index: 9999;
   mix-blend-mode: overlay;
   box-shadow: 0 0 calc(var(--cursor-size) / 2) calc(var(--cursor-size) / 3)
-    rgba(45, 212, 191, 0.5); // Changed to teal with alpha
+    rgba(45, 212, 191, 0.5); 
   filter: blur(10px);
   animation: morph 3s infinite ease-in-out;
   translate: v-bind(translateX) v-bind(translateY) 0;
