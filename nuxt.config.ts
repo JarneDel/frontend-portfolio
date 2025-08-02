@@ -15,6 +15,7 @@ export default defineNuxtConfig({
   },
   image: {
     provider: process.env.NODE_ENV == 'production' ? 'netlify' : 'ipx',
+    domains: ['media.steampowered.com'],
   },
   nitro: {
     compressPublicAssets: {
