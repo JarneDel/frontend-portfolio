@@ -3,7 +3,9 @@ import type {
   PlayerInfo,
   SteamApiPlayerSummaryResponse,
   SteamApiPlayer,
+  SteamApiOwnedGame,
 } from '~/../../Interfaces/ISteam'
+import type { Maybe } from '~/../../Interfaces/maybe'
 
 export default defineEventHandler(async (event): Promise<{ currentGame: CurrentGame | null; playerInfo: PlayerInfo }> => {
   const config = useRuntimeConfig()
@@ -36,6 +38,28 @@ export default defineEventHandler(async (event): Promise<{ currentGame: CurrentG
 
     const player: SteamApiPlayer | undefined = playerSummaryData.response.players[0]
 
+
+    let game: Maybe<SteamApiOwnedGame> = null
+
+    if (player?.gameid) {
+        // get game icon URL
+        const gameIconResponse = await fetch(
+            `https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${steamApiKey}&steamid=${steamId}&format=json&include_appinfo=true&include_played_free_games=true`,
+        )
+
+    
+        if (!gameIconResponse.ok) {
+            throw createError({
+                statusCode: 502,
+                statusMessage: 'Failed to fetch game icon data',
+            })
+        }
+
+        const gameIconData = await gameIconResponse.json()
+        const ownedGames: SteamApiOwnedGame[] = gameIconData.response.games || []
+        game = ownedGames.find(g => g.appid.toString() === player.gameid)
+    }
+
     // Format the response
     return {
       currentGame: player?.gameid
@@ -43,6 +67,9 @@ export default defineEventHandler(async (event): Promise<{ currentGame: CurrentG
             id: player.gameid,
             name: player.gameextrainfo || 'Unknown Game',
             isPlaying: true,
+            iconUrl: game
+              ? `https://media.steampowered.com/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`
+              : '',
           }
         : null,
       playerInfo: {

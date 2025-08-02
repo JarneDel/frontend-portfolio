@@ -12,6 +12,7 @@ export interface CurrentGame {
   id: string
   name: string
   isPlaying: boolean
+  iconUrl?: string
 }
 
 export interface PlayerInfo {
@@ -21,9 +22,18 @@ export interface PlayerInfo {
   personastate: PlayerState
 }
 
+export interface PlatformStats {
+  totalLinuxPlaytime: number
+  totalWindowsPlaytime: number
+  linuxGamesCount: number
+  windowsGamesCount: number
+}
+
 export interface SteamData {
   recentGames: SteamGame[]
   mostPlayedGames: SteamGame[]
+  lastPlayedGame: SteamGame | null
+  platformStats: PlatformStats
 }
 
 export enum PlayerState {
@@ -51,9 +61,12 @@ export interface SteamApiOwnedGame {
   appid: number
   name: string
   playtime_forever: number
+  playtime_linux_forever?: number
+  playtime_windows_forever?: number
   img_icon_url: string
   img_logo_url: string
   has_community_visible_stats?: boolean
+  rtime_last_played: number
 }
 
 export interface SteamApiPlayer {

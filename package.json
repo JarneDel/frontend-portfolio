@@ -42,6 +42,7 @@
     "@vueuse/motion": "^2.2.6",
     "bodymovin": "^4.13.0",
     "lottie-web": "^5.12.2",
+    "sharp": "^0.34.3",
     "unenv": "^1.10.0",
     "vite-tsconfig-paths": "^5.1.4",
     "vue-router": "4",

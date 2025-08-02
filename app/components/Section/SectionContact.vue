@@ -1,5 +1,5 @@
 <template>
-  <article class="mb-48 py-24" id="contact">
+  <article class="py-24" id="contact">
     <h2
       v-motion="{
         initial: { opacity: 0, y: 20 },
