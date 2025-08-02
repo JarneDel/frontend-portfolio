@@ -51,10 +51,24 @@
             </h3>
             <a
               :href="`mailto:contact@jarnedel.dev`"
-              class="inline-flex items-center justify-center rounded-lg border-2 border-solid border-teal-400 p-3 text-center outline-none transition-colors duration-300 focus-visible:ring focus-visible:ring-teal-600 hocus:bg-primary-dark hocus:text-white"
+              class="mb-4 inline-flex items-center justify-center rounded-lg border-2 border-solid border-teal-400 p-3 text-center outline-none transition-colors duration-300 focus-visible:ring focus-visible:ring-teal-600 hocus:bg-primary-dark hocus:text-white"
             >
               Get in touch via email
             </a>
+            
+            <!-- Social Links -->
+            <div class="flex items-center justify-center gap-4">
+              <Github
+                :to="socials.github"
+                :size="24"
+                class="text-gray-600 transition-colors duration-200 hocus:text-teal-600 dark:text-gray-400 dark:hocus:text-teal-400"
+              />
+              <LinkedIn
+                :to="socials.linkedin"
+                :size="24"
+                class="text-gray-600 transition-colors duration-200 hocus:text-teal-600 dark:text-gray-400 dark:hocus:text-teal-400"
+              />
+            </div>
           </div>
 
           <!-- Current Status Card -->
@@ -117,4 +131,10 @@
   </article>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Github from '~/components/navigation/Github.vue'
+import LinkedIn from '~/components/navigation/LinkedIn.vue'
+import Mail from '~/components/navigation/Mail.vue'
+
+const socials = useSocials().socials
+</script>
