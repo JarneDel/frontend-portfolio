@@ -10,7 +10,7 @@
       class="flex flex-col gap-4 lg:flex-row"
       v-motion="{
         initial: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 },
+        visibleOnce: { opacity: 1, y: 0 },
       }"
     >
     
@@ -19,7 +19,7 @@
           class="flex-1 rounded-lg dark:bg-gray-800 bg-gray-50 h-max"
           v-motion="{
             initial: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0, transition: { delay: 0.1 } },
+            visibleOnce: { opacity: 1, y: 0, transition: { delay: 0.1 } },
           }"
         >
           <PlayerInfoCard :player-info="currentGameData.playerInfo" />
@@ -29,7 +29,7 @@
           class="flex-1 basis-2/5 rounded-lg dark:bg-gray-800 bg-gray-50"
           v-motion="{
             initial: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0, transition: { delay: 0.2 } },
+            visibleOnce: { opacity: 1, y: 0, transition: { delay: 0.2 } },
           }"
         >
           <div
@@ -56,7 +56,7 @@
         <div
           v-motion="{
             initial: { opacity: 0, x: 20 },
-            visible: { opacity: 1, x: 0, transition: { delay: 0.4 } },
+            visibleOnce: { opacity: 1, x: 0, transition: { delay: 0.4 } },
           }"
         >
           <GameStatusCard
@@ -71,7 +71,7 @@
           class="flex-1 basis-1/4 rounded-lg dark:bg-gray-800 bg-gray-50"
           v-motion="{
             initial: { opacity: 0, x: 20 },
-            visible: { opacity: 1, x: 0, transition: { delay: 0.5 } },
+            visibleOnce: { opacity: 1, x: 0, transition: { delay: 0.5 } },
           }"
         >
           <MostPlayedGamesCard :most-played-games="steamData.mostPlayedGames" :recent-count="steamData.recentGames.length" />

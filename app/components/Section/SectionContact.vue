@@ -11,7 +11,7 @@
             class="flex flex-col justify-center rounded-lg bg-gray-100 p-6 shadow-lg dark:bg-gray-800 flex-1"
             v-motion="{
               initial: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 },
+              visibleOnce: { opacity: 1, y: 0 },
             }"
           >
             <h2 class="mb-4 text-3xl font-bold text-gray-900 accent-teal-700 dark:text-gray-100">
@@ -29,7 +29,7 @@
             class="rounded-lg bg-gray-100 p-6 shadow-lg dark:bg-gray-800 flex-1"
             v-motion="{
               initial: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0, transition: { delay: 0.3 } },
+              visibleOnce: { opacity: 1, y: 0, transition: { delay: 0.3 } },
             }"
           >
             <contact-form />
@@ -43,7 +43,7 @@
             class="flex flex-col justify-center rounded-lg bg-gray-100 p-6 shadow-lg dark:bg-gray-800 flex-1"
             v-motion="{
               initial: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0, transition: { delay: 0.5 } },
+              visibleOnce: { opacity: 1, y: 0, transition: { delay: 0.5 } },
             }"
           >
             <h3 class="mb-4 text-xl font-semibold text-gray-900 dark:text-gray-100">
@@ -62,7 +62,7 @@
             class="flex flex-col justify-center rounded-lg bg-gradient-to-br from-teal-300 to-blue-300 dark:from-teal-500 dark:to-blue-500 p-6 dark:  text-white shadow-lg flex-1"
             v-motion="{
               initial: { opacity: 0, scale: 0.9 },
-              visible: { opacity: 1, scale: 1, transition: { delay: 0.7 } },
+              visibleOnce: { opacity: 1, scale: 1, transition: { delay: 0.7 } },
             }"
           >
             <h3 class="mb-2 text-lg font-semibold">Current Status</h3>
@@ -80,7 +80,7 @@
             class="flex flex-col justify-center rounded-lg bg-gray-50 p-6 shadow-lg dark:bg-gray-700 flex-1"
             v-motion="{
               initial: { opacity: 0, x: 20 },
-              visible: { opacity: 1, x: 0, transition: { delay: 0.9 } },
+              visibleOnce: { opacity: 1, x: 0, transition: { delay: 0.9 } },
             }"
           >
             <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
@@ -102,7 +102,7 @@
             class="flex flex-col justify-center rounded-lg bg-gradient-to-br from-purple-400 to-pink-400 dark:from-purple-600 dark:to-pink-600 p-6 dark:text-white shadow-lg flex-1"
             v-motion="{
               initial: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0, transition: { delay: 1.1 } },
+              visibleOnce: { opacity: 1, y: 0, transition: { delay: 1.1 } },
             }"
           >
             <h3 class="mb-2 text-lg font-semibold">💡 Fun Fact</h3>
