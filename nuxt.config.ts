@@ -14,8 +14,8 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
   image: {
-    provider: process.env.NODE_ENV == 'production' ? 'netlify' : 'ipx',
-    domains: ['media.steampowered.com'],
+    provider: process.env.NODE_ENV == 'production' ? 'netlifyImageCdn' : 'ipx',
+    domains: ['media.steampowered.com', 'avatars.steamstatic.com'],
   },
   nitro: {
     compressPublicAssets: {
