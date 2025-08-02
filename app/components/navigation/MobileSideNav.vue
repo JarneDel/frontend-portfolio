@@ -1,6 +1,6 @@
 <template>
   <aside
-    class="fixed top-0 bottom-0 right-0 z-10 flex h-full w-3/5 transform flex-col bg-background-light-300/90 p-4 shadow-lg backdrop-blur transition-all duration-300 ease-in-out dark:bg-background-dark-300/90"
+    class="fixed bottom-0 right-0 top-0 z-10 flex h-full w-3/5 transform flex-col bg-background-light-300/90 p-4 shadow-lg backdrop-blur transition-all duration-300 ease-in-out dark:bg-background-dark-300/90"
     :class="{
       'translate-x-0 opacity-100': isOpen,
       'translate-x-full opacity-0': !isOpen,
@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import { type ILink } from '~/Interfaces/ILink'
+import { type ILink } from '~~/Interfaces/ILink'
 import { type PropType } from '@vue/runtime-core'
 
 const props = defineProps({

@@ -40,7 +40,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { type ILink } from '~/Interfaces/ILink'
+import { type ILink } from '~~/Interfaces/ILink'
 import { type PropType } from '@vue/runtime-core'
 
 const props = defineProps({
