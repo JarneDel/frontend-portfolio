@@ -8,14 +8,30 @@
     <div
       v-else-if="steamData && currentGameData"
       class="flex flex-col gap-4 lg:flex-row"
+      v-motion="{
+        initial: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0 },
+      }"
     >
     
       <div class="flex w-full flex-col gap-4 lg:w-3/5">
-        <div class="flex-1 rounded-lg dark:bg-gray-800 bg-gray-50 h-max">
+        <div 
+          class="flex-1 rounded-lg dark:bg-gray-800 bg-gray-50 h-max"
+          v-motion="{
+            initial: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0, transition: { delay: 0.1 } },
+          }"
+        >
           <PlayerInfoCard :player-info="currentGameData.playerInfo" />
         </div>
 
-        <div class="flex-1 basis-2/5 rounded-lg dark:bg-gray-800 bg-gray-50">
+        <div 
+          class="flex-1 basis-2/5 rounded-lg dark:bg-gray-800 bg-gray-50"
+          v-motion="{
+            initial: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0, transition: { delay: 0.2 } },
+          }"
+        >
           <div
             v-if="steamData.recentGames && steamData.recentGames.length > 0"
             class="flex-1 basis-3/4 rounded-lg dark:bg-gray-800 bg-gray-50"
@@ -27,21 +43,36 @@
         <div
           v-if="steamData.platformStats"
           class="flex-1 basis-1/5 rounded-lg dark:bg-gray-800 bg-gray-50"
+          v-motion="{
+            initial: { opacity: 0, y: 20 },
+            visibleOnce: { opacity: 1, y: 0, transition: { delay: 0.3 } },
+          }"
         >
           <PlatformStats :platform-stats="steamData.platformStats" />
         </div>
       </div>
 
       <div class="flex w-full flex-col gap-4 lg:w-2/5">
-        <GameStatusCard
-          :current-game="currentGameData.currentGame"
-          :last-played-game="steamData.lastPlayedGame"
-        />
+        <div
+          v-motion="{
+            initial: { opacity: 0, x: 20 },
+            visible: { opacity: 1, x: 0, transition: { delay: 0.4 } },
+          }"
+        >
+          <GameStatusCard
+            :current-game="currentGameData.currentGame"
+            :last-played-game="steamData.lastPlayedGame"
+          />
+        </div>
         <div
           v-if="
             steamData.mostPlayedGames && steamData.mostPlayedGames.length > 0
           "
           class="flex-1 basis-1/4 rounded-lg dark:bg-gray-800 bg-gray-50"
+          v-motion="{
+            initial: { opacity: 0, x: 20 },
+            visible: { opacity: 1, x: 0, transition: { delay: 0.5 } },
+          }"
         >
           <MostPlayedGamesCard :most-played-games="steamData.mostPlayedGames" :recent-count="steamData.recentGames.length" />
         </div>

@@ -1,13 +1,7 @@
 <template>
-  <div
-    class="mt-10 max-w-md rounded-lg bg-gray-100 p-4 shadow-lg transition-transform duration-200 dark:bg-gray-800"
-    v-motion="{
-      initial: { opacity: 0, y: 20 },
-      visibleOnce: { opacity: 1, y: 0 },
-    }"
-  >
+  <div class="w-full">
     <h2 class="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
-      Contact Me
+      Contact Form
     </h2>
 
     <form @submit.prevent="submitForm" class="space-y-4">
