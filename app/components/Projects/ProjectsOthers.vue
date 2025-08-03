@@ -32,49 +32,7 @@
 </template>
 
 <script setup lang="ts">
-interface IProject {
-  id: number
-  name: string
-  description: string
-  technologies: string
-  githubUrl: string
-  link?: string
-  externalTitle?: string
-}
-
-const projects: IProject[] = [
-  {
-    id: 1,
-    name: 'Roman converter',
-    description: 'A simple app to convert Latin numbers to Roman numbers.',
-    technologies: 'Expo ReactNative TypeScript',
-    githubUrl: 'https://github.com/JarneDel/app-converter',
-  },
-
-  {
-    id: 2,
-    name: 'Portfolio',
-    description: 'This portfolio',
-    technologies: 'Nuxt Vue Typescript TailwindCss SPA',
-    githubUrl: 'https://github.com/JarneDel/frontend-portfolio',
-  },
-  {
-    id: 3,
-    name: 'Sports Complex',
-    description:
-      'A website to manage a sport complex. Currently not live due to cost of hosting.',
-    technologies:
-      'Vue Nestjs Docker Typescript TailwindCss SPA PWA GraphQL Jest MonoRepo MongoDB Firebase',
-    githubUrl: 'https://github.com/JarneDel/Doran-Jarne-Tibo',
-  },
-  {
-    id: 4,
-    name: 'HTML colors',
-    description: 'A simple app that shows you a random html color.',
-    technologies: 'Expo ReactNative TypeScript Animation',
-    githubUrl: 'https://github.com/JarneDel/app-html-kleuren/tree/develop',
-  },
-]
+import { projectOthers as projects } from '~/content/projects'
 
 // --- Dynamic Class Function for Bento Layout ---
 const getProjectClasses = (index: number): string => {

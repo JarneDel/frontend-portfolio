@@ -1,5 +1,5 @@
 <template>
-  <article class="mt-20 mb-24 font-sans md:mt-30">
+  <article class="mt-20 mb-12 font-sans md:mt-30">
     <!-- Bento Grid Container -->
     <div
       class="mx-auto mb-8 grid h-auto max-w-4xl grid-cols-1 gap-4 min-[360px]:grid-cols-2 md:h-[400px] md:grid-cols-4 md:grid-rows-3"
