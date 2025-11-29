@@ -98,8 +98,8 @@ const {
   pending: steamPending,
   error: steamError,
   refresh: refreshSteam,
-} = await useLazyAsyncData('steamData', () => $fetch<SteamData>('/api/steam'), {
-  server: false,
+} = await useAsyncData('steamData', () => $fetch<SteamData>('/api/steam'), {
+  server: true,
 })
 
 // Fetch current game status (updates more frequently, less cached)

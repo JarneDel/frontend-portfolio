@@ -16,11 +16,11 @@ const filterOptions = [
 // 1. Profile: Keep this BLOCKING (await) if it's fast (<100ms),
 // so the layout skeleton (sidebar/header) exists immediately.
 // If it's slow, change to useLazyAsyncData.
-const { data: profile } = await useLazyAsyncData(
+const { data: profile } = await useAsyncData(
   'wot-profile',
   () => $fetch('/api/wargaming/wot-account'),
   {
-    server: false,
+    server: true,
   },
 )
 
@@ -40,11 +40,11 @@ const {
   },
 )
 
-const { data: graphData, status: graphStatus } = await useLazyAsyncData(
+const { data: graphData, status: graphStatus } = await useAsyncData(
   'wot-graph',
   () => $fetch('/api/wargaming/wot-graph'),
   {
-    server: false,
+    server: true,
   },
 )
 </script>
