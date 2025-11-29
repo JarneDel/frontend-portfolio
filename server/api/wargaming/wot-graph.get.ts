@@ -9,6 +9,8 @@ export interface GraphDataPoint {
 
 export default defineEventHandler(async (event): Promise<GraphDataPoint[]> => {
   const config = useRuntimeConfig()
+
+  console.log(config, config.accountId)
   const accountId = config.accountId || '522903268'
   const region = config.wargamingRegion || 'eu'
 
@@ -17,7 +19,7 @@ export default defineEventHandler(async (event): Promise<GraphDataPoint[]> => {
 
   try {
     const response = await $fetch<any>(url)
-    const sessions = response?.data?.sesday || []
+    const sessions = response.data.sesday || []
 
     // Transform for the frontend
     // We sort by timestamp just in case, though usually it's sorted
