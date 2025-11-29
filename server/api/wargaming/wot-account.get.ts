@@ -89,6 +89,9 @@ export default defineEventHandler(async (event): Promise<WotAccountData> => {
       )
     ])
 
+    console.log('Account Response:', JSON.stringify(accountResponse, null, 2))
+    console.log('Rating Response:', JSON.stringify(ratingResponse, null, 2))
+
     const userData = accountResponse.data[accountId]
     const ratingData = ratingResponse.data[accountId]
 
