@@ -80,7 +80,7 @@ export default defineEventHandler(async (event): Promise<RecentStats> => {
     const overall = {
       battles: recentData.overall?.battles || recentData.battles,
       winRate: recentData.overall?.winrate || recentData.winrate,
-      wn8: recentData.overall?.wn8 || recentData.wn8,
+      wn8: recentData.overall?.wnx || recentData.wnx || recentData.overall?.wn8 || recentData.wn8,
       avgDamage: recentData.overall?.dpg || recentData.dpg,
       survived: recentData.overall?.survival || recentData.survival || 0,
       label: filterLabel,
@@ -104,7 +104,7 @@ export default defineEventHandler(async (event): Promise<RecentStats> => {
         image: t.bigImage || t.image,
         battles: t.battles,
         winRate: t.winrate,
-        wn8: t.wn8,
+        wn8: t.wnx || t.wn8,
         dpg: t.dpg,
         isPremium: t.isPrem
       }))

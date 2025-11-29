@@ -87,8 +87,8 @@ export default defineEventHandler(async (event): Promise<WotAccountData> => {
       )
     ])
 
-    const userData = accountResponse.data[accountId]
-    const ratingData = ratingResponse.data[accountId]
+    const userData = accountResponse.data && accountResponse.data[accountId as string]
+    const ratingData = ratingResponse.data && ratingResponse.data[accountId as string]
 
     if (!userData) {
       throw createError({ statusCode: 404, statusMessage: 'Player not found' })

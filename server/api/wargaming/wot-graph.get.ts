@@ -17,7 +17,7 @@ export default defineEventHandler(async (event): Promise<GraphDataPoint[]> => {
 
   try {
     const response = await $fetch<any>(url)
-    const sessions = response.data.sesday || []
+    const sessions = response?.data?.sesday || []
 
     // Transform for the frontend
     // We sort by timestamp just in case, though usually it's sorted
@@ -27,7 +27,7 @@ export default defineEventHandler(async (event): Promise<GraphDataPoint[]> => {
         day: 'numeric',
       }), // e.g. "Oct 24"
       fullDate: s.timestamp,
-      wn8: s.wn8,
+      wn8: s.wnx || s.wn8,
       battles: s.battles,
       winRate: s.winrate,
     }))

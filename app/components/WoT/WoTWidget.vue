@@ -115,7 +115,7 @@ const formatNumber = (num: number) => {
               <div v-if="recent" class="grid grid-cols-4 gap-y-6 gap-x-2 text-center">
                 <!-- Row 1 -->
                 <div>
-                  <div class="text-[10px] text-background-light-500 mb-1 uppercase tracking-wide font-semibold">WN8</div>
+                  <div class="text-[10px] text-background-light-500 mb-1 uppercase tracking-wide font-semibold">WNX</div>
                   <div class="font-bold text-2xl transition-all duration-300" :style="{ color: getWn8Color(recent.overall.wn8) }">
                     {{ recent.overall.wn8.toFixed(0) }}
                   </div>
@@ -171,7 +171,7 @@ const formatNumber = (num: number) => {
         
         <div v-if="graphData && graphData.length > 0" class="bg-background-dark-300 rounded-xl p-4 shadow-lg border border-background-dark-400 h-64">
           <div class="flex justify-between items-center mb-2">
-            <h3 class="text-xs font-bold text-background-light-500 uppercase tracking-wider">WN8 Evolution</h3>
+            <h3 class="text-xs font-bold text-background-light-500 uppercase tracking-wider">WNX Evolution</h3>
             <span class="text-[10px] text-background-light-500">Last 30 Sessions</span>
           </div>
           <div class="h-[calc(100%-1.5rem)]">

@@ -32,7 +32,7 @@ const chartData = computed<ChartData<'line'>>(() => ({
   labels: props.data.map(d => d.date),
   datasets: [
     {
-      label: 'WN8',
+      label: 'WNX',
       data: props.data.map(d => d.wn8),
       borderColor: '#2dd4bf', // Tailwind primary-dark
       borderWidth: 2,
@@ -67,7 +67,7 @@ const chartOptions: ChartOptions<'line'> = {
       borderWidth: 1,
       displayColors: false,
       callbacks: {
-        label: (ctx) => `WN8: ${ctx.parsed.y}`,
+        label: (ctx) => `WNX: ${ctx.parsed.y}`,
         // Add extra info to tooltip if needed
         afterLabel: (ctx) => {
           const battles = props.data[ctx.dataIndex]?.battles
