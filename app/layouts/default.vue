@@ -60,10 +60,12 @@
   background: rgb(35 166 148 / 0.2);
 }
 
-@media (prefers-color-scheme: dark) .logo {
-  .logo:is(:hover, :focus-visible) {
-    fill: #1f2937;
-    background: rgb(75 85 99 / 0.2);
+@media (prefers-color-scheme: dark) {
+  .logo {
+    .logo:is(:hover, :focus-visible) {
+      fill: #1f2937;
+      background: rgb(75 85 99 / 0.2);
+    }
   }
 }
 </style>
