@@ -108,7 +108,7 @@ export default defineEventHandler(async (event): Promise<RecentStats> => {
         id: t.id,
         name: t.name,
         tier: t.tier,
-        image: t.bigImage || t.image,
+        image: convertToHttps(t.bigImage || t.image),
         battles: t.battles,
         winRate: t.winrate,
         wn8: t.wnx || t.wn8,
@@ -126,3 +126,11 @@ export default defineEventHandler(async (event): Promise<RecentStats> => {
     })
   }
 })
+
+
+const convertToHttps = (url: string): string => {
+  if (url.startsWith('http://')) {
+    return url.replace('http://', 'https://')
+  }
+  return url
+}

@@ -59,10 +59,6 @@ export default defineEventHandler(async (event): Promise<WotAccountData> => {
   const accountId = config.wargamingAccountId?.trim() as string
   const region = config.wargamingRegion || 'eu'
 
-  console.log(apiKey, accountId, region)
-
-  console.log(config, config.accountId, config.wargamingId)
-
   const baseUrl = `https://api.worldoftanks.${region}/wot`
 
   try {
@@ -84,9 +80,6 @@ export default defineEventHandler(async (event): Promise<WotAccountData> => {
         },
       }),
     ])
-
-    console.log('Account Response:', JSON.stringify(accountResponse, null, 2))
-    console.log('Rating Response:', JSON.stringify(ratingResponse, null, 2))
 
     const userData = accountResponse.data[accountId]
     const ratingData = ratingResponse.data[accountId]

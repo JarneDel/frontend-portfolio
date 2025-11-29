@@ -33,7 +33,6 @@ export default defineEventHandler(async (event): Promise<SteamData> => {
       const isExpired = (Date.now() - cachedData.timestamp) / 1000 > CACHE_TTL
       
       if (!isExpired) {
-        console.log('Returning cached Steam data')
         return cachedData.data
       }
     }
@@ -160,7 +159,6 @@ export default defineEventHandler(async (event): Promise<SteamData> => {
         data: steamData,
         timestamp: Date.now(),
       })
-      console.log('Steam data cached successfully')
     } catch (error) {
       console.warn('Cache write error:', error)
     }
