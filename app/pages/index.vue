@@ -2,17 +2,20 @@
   <div class="flex flex-col items-center md:mx-6">
     <Head>
       <title>Jarne Delarue</title>
+      <!--      keywords:-->
+      <meta
+        name="keywords"
+        content="Jarne Delarue, Jarne Del, Developer, Umbraco Developer, Full Stack developer, Umbraco CMS, .NET, C#, Backend Developer, Frontend Developer"
+      />
     </Head>
     <Html lang="en" />
     <Body
-      class="bg-gradient-to-tr from-background-light-500 via-background-light-300 to-background-light-100 bg-no-repeat md:bg-fixed dark:from-background-dark-500 dark:via-background-dark-300 dark:to-background-dark-100"
+      class="from-background-light-500 via-background-light-300 to-background-light-100 dark:from-background-dark-500 dark:via-background-dark-300 dark:to-background-dark-100 bg-gradient-to-tr bg-no-repeat md:bg-fixed"
     ></Body>
     <div class="max-w-[55rem]">
       <SectionHero />
       <SectionProjects />
       <SectionContact />
-      <DividerTitle text="In my spare time"/>
-      <SteamWidget />
     </div>
     <div class="cursor-background" ref="cursorBackground" />
   </div>
@@ -79,13 +82,13 @@ onMounted(() => {
   width: var(--cursor-size);
   height: var(--cursor-size);
   border-radius: 50%;
-  background-color: #2dd4bf; 
+  background-color: #2dd4bf;
   opacity: 0.1;
   pointer-events: none;
   z-index: 9999;
   mix-blend-mode: overlay;
   box-shadow: 0 0 calc(var(--cursor-size) / 2) calc(var(--cursor-size) / 3)
-    rgba(45, 212, 191, 0.5); 
+    rgba(45, 212, 191, 0.5);
   filter: blur(10px);
   animation: morph 3s infinite ease-in-out;
   translate: v-bind(translateX) v-bind(translateY) 0;

@@ -27,6 +27,8 @@ export default defineNuxtConfig({
     // Private keys (only available on server-side)
     steamApiKey: process.env.STEAM_API_KEY,
     steamId: process.env.STEAM_ID,
+    wargamingId: process.env.WARGAMING_ID,
+    accountId: process.env.ACCOUNT_ID,
 
     public: {
       motion: {

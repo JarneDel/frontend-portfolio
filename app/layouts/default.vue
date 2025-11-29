@@ -1,10 +1,10 @@
 <template>
   <div
-    class="min-h-screen bg-light-repeating-bg md:motion-safe:animate-moveBg lg:mx-0 dark:bg-dark-repeating-bg dark:text-gray-100"
+    class="bg-light-repeating-bg md:motion-safe:animate-moveBg dark:bg-dark-repeating-bg min-h-screen lg:mx-0 dark:text-gray-100"
   >
     <div class="mx-6">
       <div
-        class="fixed left-0 right-0 top-0 z-20 flex h-[72px] w-full flex-row justify-between transition-all duration-200 md:mx-0"
+        class="fixed top-0 right-0 left-0 z-20 flex h-[72px] w-full flex-row justify-between transition-all duration-200 md:mx-0"
         ref="header"
         :class="{
           '-translate-y-[72px]': isHidden,
@@ -24,7 +24,7 @@
             class="logo-link hover:bg-active rounded-lg focus:outline-none"
           >
             <Logo
-              class="logo rounded-lg fill-primary-light transition-colors duration-200 dark:fill-primary-light"
+              class="logo fill-primary-light dark:fill-primary-light rounded-lg transition-colors duration-200"
             ></Logo>
           </NuxtLink>
         </h1>
@@ -72,7 +72,7 @@
 import type { ILink } from '~~/Interfaces/ILink'
 
 const { isHidden, isSticky } = useStickyHeader()
-import { User, Contact, Code2, FileText } from 'lucide-vue-next'
+import { Contact, Code2, FileText, Gamepad2 } from 'lucide-vue-next'
 
 const isOpen = ref(false)
 const links: ILink[] = [
@@ -85,6 +85,11 @@ const links: ILink[] = [
     text: 'Contact',
     path: '/#contact',
     icon: Contact,
+  },
+  {
+    text: 'Hobbies',
+    path: '/hobbies',
+    icon: Gamepad2,
   },
 ]
 const downloads: ILink[] = [
