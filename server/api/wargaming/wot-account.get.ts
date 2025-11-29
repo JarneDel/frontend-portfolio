@@ -58,7 +58,9 @@ export default defineEventHandler(async (event): Promise<WotAccountData> => {
   const apiKey = config.wargamingId as string
   const accountId = config.accountId as string
   const region = config.wargamingRegion || 'eu'
-  
+
+  console.log(apiKey, accountId, region)
+
   console.log(config, config.accountId, config.wargamingId)
 
   const baseUrl = `https://api.worldoftanks.${region}/wot`
@@ -66,27 +68,21 @@ export default defineEventHandler(async (event): Promise<WotAccountData> => {
   try {
     // Fetch both account info and WTR rating in parallel
     const [accountResponse, ratingResponse] = await Promise.all([
-      $fetch<WotAccountResponse>(
-        `${baseUrl}/account/info/`,
-        {
-          query: {
-            application_id: apiKey,
-            account_id: accountId,
-            // We limit fields to save bandwidth, though not strictly necessary
-            fields:
-              'nickname,global_rating,created_at,last_battle_time,statistics.all,statistics.trees_cut',
-          },
+      $fetch<WotAccountResponse>(`${baseUrl}/account/info/`, {
+        query: {
+          application_id: apiKey,
+          account_id: accountId,
+          // We limit fields to save bandwidth, though not strictly necessary
+          fields:
+            'nickname,global_rating,created_at,last_battle_time,statistics.all,statistics.trees_cut',
         },
-      ),
-      $fetch<WotRatingResponse>(
-        `${baseUrl}/account/wtr/`,
-        {
-          query: {
-            application_id: apiKey,
-            account_id: accountId,
-          },
+      }),
+      $fetch<WotRatingResponse>(`${baseUrl}/account/wtr/`, {
+        query: {
+          application_id: apiKey,
+          account_id: accountId,
         },
-      )
+      }),
     ])
 
     console.log('Account Response:', JSON.stringify(accountResponse, null, 2))
