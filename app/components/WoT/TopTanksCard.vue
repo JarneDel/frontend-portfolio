@@ -26,7 +26,7 @@
                  ]">
               
             <div class="max-w-20 h-full w-full flex-shrink-0 bg-background-dark-500 rounded flex items-center justify-center overflow-hidden relative">
-                 <img :src="tank.image" :alt="tank.name" class="w-full h-full object-cover z-10 relative" loading="lazy" />
+                 <img :src="tank.image" :alt="tank.name" class="w-full h-full object-contain z-10 relative" loading="lazy" />
               </div>
 
               <div :class="[
@@ -69,7 +69,7 @@
                ]">
             
             <div class="max-w-20 h-full w-full flex-shrink-0 bg-background-dark-500 rounded flex items-center justify-center overflow-hidden relative">
-               <img :src="tank.image" :alt="tank.name" class="w-full h-full object-cover z-10 relative" loading="lazy" />
+               <img :src="tank.image" :alt="tank.name" class="w-full h-full object-contain z-10 relative" loading="lazy" />
             </div>
 
             <div :class="[
@@ -224,7 +224,7 @@ const props = defineProps<Props>()
 
 // Pagination setup
 const currentPage = ref(0)
-const tanksPerPage = 6
+const tanksPerPage = 7
 const hasPaginated = ref(false)
 
 // Computed properties for pagination
