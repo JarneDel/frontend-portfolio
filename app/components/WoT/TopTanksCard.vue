@@ -1,110 +1,232 @@
 <template>
-  <div class="lg:col-span-1 bg-background-dark-300 rounded-xl p-4 shadow-lg border border-background-dark-400 flex flex-col h-full max-h-[600px] lg:max-h-full">
-    <div class="flex justify-between items-center mb-4 pb-2 border-b border-background-dark-400">
-      <h3 class="text-xs font-bold text-background-light-500 uppercase tracking-wider">Top Tanks</h3>
+  <div
+    class="bg-background-dark-300 border-background-dark-400 flex h-full max-h-[600px] flex-col rounded-xl border p-4 shadow-lg lg:col-span-1 lg:max-h-full"
+  >
+    <div
+      class="border-background-dark-400 mb-4 flex items-center justify-between border-b pb-2"
+    >
+      <h3
+        class="text-background-light-500 text-xs font-bold tracking-wider uppercase"
+      >
+        Top Tanks
+      </h3>
       <!-- Dynamic label based on selection -->
       <div class="flex items-center space-x-2">
-        <span class="text-[10px] bg-background-dark-500 px-2 py-0.5 rounded text-background-light-400">{{ recentData?.overall.label || 'Loading...' }}</span>
+        <span
+          class="bg-background-dark-500 text-background-light-400 rounded px-2 py-0.5 text-[10px]"
+          >{{ recentData?.overall.label || 'Loading...' }}</span
+        >
         <div
           v-if="totalPages > 1"
-          class="flex items-center space-x-1 text-xs text-background-light-500"
+          class="text-background-light-500 flex items-center space-x-1 text-xs"
         >
           <span>{{ currentPage + 1 }}/{{ totalPages }}</span>
         </div>
       </div>
     </div>
 
-    <div v-if="recentData" class="flex-grow flex flex-col">
+    <div v-if="recentData" class="flex flex-grow flex-col">
       <!-- Tanks List with Pagination -->
-      <div class="flex-grow overflow-y-auto pr-1 custom-scrollbar">
+      <div class="custom-scrollbar flex-grow overflow-y-auto pr-1">
         <Transition v-if="hasPaginated" name="fade" mode="out-in">
-          <div :key="currentPage" :class="shouldStretch ? 'h-full flex flex-col gap-2' : 'space-y-3'">
-            <div v-for="tank in paginatedTanks" :key="tank.id" 
-                 :class="[
-                   'group relative bg-background-dark-400 rounded-lg p-3 flex items-center gap-3 overflow-hidden hover:bg-background-dark-500 transition-all border border-transparent hover:border-primary-dark',
-                   shouldStretch ? 'flex-1 min-h-0' : ''
-                 ]">
-              
-            <div class="max-w-20 h-full w-full flex-shrink-0 bg-background-dark-500 rounded flex items-center justify-center overflow-hidden relative">
-                 <img :src="tank.image" :alt="tank.name" class="w-full h-full object-contain z-10 relative" loading="lazy" />
+          <div
+            :key="currentPage"
+            :class="shouldStretch ? 'flex h-full flex-col gap-2' : 'space-y-3'"
+          >
+            <div
+              v-for="tank in paginatedTanks"
+              :key="tank.id"
+              :class="[
+                'group bg-background-dark-400 hover:bg-background-dark-500 hover:border-primary-dark relative flex items-center gap-3 overflow-hidden rounded-lg border border-transparent p-3 transition-all',
+                shouldStretch ? 'min-h-0 flex-1' : '',
+              ]"
+            >
+              <div
+                class="bg-background-dark-500 relative flex h-full w-full max-w-20 flex-shrink-0 items-center justify-center overflow-hidden rounded"
+              >
+                <img
+                  :src="tank.image"
+                  :alt="tank.name"
+                  class="relative z-10 h-full w-full object-contain"
+                  loading="lazy"
+                />
               </div>
 
-              <div :class="[
-                'flex-grow min-w-0 z-10',
-                shouldStretch ? 'flex flex-col justify-center h-full py-1' : ''
-              ]">
-                <div :class="shouldStretch ? 'flex justify-between items-start mb-1' : 'flex justify-between items-center'">
-                  <h4 :class="shouldStretch ? 'text-sm font-bold text-white truncate group-hover:text-primary-light transition-colors leading-tight' : 'text-xs font-bold text-white truncate group-hover:text-primary-light transition-colors'">
+              <div
+                :class="[
+                  'z-10 min-w-0 flex-grow',
+                  shouldStretch
+                    ? 'flex h-full flex-col justify-center py-1'
+                    : '',
+                ]"
+              >
+                <div
+                  :class="
+                    shouldStretch
+                      ? 'mb-1 flex items-start justify-between'
+                      : 'flex items-center justify-between'
+                  "
+                >
+                  <h4
+                    :class="
+                      shouldStretch
+                        ? 'group-hover:text-primary-light truncate text-sm leading-tight font-bold text-white transition-colors'
+                        : 'group-hover:text-primary-light truncate text-xs font-bold text-white transition-colors'
+                    "
+                  >
                     {{ tank.name }}
                   </h4>
-                  <span v-if="tank.isPremium" :class="shouldStretch ? 'text-[9px] font-bold text-yellow-400 bg-yellow-400/10 px-1.5 py-0.5 rounded ml-1' : 'text-[8px] font-bold text-yellow-400 bg-yellow-400/10 px-1 rounded ml-1'">PREM</span>
+                  <span
+                    v-if="tank.isPremium"
+                    :class="
+                      shouldStretch
+                        ? 'ml-1 rounded bg-yellow-400/10 px-1.5 py-0.5 text-[9px] font-bold text-yellow-400'
+                        : 'ml-1 rounded bg-yellow-400/10 px-1 text-[8px] font-bold text-yellow-400'
+                    "
+                    >PREM</span
+                  >
                 </div>
-                
-                <div :class="shouldStretch ? 'flex items-center gap-2 mt-auto' : 'flex items-center gap-2 mt-0.5'">
-                  <span :class="shouldStretch ? 'text-[10px] text-background-light-500 px-2 py-0.5 rounded border border-background-dark-500' : 'text-[9px] text-background-light-500 px-1.5 rounded border border-background-dark-500'">
+
+                <div
+                  :class="
+                    shouldStretch
+                      ? 'flex items-center gap-2'
+                      : 'mt-0.5 flex items-center gap-2'
+                  "
+                >
+                  <span
+                    :class="
+                      shouldStretch
+                        ? 'text-background-light-500 border-background-dark-500 rounded border px-2 py-0.5 text-[10px]'
+                        : 'text-background-light-500 border-background-dark-500 rounded border px-1.5 text-[9px]'
+                    "
+                  >
                     {{ toRoman(tank.tier) }}
                   </span>
-                  <span :class="shouldStretch ? 'text-[10px] px-2 py-0.5 rounded font-bold' : 'text-[9px] px-1.5 rounded font-bold'" :style="{ color: getWn8Color(tank.wn8), backgroundColor: getWn8Color(tank.wn8) + '15' }">
+                  <span
+                    :class="
+                      shouldStretch
+                        ? 'rounded px-2 py-0.5 text-[10px] font-bold'
+                        : 'rounded px-1.5 text-[9px] font-bold'
+                    "
+                    :style="{
+                      color: getWn8Color(tank.wn8),
+                      backgroundColor: getWn8Color(tank.wn8) + '15',
+                    }"
+                  >
                     {{ tank.wn8.toFixed(0) }}
                   </span>
                 </div>
               </div>
 
-              <div :class="shouldStretch ? 'flex flex-col items-end justify-center gap-1 min-w-[60px] h-full' : 'flex flex-col items-end gap-0 min-w-[50px]'">
-                 <div :class="shouldStretch ? 'text-sm font-bold' : 'text-xs font-bold'" :style="{ color: getWrColor(tank.winRate) }">
-                   {{ tank.winRate.toFixed(0) }}%
-                 </div>
-                 <div :class="shouldStretch ? 'text-[10px] text-background-light-500' : 'text-[9px] text-background-light-500'">
-                   {{ tank.battles }} battles
-                 </div>
+              <div
+                :class="
+                  shouldStretch
+                    ? 'flex h-full min-w-[60px] flex-col items-end justify-center gap-1'
+                    : 'flex min-w-[50px] flex-col items-end gap-0'
+                "
+              >
+                <div
+                  :class="
+                    shouldStretch ? 'text-sm font-bold' : 'text-xs font-bold'
+                  "
+                  :style="{ color: getWrColor(tank.winRate) }"
+                >
+                  {{ tank.winRate.toFixed(0) }}%
+                </div>
+                <div
+                  :class="
+                    shouldStretch
+                      ? 'text-background-light-500 text-[10px]'
+                      : 'text-background-light-500 text-[9px]'
+                  "
+                >
+                  {{ tank.battles }} battles
+                </div>
               </div>
             </div>
           </div>
         </Transition>
-        <div v-else :class="shouldStretch ? 'h-full flex flex-col gap-2' : 'space-y-3'">
-          <div v-for="tank in paginatedTanks" :key="tank.id" 
-               :class="[
-                 'group relative bg-background-dark-400 rounded-lg p-2 flex items-center gap-3 overflow-hidden hover:bg-background-dark-500 transition-all border border-transparent hover:border-primary-dark',
-                 shouldStretch ? 'flex-1 min-h-0' : ''
-               ]">
-            
-            <div class="max-w-20 h-full w-full flex-shrink-0 bg-background-dark-500 rounded flex items-center justify-center overflow-hidden relative">
-               <img :src="tank.image" :alt="tank.name" class="w-full h-full object-contain z-10 relative" loading="lazy" />
+        <div
+          v-else
+          :class="shouldStretch ? 'flex h-full flex-col gap-2' : 'space-y-3'"
+        >
+          <div
+            v-for="tank in paginatedTanks"
+            :key="tank.id"
+            :class="[
+              'group bg-background-dark-400 hover:bg-background-dark-500 hover:border-primary-dark relative flex items-center gap-3 overflow-hidden rounded-lg border border-transparent p-2 transition-all',
+              shouldStretch ? 'min-h-0 flex-1' : '',
+            ]"
+          >
+            <div
+              class="bg-background-dark-500 relative flex h-full w-full max-w-20 flex-shrink-0 items-center justify-center overflow-hidden rounded"
+            >
+              <img
+                :src="tank.image"
+                :alt="tank.name"
+                class="relative z-10 h-full w-full object-contain"
+                loading="lazy"
+              />
             </div>
 
-            <div :class="[
-              'flex-grow min-w-0 z-10',
-              shouldStretch ? 'flex flex-col justify-center h-full py-1' : ''
-            ]">
-              <div class="flex justify-between items-start mb-1">
-                <h4 class="text-sm font-bold text-white truncate group-hover:text-primary-light transition-colors leading-tight">
+            <div
+              :class="[
+                'z-10 min-w-0 flex-grow',
+                shouldStretch ? 'flex h-full flex-col justify-center py-1' : '',
+              ]"
+            >
+              <div class="mb-1 flex items-start justify-between">
+                <h4
+                  class="group-hover:text-primary-light truncate text-sm leading-tight font-bold text-white transition-colors"
+                >
                   {{ tank.name }}
                 </h4>
-                <span v-if="tank.isPremium" class="text-[9px] font-bold text-yellow-400 bg-yellow-400/10 px-1.5 py-0.5 rounded ml-1">PREM</span>
+                <span
+                  v-if="tank.isPremium"
+                  class="ml-1 rounded bg-yellow-400/10 px-1.5 py-0.5 text-[9px] font-bold text-yellow-400"
+                  >PREM</span
+                >
               </div>
-              
-              <div class="flex items-center gap-2 mt-auto">
-                <span class="text-[10px] text-background-light-500 px-2 py-0.5 rounded border border-background-dark-500">
+
+              <div class="flex items-center gap-2">
+                <span
+                  class="text-background-light-500 border-background-dark-500 rounded border px-2 py-0.5 text-[10px]"
+                >
                   {{ toRoman(tank.tier) }}
                 </span>
-                <span class="text-[10px] px-2 py-0.5 rounded font-bold" :style="{ color: getWn8Color(tank.wn8), backgroundColor: getWn8Color(tank.wn8) + '15' }">
+                <span
+                  class="rounded px-2 py-0.5 text-[10px] font-bold"
+                  :style="{
+                    color: getWn8Color(tank.wn8),
+                    backgroundColor: getWn8Color(tank.wn8) + '15',
+                  }"
+                >
                   {{ tank.wn8.toFixed(0) }}
                 </span>
               </div>
             </div>
 
-            <div class="flex flex-col items-end justify-center gap-1 min-w-[60px] h-full">
-               <div class="text-sm font-bold" :style="{ color: getWrColor(tank.winRate) }">
-                 {{ tank.winRate.toFixed(0) }}%
-               </div>
-               <div class="text-[10px] text-background-light-500">
-                 {{ tank.battles }} battles
-               </div>
+            <div
+              class="flex h-full min-w-[60px] flex-col items-end justify-center gap-1"
+            >
+              <div
+                class="text-sm font-bold"
+                :style="{ color: getWrColor(tank.winRate) }"
+              >
+                {{ tank.winRate.toFixed(0) }}%
+              </div>
+              <div class="text-background-light-500 text-[10px]">
+                {{ tank.battles }} battles
+              </div>
             </div>
           </div>
         </div>
-        
-        <div v-if="recentData.tanks.length === 0" class="text-center text-xs text-background-light-500 py-4">
+
+        <div
+          v-if="recentData.tanks.length === 0"
+          class="text-background-light-500 py-4 text-center text-xs"
+        >
           No battles in this period.
         </div>
       </div>
@@ -112,12 +234,12 @@
       <!-- Pagination Controls -->
       <div
         v-if="totalPages > 1"
-        class="flex items-center justify-between border-t border-background-dark-400 pt-3 mt-3"
+        class="border-background-dark-400 mt-3 flex items-center justify-between border-t pt-3"
       >
         <button
           @click="prevPage"
           :disabled="!canGoPrev"
-          class="flex items-center rounded px-2 py-1 text-xs font-medium transition-colors hover:bg-background-dark-500 disabled:cursor-not-allowed disabled:opacity-50"
+          class="hover:bg-background-dark-500 flex items-center rounded px-2 py-1 text-xs font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50"
           :class="
             canGoPrev
               ? 'text-background-light-300'
@@ -159,7 +281,7 @@
         <button
           @click="nextPage"
           :disabled="!canGoNext"
-          class="flex items-center rounded px-2 py-1 text-xs font-medium transition-colors hover:bg-background-dark-500 disabled:cursor-not-allowed disabled:opacity-50"
+          class="hover:bg-background-dark-500 flex items-center rounded px-2 py-1 text-xs font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50"
           :class="
             canGoNext
               ? 'text-background-light-300'
@@ -183,9 +305,12 @@
         </button>
       </div>
     </div>
-    
+
     <!-- Loading State for list -->
-    <div v-else class="flex-grow flex items-center justify-center text-xs text-background-light-500">
+    <div
+      v-else
+      class="text-background-light-500 flex flex-grow items-center justify-center text-xs"
+    >
       Loading tank data...
     </div>
   </div>
@@ -287,27 +412,50 @@ const getWn8Color = (wn8: number) => {
   if (wn8 >= 2900) return '#a855f7'
   if (wn8 >= 2000) return '#2dd4bf'
   if (wn8 >= 1600) return '#22c55e'
-  if (wn8 >= 900)  return '#eab308'
+  if (wn8 >= 900) return '#eab308'
   return '#ef4444'
 }
 
 const toRoman = (num: number) => {
-  const roman: Record<number, string> = { 10: 'X', 9: 'IX', 8: 'VIII', 7: 'VII', 6: 'VI', 5: 'V', 4: 'IV', 3: 'III', 2: 'II', 1: 'I' }
+  const roman: Record<number, string> = {
+    10: 'X',
+    9: 'IX',
+    8: 'VIII',
+    7: 'VII',
+    6: 'VI',
+    5: 'V',
+    4: 'IV',
+    3: 'III',
+    2: 'II',
+    1: 'I',
+  }
   return roman[num] || num.toString()
 }
 
 // Reset pagination when data changes
-watch(() => props.recentData, () => {
-  currentPage.value = 0
-  hasPaginated.value = false
-})
+watch(
+  () => props.recentData,
+  () => {
+    currentPage.value = 0
+    hasPaginated.value = false
+  },
+)
 </script>
 
 <style scoped>
-.custom-scrollbar::-webkit-scrollbar { width: 4px; }
-.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-.custom-scrollbar::-webkit-scrollbar-thumb { background: var(--color-background-dark-500); border-radius: 4px; }
-.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--color-background-dark-700); }
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-background-dark-500);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-background-dark-700);
+}
 
 .fade-enter-active,
 .fade-leave-active {
