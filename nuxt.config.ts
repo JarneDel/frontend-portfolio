@@ -28,7 +28,7 @@ export default defineNuxtConfig({
     steamApiKey: process.env.STEAM_API_KEY,
     steamId: process.env.STEAM_ID,
     wargamingId: process.env.WARGAMING_ID,
-    accountId: process.env.ACCOUNT_ID,
+    wargamingAccountId: process.env.WARGAMING_ACCOUNT_ID,
 
     public: {
       motion: {

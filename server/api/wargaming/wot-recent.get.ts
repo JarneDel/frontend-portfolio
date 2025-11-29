@@ -26,7 +26,7 @@ export interface RecentStats {
 
 export default defineEventHandler(async (event): Promise<RecentStats> => {
   const config = useRuntimeConfig()
-  const accountId = config.accountId?.trim() || '522903268'
+  const accountId = config.wargamingAccountId?.trim() || '522903268'
   const region = 'eu'
 
   // Get filter from frontend (e.g., "100", "30d", "1d")

@@ -56,7 +56,7 @@ interface WotRatingResponse {
 export default defineEventHandler(async (event): Promise<WotAccountData> => {
   const config = useRuntimeConfig()
   const apiKey = config.wargamingId?.trim() as string
-  const accountId = config.accountId?.trim() as string
+  const accountId = config.wargamingAccountId?.trim() as string
   const region = config.wargamingRegion || 'eu'
 
   console.log(apiKey, accountId, region)
