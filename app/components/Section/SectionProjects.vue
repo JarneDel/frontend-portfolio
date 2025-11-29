@@ -6,7 +6,7 @@
         enter: { opacity: 1, y: 0 },
         visibleOnce: { opacity: 1, y: 0 },
       }"
-      class="max-w-[30rem] text-3xl font-bold text-gray-900 accent-teal-700 md:mx-auto lg:mx-0 dark:text-gray-100 pb-2"
+      class="max-w-[30rem] text-3xl font-bold text-white md:mx-auto lg:mx-0 pb-2"
     >
       Some projects I've built
     </h2>
@@ -17,7 +17,7 @@
         enter: { opacity: 1, y: 0, transition: { delay: 100 } },
         visibleOnce: { opacity: 1, y: 0 },
       }"
-      class="mb-6 text-gray-700 dark:text-gray-300"
+      class="mb-6 text-background-light-500"
     >
       Hint: set
       <code class="px-1 font-mono text-sm bg-gray-200 rounded dark:bg-gray-700"

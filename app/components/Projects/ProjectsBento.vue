@@ -17,7 +17,7 @@
           }"
         >
           <article
-            class="flex flex-col overflow-hidden transition-all duration-300 bg-white shadow-lg group rounded-2xl hover:shadow-2xl dark:bg-gray-800"
+              class="flex flex-col overflow-hidden transition-all duration-300 bg-background-dark-300 shadow-lg group rounded-2xl hover:shadow-2xl border border-background-dark-400"
             :class="
               project.category === 'Favourite'
                 ? 'ring-primary-dark ring-2 ring-offset-2 ring-offset-gray-100 dark:ring-offset-gray-900'
@@ -50,6 +50,14 @@
                   {{ project.category }}
                 </span>
               </div>
+                <div class="absolute top-4 left-4">
+                  <span
+                    class="inline-flex items-center px-3 py-1 text-xs font-semibold transition-all duration-300 rounded-full"
+                    :class="getCategoryClass(project.category)"
+                  >
+                    {{ project.category }}
+                  </span>
+                </div>
             </div>
 
             <!-- Content -->
@@ -57,13 +65,13 @@
               <!-- Project Info -->
               <div class="mb-4">
                 <h3
-                  class="mb-3 text-xl font-bold leading-tight text-gray-900 dark:text-gray-100"
+                  class="mb-3 text-xl font-bold leading-tight text-white"
                 >
                   {{ project.title }}
                 </h3>
 
                 <p
-                  class="mb-4 text-sm text-gray-600 dark:text-gray-300"
+                  class="mb-4 text-sm text-background-light-500"
                   :class="
                     project.category === 'Favourite'
                       ? 'line-clamp-4'
@@ -78,13 +86,13 @@
                   <span
                     v-for="tech in project.technologies.split(' ').slice(0, 4)"
                     :key="tech"
-                    class="px-2 py-1 text-xs font-medium text-gray-700 bg-gray-100 rounded-md dark:bg-gray-700 dark:text-gray-300"
+                      class="px-2 py-1 text-xs font-medium text-background-light-500 bg-background-dark-500 rounded-md"
                   >
                     {{ tech }}
                   </span>
                   <span
                     v-if="project.technologies.split(' ').length > 4"
-                    class="px-2 py-1 text-xs font-medium text-gray-500 bg-gray-100 rounded-md dark:bg-gray-700 dark:text-gray-400"
+                      class="px-2 py-1 text-xs font-medium text-background-light-500 bg-background-dark-500 rounded-md"
                   >
                     +{{ project.technologies.split(' ').length - 4 }} more
                   </span>
@@ -98,7 +106,7 @@
                   :href="project.external"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition-all duration-200 rounded-lg bg-primary-dark hover:bg-primary-light hover:shadow-lg"
+                  class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition-colors duration-200 rounded-lg bg-primary-dark hover:bg-primary-light hover:shadow-lg"
                 >
                   <svg
                     class="w-4 h-4"
@@ -121,7 +129,7 @@
                   :href="project.github"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 transition-all duration-200 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
+                    class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition-colors duration-200 bg-background-dark-500 border border-background-dark-400 rounded-lg hover:bg-background-dark-400"
                 >
                   <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                     <path
@@ -145,7 +153,7 @@
                   v-if="project.designDocument"
                   :href="project.designDocument"
                   target="_blank"
-                  class="text-xs text-gray-500 hover:text-primary-dark underline-offset-2 hover:underline dark:text-gray-400"
+                    class="text-xs text-background-light-500 hover:text-primary-dark underline-offset-2 hover:underline"
                 >
                   Design Doc
                 </a>
@@ -153,7 +161,7 @@
                   v-if="project.functionalAnalysis"
                   :href="project.functionalAnalysis"
                   target="_blank"
-                  class="text-xs text-gray-500 hover:text-primary-dark underline-offset-2 hover:underline dark:text-gray-400"
+                    class="text-xs text-background-light-500 hover:text-primary-dark underline-offset-2 hover:underline"
                 >
                   Functional Analysis
                 </a>
@@ -161,7 +169,7 @@
                   v-if="project.technicalAnalysis"
                   :href="project.technicalAnalysis"
                   target="_blank"
-                  class="text-xs text-gray-500 hover:text-primary-dark underline-offset-2 hover:underline dark:text-gray-400"
+                    class="text-xs text-background-light-500 hover:text-primary-dark underline-offset-2 hover:underline"
                 >
                   Technical Analysis
                 </a>

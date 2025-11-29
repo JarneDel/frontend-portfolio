@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3
-      class="mb-6 text-2xl font-bold text-gray-900 dark:text-gray-100"
+      class="mb-6 text-2xl font-bold text-white"
       v-motion="{
         initial: { opacity: 0, y: 20 },
         visibleOnce: { opacity: 1, y: 0 },
@@ -22,7 +22,7 @@
           visibleOnce: { opacity: 1, transition: { delay: 100 * (index + 1) } },
         }"
         :class="getProjectClasses(index)"
-        class="hocus:-translate-y-1 flex flex-col justify-center gap-4 rounded-lg bg-gray-100 p-4 shadow-lg transition-transform duration-200 dark:bg-gray-800"
+        class="hocus:-translate-y-1 flex flex-col justify-center gap-4 rounded-lg bg-background-dark-300 p-4 shadow-lg transition-transform duration-200 border border-background-dark-400"
       >
         <!-- The ProjectCard component is used here -->
         <ProjectCard :project="project" />
