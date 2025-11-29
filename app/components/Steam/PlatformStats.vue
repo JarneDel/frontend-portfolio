@@ -1,9 +1,9 @@
 <template>
   <div
-    class="rounded-xl bg-gray-50 p-4 transition-colors duration-200 dark:bg-gray-800"
+    class="rounded-xl bg-background-dark-300 p-4 transition-colors duration-200 border border-background-dark-400 shadow-lg"
   >
     <h3
-      class="mb-3 text-sm font-semibold tracking-wide text-gray-600 uppercase dark:text-gray-400"
+      class="mb-3 text-sm font-semibold tracking-wide text-background-light-500 uppercase"
     >
       Platform Statistics
     </h3>
@@ -12,22 +12,22 @@
       <!-- Linux Stats -->
       <div class="flex items-center justify-between text-sm">
         <!-- Icon -->
-        <div class="flex items-center justify-center h-8 w-8 rounded-lg bg-green-100 dark:bg-green-900/30">
-          <ArchLinux class="h-5 w-5 text-green-600 dark:text-green-400" />
+        <div class="flex items-center justify-center h-8 w-8 rounded-lg bg-background-dark-400">
+          <ArchLinux class="h-5 w-5 text-green-500" />
         </div>
         <!-- Platform Info -->
         <div class="flex-1 ml-3">
-          <p class="font-semibold text-gray-900 dark:text-white">Linux</p>
-          <p class="text-xs text-gray-600 dark:text-gray-400">
+          <p class="font-semibold text-white">Linux</p>
+          <p class="text-xs text-background-light-500">
             {{ platformStats.linuxGamesCount }} games
           </p>
         </div>
         <!-- Playtime & Percentage -->
         <div class="text-right">
-          <p class="font-bold text-gray-900 dark:text-white">
+          <p class="font-bold text-white">
             {{ formatPlaytime(platformStats.totalLinuxPlaytime) }}
           </p>
-          <p class="text-xs text-gray-600 dark:text-gray-400">
+          <p class="text-xs text-background-light-500">
             {{ getPercentage(platformStats.totalLinuxPlaytime) }}% of total
           </p>
         </div>
@@ -36,9 +36,9 @@
       <!-- Windows Stats -->
       <div class="flex items-center justify-between text-sm">
         <!-- Icon -->
-        <div class="flex items-center justify-center h-8 w-8 rounded-lg bg-blue-100 dark:bg-blue-900/30">
+        <div class="flex items-center justify-center h-8 w-8 rounded-lg bg-background-dark-400">
           <svg
-            class="h-5 w-5 text-blue-600 dark:text-blue-400"
+            class="h-5 w-5 text-blue-500"
             viewBox="0 0 24 24"
             fill="currentColor"
           >
@@ -49,17 +49,17 @@
         </div>
         <!-- Platform Info -->
         <div class="flex-1 ml-3">
-          <p class="font-semibold text-gray-900 dark:text-white">Windows</p>
-          <p class="text-xs text-gray-600 dark:text-gray-400">
+          <p class="font-semibold text-white">Windows</p>
+          <p class="text-xs text-background-light-500">
             {{ platformStats.windowsGamesCount }} games
           </p>
         </div>
         <!-- Playtime & Percentage -->
         <div class="text-right">
-          <p class="font-bold text-gray-900 dark:text-white">
+          <p class="font-bold text-white">
             {{ formatPlaytime(platformStats.totalWindowsPlaytime) }}
           </p>
-          <p class="text-xs text-gray-600 dark:text-gray-400">
+          <p class="text-xs text-background-light-500">
             {{ getPercentage(platformStats.totalWindowsPlaytime) }}% of total
           </p>
         </div>
@@ -67,7 +67,7 @@
 
       <!-- Combined Progress Bar -->
       <div
-        class="relative h-2 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700"
+        class="relative h-2 w-full overflow-hidden rounded-full bg-background-dark-400"
       >
         <div
           class="h-full bg-gradient-to-r from-green-400 to-green-600 transition-all duration-500"
@@ -85,11 +85,11 @@
       </div>
 
       <!-- Total Stats -->
-      <div class="!mt-4 border-t border-gray-200 dark:border-gray-700 pt-3 flex items-center justify-between">
-        <span class="text-sm font-medium text-gray-700 dark:text-gray-300"
+      <div class="!mt-4 border-t border-background-dark-400 pt-3 flex items-center justify-between">
+        <span class="text-sm font-medium text-background-light-500"
           >Total Playtime</span
         >
-        <span class="text-lg font-bold text-gray-900 dark:text-white">
+        <span class="text-lg font-bold text-white">
           {{ formatPlaytime(totalPlaytime) }}
         </span>
       </div>

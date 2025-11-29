@@ -1,11 +1,11 @@
 <template>
   <div
     v-if="sortedRecentGames.length > 0"
-    class="group col-span-2 row-span-2 rounded-xl bg-gray-50 p-4 transition-colors duration-200 dark:bg-gray-800"
+    class="group col-span-2 row-span-2 rounded-xl bg-background-dark-300 p-4 transition-colors duration-200 border border-background-dark-400 shadow-lg"
     style="grid-column: span 2; grid-row: span 2"
   >
     <h3
-      class="mb-4 text-sm font-semibold tracking-wide text-gray-600 uppercase dark:text-gray-400"
+      class="mb-4 text-sm font-semibold tracking-wide text-background-light-500 uppercase"
     >
       Recent Games
     </h3>
@@ -20,7 +20,7 @@
       <!-- First game - larger featured item -->
       <div
         v-if="sortedRecentGames[0]"
-        class="col-span-2 flex items-center space-x-3 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50 p-3 transition-all duration-200 hover:from-blue-100 hover:to-purple-100 dark:from-gray-700 dark:to-gray-600 dark:hover:from-gray-600 dark:hover:to-gray-500"
+        class="col-span-2 flex items-center space-x-3 rounded-lg bg-background-dark-400 p-3 transition-all duration-200 hover:bg-background-dark-500 border border-transparent hover:border-primary-dark"
       >
         <BaseImage
           :src="sortedRecentGames[0].iconUrl"
@@ -30,11 +30,11 @@
         />
         <div class="min-w-0 flex-1">
           <p
-            class="truncate text-sm font-semibold text-gray-900 dark:text-white"
+            class="truncate text-sm font-semibold text-white"
           >
             {{ sortedRecentGames[0].name }}
           </p>
-          <p class="text-xs text-gray-600 dark:text-gray-300">
+          <p class="text-xs text-background-light-500">
             {{ formatPlaytime(sortedRecentGames[0].playtime2weeks) }}
             recent
           </p>
@@ -47,14 +47,14 @@
         :key="game.id"
         class="min-w-0"
         :class="{
-          'dark:bg-gray-750 col-span-1 flex flex-col items-center space-y-2 rounded-lg bg-white p-3 text-center transition-all duration-200 hover:bg-gray-50 hover:shadow-sm dark:hover:bg-gray-700':
+          'col-span-1 flex flex-col items-center space-y-2 rounded-lg bg-background-dark-400 p-3 text-center transition-all duration-200 hover:bg-background-dark-500 hover:shadow-sm border border-transparent hover:border-primary-dark':
             game !== sortedRecentGames[sortedRecentGames.length - 1] ||
             (sortedRecentGames.length % 3 === 2 &&
               game === sortedRecentGames[sortedRecentGames.length - 1]),
-          'col-span-2 flex items-center space-x-3 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50 p-3 transition-all duration-200 hover:from-blue-100 hover:to-purple-100 dark:from-gray-700 dark:to-gray-600 dark:hover:from-gray-600 dark:hover:to-gray-500':
+          'col-span-2 flex items-center space-x-3 rounded-lg bg-background-dark-400 p-3 transition-all duration-200 hover:bg-background-dark-500 border border-transparent hover:border-primary-dark':
             sortedRecentGames.length % 3 === 1 &&
             game === sortedRecentGames[sortedRecentGames.length - 1],
-          'col-span-3 flex items-center space-x-3 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50 p-3 transition-all duration-200 hover:from-blue-100 hover:to-purple-100 dark:from-gray-700 dark:to-gray-600 dark:hover:from-gray-600 dark:hover:to-gray-500':
+          'col-span-3 flex items-center space-x-3 rounded-lg bg-background-dark-400 p-3 transition-all duration-200 hover:bg-background-dark-500 border border-transparent hover:border-primary-dark':
             sortedRecentGames.length % 3 === 0 &&
             game === sortedRecentGames[sortedRecentGames.length - 1],
         }"
@@ -67,7 +67,7 @@
         />
         <div class="max-w-full">
           <p
-            class="truncate text-sm text-gray-900 dark:text-white"
+            class="truncate text-sm text-white"
             :class="[game !== sortedRecentGames[sortedRecentGames.length - 1] ||
             (sortedRecentGames.length % 3 === 2 &&
               game === sortedRecentGames[sortedRecentGames.length - 1]) ? 'font-medium' : 'font-semibold']"
@@ -75,7 +75,7 @@
           >
             {{ game.name }}
           </p>
-          <p class="text-xs text-gray-500 dark:text-gray-400">
+          <p class="text-xs text-background-light-500">
             {{ formatPlaytime(game.playtime2weeks) }}
           </p>
         </div>

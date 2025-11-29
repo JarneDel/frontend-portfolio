@@ -1,6 +1,6 @@
 <template>
   <div
-    class="col-span-2 row-span-1 rounded-xl bg-gray-50 p-4 transition-colors duration-200 dark:bg-gray-800"
+    class="col-span-2 row-span-1 rounded-xl bg-background-dark-300 p-4 transition-colors duration-200 border border-background-dark-400 shadow-lg"
     style="grid-column: span 2;"
   >
     <div class="flex items-center space-x-3">
@@ -12,10 +12,10 @@
         placeholder="/images/placeholder-full.webp"
       />
       <div>
-        <p class="text-lg font-bold">
+        <p class="text-lg font-bold text-white">
           {{ playerInfo.personaname }}
         </p>
-        <p class="text-sm text-gray-600 dark:text-gray-400">
+        <p class="text-sm text-background-light-500">
           {{ getPlayerStatus(playerInfo.personastate) }}
         </p>
       </div>

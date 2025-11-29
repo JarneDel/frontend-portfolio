@@ -2,7 +2,7 @@
   <!-- Current Game Card -->
   <div
     v-if="currentGame"
-    class="col-span-2 row-span-1 from-primary-dark to-primary-light rounded-xl bg-gradient-to-br p-4 text-white transition-all duration-200"
+    class="col-span-2 row-span-1 from-primary-dark to-primary-light rounded-xl bg-gradient-to-br p-4 text-white transition-all duration-200 shadow-lg"
     style="grid-column: span 2;"
   >
     <div class="mb-2 flex items-center space-x-2">
@@ -31,15 +31,15 @@
   <!-- Last Played Game Card - When not currently playing -->
   <div
     v-else-if="lastPlayedGame"
-    class="col-span-2 row-span-1 rounded-xl border-2 border-gray-200 bg-gray-50 p-4 transition-colors duration-200 dark:border-gray-700 dark:bg-gray-800"
+    class="col-span-2 row-span-1 rounded-xl border border-background-dark-400 bg-background-dark-300 p-4 transition-colors duration-200 shadow-lg"
     style="grid-column: span 2;"
   >
     <div class="mb-2 flex items-center space-x-2">
       <div
-        class="h-2 w-2 rounded-full bg-gray-400 dark:bg-gray-500"
+        class="h-2 w-2 rounded-full bg-background-light-500"
       ></div>
       <h3
-        class="text-sm font-semibold tracking-wide text-gray-600 uppercase dark:text-gray-400"
+        class="text-sm font-semibold tracking-wide text-background-light-500 uppercase"
       >
         Last Played
       </h3>
@@ -52,10 +52,10 @@
         loading="lazy"
       />
       <div class="min-w-0 flex-1">
-        <p class="truncate text-lg font-bold">
+        <p class="truncate text-lg font-bold text-white">
           {{ lastPlayedGame.name }}
         </p>
-        <p class="text-sm text-gray-600 dark:text-gray-400">
+        <p class="text-sm text-background-light-500">
           {{ formatPlaytime(lastPlayedGame.playtimeForever) }}
           total playtime
         </p>

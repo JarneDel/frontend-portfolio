@@ -1,8 +1,8 @@
 <template>
   <div class="mx-auto max-w-7xl">
     <div v-if="pending" class="animate-pulse">
-      <div class="mb-2 h-4 w-3/4 rounded bg-gray-300"></div>
-      <div class="h-3 w-1/2 rounded bg-gray-300"></div>
+      <div class="mb-2 h-4 w-3/4 rounded bg-background-dark-400"></div>
+      <div class="h-3 w-1/2 rounded bg-background-dark-400"></div>
     </div>
 
     <div
@@ -13,10 +13,10 @@
         visibleOnce: { opacity: 1, y: 0 },
       }"
     >
-    
+
       <div class="flex w-full flex-col gap-4 lg:w-3/5">
-        <div 
-          class="flex-1 rounded-lg dark:bg-gray-800 bg-gray-50 h-max"
+        <div
+          class="flex-1 h-max"
           v-motion="{
             initial: { opacity: 0, y: 20 },
             visibleOnce: { opacity: 1, y: 0, transition: { delay: 0.1 } },
@@ -25,8 +25,8 @@
           <PlayerInfoCard :player-info="currentGameData.playerInfo" />
         </div>
 
-        <div 
-          class="flex-1 basis-2/5 rounded-lg dark:bg-gray-800 bg-gray-50"
+        <div
+          class="flex-1 basis-2/5"
           v-motion="{
             initial: { opacity: 0, y: 20 },
             visibleOnce: { opacity: 1, y: 0, transition: { delay: 0.2 } },
@@ -34,7 +34,7 @@
         >
           <div
             v-if="steamData.recentGames && steamData.recentGames.length > 0"
-            class="flex-1 basis-3/4 rounded-lg dark:bg-gray-800 bg-gray-50"
+            class="flex-1 basis-3/4"
           >
             <RecentGamesCard :recent-games="steamData.recentGames" />
           </div>
@@ -42,7 +42,7 @@
 
         <div
           v-if="steamData.platformStats"
-          class="flex-1 basis-1/5 rounded-lg dark:bg-gray-800 bg-gray-50"
+          class="flex-1 basis-1/5"
           v-motion="{
             initial: { opacity: 0, y: 20 },
             visibleOnce: { opacity: 1, y: 0, transition: { delay: 0.3 } },
@@ -68,7 +68,7 @@
           v-if="
             steamData.mostPlayedGames && steamData.mostPlayedGames.length > 0
           "
-          class="flex-1 basis-1/4 rounded-lg dark:bg-gray-800 bg-gray-50"
+          class="flex-1 basis-1/4"
           v-motion="{
             initial: { opacity: 0, x: 20 },
             visibleOnce: { opacity: 1, x: 0, transition: { delay: 0.5 } },

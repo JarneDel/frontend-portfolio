@@ -1,17 +1,17 @@
 <template>
   <div
     v-if="mostPlayedGames.length > 0"
-    class="group col-span-2 row-span-2 rounded-xl bg-gray-50 p-4 transition-colors duration-200 dark:bg-gray-800"
+    class="group col-span-2 row-span-2 rounded-xl bg-background-dark-300 p-4 transition-colors duration-200 border border-background-dark-400 shadow-lg"
     style="grid-column: span 2; grid-row: span 2"
   >
     <div class="mb-3 flex items-center justify-between">
       <h3
-        class="text-sm font-semibold tracking-wide text-gray-600 uppercase dark:text-gray-400"
+        class="text-sm font-semibold tracking-wide text-background-light-500 uppercase"
       >
         Most Played
       </h3>
       <div
-        class="flex items-center space-x-1 text-xs text-gray-500 dark:text-gray-400"
+        class="flex items-center space-x-1 text-xs text-background-light-500"
       >
         <span>{{ currentPage + 1 }}/{{ totalPages }}</span>
       </div>
@@ -23,7 +23,7 @@
           <div
             v-for="game in paginatedGames"
             :key="game.id"
-            class="dark:bg-gray-750 flex flex-col items-center rounded-lg bg-gray-100 p-2 text-center transition-colors duration-200 hover:bg-gray-50 hover:shadow-sm dark:hover:bg-gray-700"
+            class="flex flex-col items-center rounded-lg bg-background-dark-400 p-2 text-center transition-colors duration-200 hover:bg-background-dark-500 hover:shadow-sm border border-transparent hover:border-primary-dark"
           >
             <BaseImage
               :src="game.iconUrl"
@@ -31,10 +31,10 @@
               class="mb-1 h-8 w-8 flex-shrink-0 rounded"
               loading="lazy"
             />
-            <p class="w-full truncate text-xs font-medium">
+            <p class="w-full truncate text-xs font-medium text-white">
               {{ game.name }}
             </p>
-            <p class="text-xs text-gray-500 dark:text-gray-400">
+            <p class="text-xs text-background-light-500">
               {{ formatPlaytime(game.playtimeForever) }}
             </p>
           </div>
@@ -44,7 +44,7 @@
         <div
           v-for="game in paginatedGames"
           :key="game.id"
-          class="dark:bg-gray-750 flex flex-col items-center rounded-lg bg-gray-100 p-2 text-center transition-all transition-colors duration-200 hover:bg-gray-50 hover:shadow-sm dark:hover:bg-gray-700"
+          class="flex flex-col items-center rounded-lg bg-background-dark-400 p-2 text-center transition-colors duration-200 hover:bg-background-dark-500 hover:shadow-sm border border-transparent hover:border-primary-dark"
         >
           <BaseImage
             :src="game.iconUrl"
@@ -52,10 +52,10 @@
             class="mb-1 h-8 w-8 flex-shrink-0 rounded"
             loading="lazy"
           />
-          <p class="w-full truncate text-xs font-medium">
+          <p class="w-full truncate text-xs font-medium text-white">
             {{ game.name }}
           </p>
-          <p class="text-xs text-gray-500 dark:text-gray-400">
+          <p class="text-xs text-background-light-500">
             {{ formatPlaytime(game.playtimeForever) }}
           </p>
         </div>
@@ -65,16 +65,16 @@
     <!-- Pagination Controls -->
     <div
       v-if="totalPages > 1"
-      class="flex items-center justify-between border-t border-gray-200 pt-2 dark:border-gray-700"
+      class="flex items-center justify-between border-t border-background-dark-400 pt-2"
     >
       <button
         @click="prevPage"
         :disabled="!canGoPrev"
-        class="flex items-center rounded px-2 py-1 text-xs font-medium transition-colors hover:bg-gray-200 disabled:cursor-not-allowed disabled:opacity-50 dark:hover:bg-gray-600"
+        class="flex items-center rounded px-2 py-1 text-xs font-medium transition-colors hover:bg-background-dark-400 disabled:cursor-not-allowed disabled:opacity-50"
         :class="
           canGoPrev
-            ? 'text-gray-700 dark:text-gray-300'
-            : 'text-gray-400 dark:text-gray-500'
+            ? 'text-white'
+            : 'text-background-light-500'
         "
       >
         <svg
@@ -102,7 +102,7 @@
           :class="
             currentPage === page - 1
               ? 'bg-primary-dark text-white'
-              : 'text-gray-600 hover:bg-gray-200 dark:text-gray-400 dark:hover:bg-gray-600'
+              : 'text-background-light-500 hover:bg-background-dark-400'
           "
         >
           {{ page }}
@@ -112,11 +112,11 @@
       <button
         @click="nextPage"
         :disabled="!canGoNext"
-        class="flex items-center rounded px-2 py-1 text-xs font-medium transition-colors hover:bg-gray-200 disabled:cursor-not-allowed disabled:opacity-50 dark:hover:bg-gray-600"
+        class="flex items-center rounded px-2 py-1 text-xs font-medium transition-colors hover:bg-background-dark-400 disabled:cursor-not-allowed disabled:opacity-50"
         :class="
           canGoNext
-            ? 'text-gray-700 dark:text-gray-300'
-            : 'text-gray-400 dark:text-gray-500'
+            ? 'text-white'
+            : 'text-background-light-500'
         "
       >
         Next
