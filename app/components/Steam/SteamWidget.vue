@@ -1,8 +1,8 @@
 <template>
   <div class="mx-auto max-w-7xl">
     <div v-if="pending" class="animate-pulse">
-      <div class="mb-2 h-4 w-3/4 rounded bg-background-dark-400"></div>
-      <div class="h-3 w-1/2 rounded bg-background-dark-400"></div>
+      <div class="bg-background-dark-400 mb-2 h-4 w-3/4 rounded"></div>
+      <div class="bg-background-dark-400 h-3 w-1/2 rounded"></div>
     </div>
 
     <div
@@ -13,10 +13,9 @@
         visibleOnce: { opacity: 1, y: 0 },
       }"
     >
-
       <div class="flex w-full flex-col gap-4 lg:w-3/5">
         <div
-          class="flex-1 h-max"
+          class="h-max flex-1"
           v-motion="{
             initial: { opacity: 0, y: 20 },
             visibleOnce: { opacity: 1, y: 0, transition: { delay: 0.1 } },
@@ -74,7 +73,10 @@
             visibleOnce: { opacity: 1, x: 0, transition: { delay: 0.5 } },
           }"
         >
-          <MostPlayedGamesCard :most-played-games="steamData.mostPlayedGames" :recent-count="steamData.recentGames.length" />
+          <MostPlayedGamesCard
+            :most-played-games="steamData.mostPlayedGames"
+            :recent-count="steamData.recentGames.length"
+          />
         </div>
       </div>
     </div>
@@ -96,8 +98,8 @@ const {
   pending: steamPending,
   error: steamError,
   refresh: refreshSteam,
-} = await useAsyncData('steamData', () => $fetch<SteamData>('/api/steam'), {
-  server: true,
+} = await useLazyAsyncData('steamData', () => $fetch<SteamData>('/api/steam'), {
+  server: false,
 })
 
 // Fetch current game status (updates more frequently, less cached)
@@ -106,14 +108,14 @@ const {
   pending: currentGamePending,
   error: currentGameError,
   refresh: refreshCurrentGame,
-} = await useAsyncData(
+} = await useLazyAsyncData(
   'steamCurrentGame',
   () =>
     $fetch<{ currentGame: CurrentGame | null; playerInfo: PlayerInfo }>(
       '/api/steam/current',
     ),
   {
-    server: true,
+    server: false,
   },
 )
 

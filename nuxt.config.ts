@@ -78,7 +78,6 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Jarne Delarue',
       link: [
         {
           rel: 'apple-touch-icon',

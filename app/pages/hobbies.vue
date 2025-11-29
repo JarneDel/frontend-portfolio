@@ -1,4 +1,7 @@
 <template>
+  <Head>
+    <title>Hobbies | Jarne's Portfolio</title>
+  </Head>
   <Body
     class="from-background-light-500 via-background-light-300 to-background-light-100 dark:from-background-dark-500 dark:via-background-dark-300 dark:to-background-dark-100 bg-gradient-to-tr bg-no-repeat md:bg-fixed"
   ></Body>
