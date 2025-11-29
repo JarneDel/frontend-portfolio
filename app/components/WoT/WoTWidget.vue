@@ -1,14 +1,7 @@
 <script setup lang="ts">
-import TopTanksCard from './TopTanksCard.vue'
-import ProfileCard from './ProfileCard.vue'
-import EvolutionCard from './EvolutionCard.vue'
-import LifetimeStatsCard from './LifetimeStatsCard.vue'
-import RecentMatchesCard from './RecentMatchesCard.vue'
-
 // --- State for Filter ---
-const selectedFilter = ref('100') // Default
+const selectedFilter = ref('100')
 
-// Options for the dropdown
 const filterOptions = [
   { label: '10 Battles', value: '10' },
   { label: '50 Battles', value: '50' },
@@ -17,65 +10,79 @@ const filterOptions = [
   { label: '1000 Battles', value: '1000' },
   { label: '24 Hours', value: '1d' },
   { label: '30 Days', value: '30d' },
-  { label: '60 Days', value: '60d' }, // Tomato api usually caps at 60
+  { label: '60 Days', value: '60d' },
 ]
 
-// 1. Fetch Official Profile (Static)
-const { data: profile } = await useAsyncData('wot-profile', () => $fetch('/api/wargaming/wot-account'))
-
-// 2. Fetch Recent Stats (Dynamic based on selectedFilter)
-const { data: recent, status, refresh } = await useAsyncData(
-  'wot-recent',
-  () => $fetch('/api/wargaming/wot-recent', {
-    query: { filter: selectedFilter.value }
-  }),
-  {
-    watch: [selectedFilter] // Automatically refetch when filter changes
-  }
+// 1. Profile: Keep this BLOCKING (await) if it's fast (<100ms),
+// so the layout skeleton (sidebar/header) exists immediately.
+// If it's slow, change to useLazyAsyncData.
+const { data: profile } = await useLazyAsyncData('wot-profile', () =>
+  $fetch('/api/wargaming/wot-account'),
 )
 
-const { data: graphData } = await useAsyncData('wot-graph', () => $fetch('/api/wargaming/wot-graph'))
+const {
+  data: recent,
+  status: recentStatus,
+  refresh,
+} = await useLazyAsyncData(
+  'wot-recent',
+  () =>
+    $fetch('/api/wargaming/wot-recent', {
+      query: { filter: selectedFilter.value },
+    }),
+  {
+    watch: [selectedFilter],
+  },
+)
+
+const { data: graphData, status: graphStatus } = await useLazyAsyncData(
+  'wot-graph',
+  () => $fetch('/api/wargaming/wot-graph'),
+)
 </script>
 
 <template>
-  <div v-if="profile" class="w-full mx-auto font-sans text-background-light-200">
-    
+  <div
+    v-if="profile"
+    class="text-background-light-200 mx-auto w-full font-sans"
+  >
     <div class="flex flex-col gap-4">
-      
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        
+      <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
         <!-- LEFT COLUMN -->
-        <div class="lg:col-span-2 flex flex-col gap-4">
-          
-          <!-- HEADER ROW (Combined Profile & Recent) -->
-          <ProfileCard 
-            :profile="profile" 
-            :recent="recent" 
-            :status="status" 
+        <div class="flex flex-col gap-4 lg:col-span-2">
+          <!-- Pass loading status to ProfileCard so it can show a spinner/opacity change -->
+          <ProfileCard
+            :profile="profile"
+            :recent="recent"
+            :status="recentStatus"
             :filter-options="filterOptions"
             v-model:filter="selectedFilter"
           />
-        
-          <!-- MAIN STATS GRID (Lifetime/Profile Data from Wargaming) -->
-          <LifetimeStatsCard :profile="profile" />
-          <EvolutionCard :graph-data="graphData" />
 
+          <!-- Lifetime is static (from profile), so it renders immediately -->
+          <LifetimeStatsCard :profile="profile" />
+
+          <!-- Pass loading status or handle v-if here -->
+          <EvolutionCard
+            :graph-data="graphData"
+            :loading="graphStatus === 'pending'"
+          />
         </div>
 
-        <!-- RIGHT COLUMN (Recent Tanks List) -->
-        <TopTanksCard :recent-data="recent" />
-
+        <!-- RIGHT COLUMN -->
+        <!-- Use a guard or pass loading prop. If recent is null, show fallback -->
+        <TopTanksCard v-if="recentStatus === 'success'" :recent-data="recent" />
+        <div
+          v-else
+          class="bg-background-dark-300 h-96 animate-pulse rounded-xl"
+        >
+          <!-- Simple Skeleton for TopTanks -->
+        </div>
       </div>
 
       <!-- BOTTOM ROW (Recent Matches) -->
+      <!-- This component handles its OWN internal lazy loading (see below) -->
       <RecentMatchesCard />
     </div>
   </div>
 </template>
-
-<style scoped>
-.custom-scrollbar::-webkit-scrollbar { width: 4px; }
-.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-.custom-scrollbar::-webkit-scrollbar-thumb { background: var(--color-background-dark-500); border-radius: 4px; }
-.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--color-background-dark-700); }
-</style>

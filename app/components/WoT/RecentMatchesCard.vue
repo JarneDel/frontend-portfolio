@@ -1,8 +1,13 @@
 <script setup lang="ts">
-import { getWrColor, getWn8Color, toRoman, formatNumber } from '~/utils/wot'
 import { useTimeAgo } from '@vueuse/core'
 
-const { data: matches } = await useAsyncData('wot-matches', () => $fetch('/api/wargaming/wot-matches'))
+const { data: matches, status } = await useLazyAsyncData(
+  'wot-matches',
+  () => $fetch('/api/wargaming/wot-matches'),
+  {
+    server: false,
+  },
+)
 
 const formatTime = (dateStr: string) => {
   return useTimeAgo(new Date(dateStr)).value
@@ -20,123 +25,256 @@ const getMoEColor = (diff: number) => {
 </script>
 
 <template>
-  <div class="bg-background-dark-300 rounded-xl p-4 shadow-lg border border-background-dark-400 h-full max-h-[800px] flex flex-col">
-    <div class="flex justify-between items-center border-b border-background-dark-400 pb-2 mb-2">
-      <h3 class="text-xs font-bold text-background-light-500 uppercase tracking-wider">Recent Matches</h3>
-      <div class="text-[10px] bg-background-dark-500 px-2 py-0.5 rounded text-background-light-400">Last 20</div>
+  <div
+    class="bg-background-dark-300 border-background-dark-400 flex h-full max-h-[800px] flex-col rounded-xl border p-4 shadow-lg"
+  >
+    <div
+      class="border-background-dark-400 mb-2 flex items-center justify-between border-b pb-2"
+    >
+      <h3
+        class="text-background-light-500 text-xs font-bold tracking-wider uppercase"
+      >
+        Recent Matches
+      </h3>
+      <div
+        class="bg-background-dark-500 text-background-light-400 rounded px-2 py-0.5 text-[10px]"
+      >
+        Last 20
+      </div>
     </div>
 
-    <div class="overflow-y-auto custom-scrollbar flex-grow pr-1 space-y-2">
-      <div 
-        v-for="(match, index) in matches" 
-        :key="index"
-        class="bg-background-dark-400 rounded-lg p-2 flex items-center gap-3 hover:bg-background-dark-500 transition-colors border-l-4 overflow-hidden"
-        :class="match.result === 'win' ? 'border-l-green-500' : 'border-l-red-500'"
+    <div class="custom-scrollbar flex-grow space-y-2 overflow-y-auto pr-1">
+      <!-- === LOADING SKELETON === -->
+      <!-- This shows while the API is taking 600ms -->
+      <template v-if="status != 'success'">
+        <div
+          v-for="n in 10"
+          :key="n"
+          class="bg-background-dark-400/50 border-background-dark-500 flex animate-pulse items-center gap-3 rounded-lg border-l-4 p-2"
+        >
+          <div
+            class="bg-background-dark-500 h-14 w-24 flex-shrink-0 rounded"
+          ></div>
+          <div class="flex w-28 flex-col gap-2">
+            <div class="bg-background-dark-500 h-3 w-3/4 rounded"></div>
+            <div class="bg-background-dark-500 h-2 w-1/2 rounded"></div>
+          </div>
+          <div class="bg-background-dark-500 ml-auto h-8 w-16 rounded"></div>
+        </div>
+      </template>
+
+      <!-- === ERROR STATE === -->
+      <div
+        v-else-if="status === 'error'"
+        class="py-8 text-center text-xs text-red-400"
       >
-        <!-- Tank Image with Map Background -->
-        <div class="relative w-24 h-14 flex-shrink-0 bg-background-dark-500 rounded overflow-hidden flex items-center justify-center border border-background-dark-300 group" :title="match.map">
-          <!-- Map Background -->
-          <img :src="match.mapImage" :alt="match.map" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity" loading="lazy" />
-          
-          <!-- Tank Image -->
-          <img :src="match.tankImage" :alt="match.tankName" class="relative z-10 w-full h-full object-contain drop-shadow-lg scale-110" loading="lazy" />
-          
-          <!-- Tier -->
-          <div class="absolute bottom-0 right-0 z-20 bg-black/80 text-[10px] px-1.5 py-0.5 text-white font-bold rounded-tl backdrop-blur-sm">
-            {{ toRoman(match.tier) }}
-          </div>
-          
-          <!-- Premium Badge -->
-          <div v-if="match.isPremium" class="absolute top-0 left-0 z-20 bg-yellow-500/20 text-yellow-400 text-[8px] px-1 font-bold rounded-br backdrop-blur-sm">PREM</div>
-        </div>
+        Unable to load matches.
+      </div>
 
-        <!-- Tank & Map Info -->
-        <div class="flex flex-col w-28 flex-shrink-0">
-          <div class="text-white font-bold text-sm truncate" :title="match.tankName">{{ match.tankName }}</div>
-          <div class="text-xs text-background-light-400 truncate">{{ match.map }}</div>
-        </div>
+      <!-- === DATA STATE === -->
+      <template v-else>
+        <!-- Your original list logic goes here -->
+        <div
+          v-for="(match, index) in matches"
+          :key="index"
+          class="bg-background-dark-400 hover:bg-background-dark-500 flex items-center gap-3 overflow-hidden rounded-lg border-l-4 p-2 transition-colors"
+          :class="
+            match.result === 'win' ? 'border-l-green-500' : 'border-l-red-500'
+          "
+        >
+          <!-- Tank Image with Map Background -->
+          <div
+            class="bg-background-dark-500 border-background-dark-300 group relative flex h-14 w-24 flex-shrink-0 items-center justify-center overflow-hidden rounded border"
+            :title="match.map"
+          >
+            <!-- Map Background -->
+            <img
+              :src="match.mapImage"
+              :alt="match.map"
+              class="absolute inset-0 h-full w-full object-cover opacity-40 transition-opacity group-hover:opacity-60"
+              loading="lazy"
+            />
 
-        <!-- Result & Duration -->
-        <div class="flex flex-col items-center w-16 flex-shrink-0">
-          <span :class="match.result === 'win' ? 'text-green-400' : 'text-red-400'" class="uppercase font-bold text-xs">{{ match.result }}</span>
-          <span class="text-xs text-background-light-500">{{ formatDuration(match.duration) }}</span>
-        </div>
+            <!-- Tank Image -->
+            <img
+              :src="match.tankImage"
+              :alt="match.tankName"
+              class="relative z-10 h-full w-full scale-110 object-contain drop-shadow-lg"
+              loading="lazy"
+            />
 
-        <!-- Primary Stats (Dmg, Assist, Blocked) -->
-        <div class="flex items-center gap-3 flex-shrink-0">
-          <div class="flex flex-col items-center w-12">
-            <span class="text-[10px] text-background-light-500 uppercase">Dmg</span>
-            <span class="text-white font-bold text-sm font-mono">{{ formatNumber(match.damage) }}</span>
-          </div>
-          <div class="flex flex-col items-center w-10">
-            <span class="text-[10px] text-background-light-500 uppercase">Ast</span>
-            <span class="text-white font-bold text-sm font-mono">{{ formatNumber(match.assist) }}</span>
-          </div>
-          <div class="flex flex-col items-center w-10">
-            <span class="text-[10px] text-background-light-500 uppercase">Blk</span>
-            <span class="text-white font-bold text-sm font-mono">{{ formatNumber(match.blocked) }}</span>
-          </div>
-        </div>
+            <!-- Tier -->
+            <div
+              class="absolute right-0 bottom-0 z-20 rounded-tl bg-black/80 px-1.5 py-0.5 text-[10px] font-bold text-white backdrop-blur-sm"
+            >
+              {{ toRoman(match.tier) }}
+            </div>
 
-        <!-- WN8 -->
-        <div class="flex flex-col items-center w-10 flex-shrink-0">
-          <span class="text-[10px] text-background-light-500 uppercase">WN8</span>
-          <span class="font-bold text-sm font-mono" :style="{ color: getWn8Color(match.wn8) }">{{ match.wn8 }}</span>
-        </div>
-
-        <!-- Secondary Stats (XP, Credits, Kills) -->
-        <div class="flex items-center gap-3 flex-shrink-0 border-l border-background-dark-300 pl-3">
-          <div class="flex flex-col items-center w-8" title="Base XP">
-            <span class="text-[10px] text-background-light-500">XP</span>
-            <span class="text-white font-bold text-xs">{{ formatNumber(match.xp) }}</span>
-          </div>
-          <div class="flex flex-col items-center w-12" title="Net Credits">
-            <span class="text-[10px] text-background-light-500">Creds</span>
-            <span class="font-bold text-xs" :class="match.credits >= 0 ? 'text-gray-200' : 'text-red-400'">{{ formatNumber(match.credits) }}</span>
-          </div>
-          <div class="flex flex-col items-center w-6" title="Frags">
-            <span class="text-[10px] text-background-light-500">Kills</span>
-            <span class="text-white font-bold text-xs">{{ match.frags }}</span>
-          </div>
-        </div>
-
-        <!-- Tertiary Stats (Spots, Shots, MoE) - Hidden on smaller screens if needed, but showing here -->
-        <div class="items-center gap-3 flex-shrink-0 border-l border-background-dark-300 pl-3 hidden xl:flex">
-           <div class="flex flex-col items-center w-6" title="Spots">
-            <span class="text-[10px] text-background-light-500">Spot</span>
-            <span class="text-white font-bold text-xs">{{ match.spots }}</span>
-          </div>
-           <div class="flex flex-col items-center w-10" title="Penetrations / Shots">
-            <span class="text-[10px] text-background-light-500">Hits</span>
-            <span class="text-white font-bold text-xs">{{ match.penetrations }}/{{ match.shots }}</span>
-          </div>
-           <div class="flex flex-col items-center w-12" title="Mark of Excellence">
-            <span class="text-[10px] text-background-light-500">MoE</span>
-            <div class="flex items-center gap-0.5">
-              <span class="text-white font-bold text-xs">{{ match.moe.toFixed(1) }}%</span>
-              <span v-if="match.moeDiff !== 0" class="text-[10px]" :class="getMoEColor(match.moeDiff)">
-                {{ match.moeDiff > 0 ? '↑' : '↓' }}
-              </span>
+            <!-- Premium Badge -->
+            <div
+              v-if="match.isPremium"
+              class="absolute top-0 left-0 z-20 rounded-br bg-yellow-500/20 px-1 text-[8px] font-bold text-yellow-400 backdrop-blur-sm"
+            >
+              PREM
             </div>
           </div>
-        </div>
 
-        <!-- Time Ago -->
-        <div class="ml-auto text-xs text-background-light-500 whitespace-nowrap pl-2">
-          {{ formatTime(match.date) }}
+          <!-- Tank & Map Info -->
+          <div class="flex w-28 flex-shrink-0 flex-col">
+            <div
+              class="truncate text-sm font-bold text-white"
+              :title="match.tankName"
+            >
+              {{ match.tankName }}
+            </div>
+            <div class="text-background-light-400 truncate text-xs">
+              {{ match.map }}
+            </div>
+          </div>
+
+          <!-- Result & Duration -->
+          <div class="flex w-16 flex-shrink-0 flex-col items-center">
+            <span
+              :class="
+                match.result === 'win' ? 'text-green-400' : 'text-red-400'
+              "
+              class="text-xs font-bold uppercase"
+              >{{ match.result }}</span
+            >
+            <span class="text-background-light-500 text-xs">{{
+              formatDuration(match.duration)
+            }}</span>
+          </div>
+
+          <!-- Primary Stats (Dmg, Assist, Blocked) -->
+          <div class="flex flex-shrink-0 items-center gap-3">
+            <div class="flex w-12 flex-col items-center">
+              <span class="text-background-light-500 text-[10px] uppercase"
+                >Dmg</span
+              >
+              <span class="font-mono text-sm font-bold text-white">{{
+                formatNumber(match.damage)
+              }}</span>
+            </div>
+            <div class="flex w-10 flex-col items-center">
+              <span class="text-background-light-500 text-[10px] uppercase"
+                >Ast</span
+              >
+              <span class="font-mono text-sm font-bold text-white">{{
+                formatNumber(match.assist)
+              }}</span>
+            </div>
+            <div class="flex w-10 flex-col items-center">
+              <span class="text-background-light-500 text-[10px] uppercase"
+                >Blk</span
+              >
+              <span class="font-mono text-sm font-bold text-white">{{
+                formatNumber(match.blocked)
+              }}</span>
+            </div>
+          </div>
+
+          <!-- WN8 -->
+          <div class="flex w-10 flex-shrink-0 flex-col items-center">
+            <span class="text-background-light-500 text-[10px] uppercase"
+              >WN8</span
+            >
+            <span
+              class="font-mono text-sm font-bold"
+              :style="{ color: getWn8Color(match.wn8) }"
+              >{{ match.wn8 }}</span
+            >
+          </div>
+
+          <!-- Secondary Stats (XP, Credits, Kills) -->
+          <div
+            class="border-background-dark-300 flex flex-shrink-0 items-center gap-3 border-l pl-3"
+          >
+            <div class="flex w-8 flex-col items-center" title="Base XP">
+              <span class="text-background-light-500 text-[10px]">XP</span>
+              <span class="text-xs font-bold text-white">{{
+                formatNumber(match.xp)
+              }}</span>
+            </div>
+            <div class="flex w-12 flex-col items-center" title="Net Credits">
+              <span class="text-background-light-500 text-[10px]">Creds</span>
+              <span
+                class="text-xs font-bold"
+                :class="match.credits >= 0 ? 'text-gray-200' : 'text-red-400'"
+                >{{ formatNumber(match.credits) }}</span
+              >
+            </div>
+            <div class="flex w-6 flex-col items-center" title="Frags">
+              <span class="text-background-light-500 text-[10px]">Kills</span>
+              <span class="text-xs font-bold text-white">{{
+                match.frags
+              }}</span>
+            </div>
+          </div>
+
+          <!-- Tertiary Stats (Spots, Shots, MoE) - Hidden on smaller screens if needed, but showing here -->
+          <div
+            class="border-background-dark-300 hidden flex-shrink-0 items-center gap-3 border-l pl-3 xl:flex"
+          >
+            <div class="flex w-6 flex-col items-center" title="Spots">
+              <span class="text-background-light-500 text-[10px]">Spot</span>
+              <span class="text-xs font-bold text-white">{{
+                match.spots
+              }}</span>
+            </div>
+            <div
+              class="flex w-10 flex-col items-center"
+              title="Penetrations / Shots"
+            >
+              <span class="text-background-light-500 text-[10px]">Hits</span>
+              <span class="text-xs font-bold text-white"
+                >{{ match.penetrations }}/{{ match.shots }}</span
+              >
+            </div>
+            <div
+              class="flex w-12 flex-col items-center"
+              title="Mark of Excellence"
+            >
+              <span class="text-background-light-500 text-[10px]">MoE</span>
+              <div class="flex items-center gap-0.5">
+                <span class="text-xs font-bold text-white"
+                  >{{ match.moe.toFixed(1) }}%</span
+                >
+                <span
+                  v-if="match.moeDiff !== 0"
+                  class="text-[10px]"
+                  :class="getMoEColor(match.moeDiff)"
+                >
+                  {{ match.moeDiff > 0 ? '↑' : '↓' }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Time Ago -->
+          <div
+            class="text-background-light-500 ml-auto pl-2 text-xs whitespace-nowrap"
+          >
+            {{ formatTime(match.date) }}
+          </div>
         </div>
-      </div>
-      
-      <div v-if="!matches || matches.length === 0" class="text-center py-8 text-background-light-500 text-xs">
-        No recent matches found.
-      </div>
+      </template>
     </div>
   </div>
 </template>
 
 <style scoped>
-.custom-scrollbar::-webkit-scrollbar { width: 4px; }
-.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-.custom-scrollbar::-webkit-scrollbar-thumb { background: var(--color-background-dark-500); border-radius: 4px; }
-.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--color-background-dark-700); }
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-background-dark-500);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-background-dark-700);
+}
 </style>
