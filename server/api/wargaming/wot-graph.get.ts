@@ -11,8 +11,8 @@ export default defineEventHandler(async (event): Promise<GraphDataPoint[]> => {
   const config = useRuntimeConfig()
 
   console.log(config, config.accountId)
-  const accountId = config.accountId || '522903268'
-  const region = config.wargamingRegion || 'eu'
+  const accountId = config.accountId.trim() || '522903268'
+  const region = 'eu'
   console.log(accountId, region, 'wargaming region')
 
   // Fetch session history (last 60 days usually available on this endpoint)

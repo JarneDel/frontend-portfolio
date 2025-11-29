@@ -62,8 +62,8 @@ interface WotPediaResponse {
 export default defineEventHandler(async (event): Promise<TankData[]> => {
   const config = useRuntimeConfig()
 
-  const apiKey = config.wargamingId as string
-  const accountId = config.accountId as string
+  const apiKey = config.wargamingId.trim() as string
+  const accountId = config.accountId.trim() as string
   const region = config.wargamingRegion || 'eu'
 
   const baseUrl = `https://api.worldoftanks.${region}/wot`
